@@ -15,7 +15,7 @@ Requierimientos:
 
 -openCV
 
--pyfuzzy
+-pyfuzzy a
 
 cthulu ver. 0.4
 ===============
