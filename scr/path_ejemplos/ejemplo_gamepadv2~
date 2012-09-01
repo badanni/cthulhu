@@ -1,0 +1,5 @@
+a=gamepad()
+gamepad=a.iniciar()
+a.hombre_muerto="b1" #si no se selecciona se activa el boton 1 como hombre_muerto
+a.palanca(gamepad)
+print a.direccion, a.boton

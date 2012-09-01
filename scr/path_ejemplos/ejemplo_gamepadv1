@@ -1,0 +1,6 @@
+c=gamepad()
+pipe,msg=c.gamepad_init()
+while 1:
+	a=c.gamepad_lectura(pipe,msg)
+	if a!=0:
+		print a
