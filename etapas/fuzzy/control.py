@@ -3,7 +3,7 @@
 #
 #       untitled.py
 #       
-#       Copyright 2012 Danny E Vasconezz <badanni@badanni-Inspiron-N5110>
+#       Copyright 2012 Danny E Vasconez <dannyvasconeze@gmail.com>
 #       
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by

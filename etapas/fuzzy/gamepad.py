@@ -45,15 +45,39 @@ import time
 """
 
 class gamepad:
+	"""
+	\class gamepad.gamepad
+	\brief es la clase encargada de la palanca 
+	\details  se lo utiliza para leer el flujo de datos de /dev/input/js0 para conocer el estados de los botones del gamepad
+	"""
 	def __init__(self):
+		"""
+		\brief Carga valores a las variables necesarias para funcionar la libreria
+		\details  este comando no es necesario utilizarlo es usado al instanciar la clase
+		\param self este parametro no es necesario escribir
+		"""
 		self.a=0
 
 	def gamepad_init(self):
+		"""
+		\brief Sirve realizar el enlace con la direccion /dev/input/js0 que representa la palanca
+		\details  Este comando es el que realizar la conexion con la palanca.
+		\param self este parametro no es necesario escribir
+		\return pipe, msg. La varible pipe es el enlace virtual con la palanca
+		"""
 		#Abre el dispositivo js0 como si fuera un archivo de lectura
 		pipe=open('/dev/input/js0','r')
 		msg=[]
 		return pipe,msg
 	def gamepad_lectura(self,pipe,msg):
+		"""
+		\brief Sirve leer los estados de la palanca
+		\details  Este comando es el encargado de leer el flujo de datos y interpretarlos
+		\param self este parametro no es necesario escribir
+		\param pipe es el enlace virtual con la palanca
+		\param msg es arreglo para almacenar los valores del flujo de datos de la palanca
+		\return a 
+		"""
 		#time.sleep(5)
 		a=0
 		#Para cada caracter leidos desde el /dev/input/js0 pipe..

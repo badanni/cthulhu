@@ -1,24 +1,48 @@
 # -*- coding: iso-8859-1 -*-
-
-"""Another fuzyy controller for the inverted pendulum.
-
-@author: Marc Vollmer (modified by Rene Liebscher)
-"""
-
-#from simulation import Controller
-
+#
+#       untitled.py
+#       Copyright 2010 Marc Vollmer (modified by Rene Liebscher)
+#       Copyright 2012 Danny E Vasconez <dannyvasconeze@gmail.com>
+#       
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#       
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#       
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+#       
+#       
 import fuzzy.System
 import math
-
+"""\package gamepad
+   \brief libreria para utilizar el controlador difuso
+   \details Controlador difuso realizado con PyFuzzy
+   \authors   Danny Vasconez
+   \version   0.0.1
+   \date      2012
+   \pre       pyfuzzy
+   \bug       Ninguno
+   \warning   Ninguno
+   
+"""
+"""
+   \section intro Ejemplo de uso
+   En el ejemplo se muestra como utilizar esta libreria
+   \verbinclude ejemplo_difuso
+"""
 def _createSystem():
-    '''
-    Definition des Fuzzy-Systems:
-
-        1. Eingangsvariable Phi
-        2. Eingangsvariable dPhi_dT
-        3. Ausgangsvariable a
-        4. Definition der Regeln
-    '''
+    """
+    \brief Crea el conjunto de reglas y valores para el controlador
+    \details Este comando no es necesario utilizarlo
+    """
     from fuzzy.InputVariable import InputVariable
     from fuzzy.OutputVariable import OutputVariable
     from fuzzy.fuzzify.Plain import Plain
@@ -29,7 +53,7 @@ def _createSystem():
     system = fuzzy.System.System()
 
     #----------------------------------------------------------------------------------------------------------------
-    # Definition des Drehwinkels als Eingang
+    # Valores de entrada
     #----------------------------------------------------------------------------------------------------------------
     input_temp = InputVariable(fuzzify=Plain())
 
@@ -73,7 +97,7 @@ def _createSystem():
     input_temp.adjectives["P"] = in5
 
     #----------------------------------------------------------------------------------------------------------------
-    # Definition der Horizontalbeschleunigung als Ausgang
+    # Valores de salida
     #----------------------------------------------------------------------------------------------------------------
     output_temp = OutputVariable(defuzzify=COG())
 
@@ -116,7 +140,7 @@ def _createSystem():
     output_temp.adjectives["VMA"] = out5
 
     #----------------------------------------------------------------------------------------------------------------
-    # Definition der Regeln <<hacer>>
+    # Reglas
     #----------------------------------------------------------------------------------------------------------------
     from fuzzy.Rule import Rule
     from fuzzy.norm.Min import Min
@@ -155,18 +179,29 @@ def _createSystem():
 #class FuzzyController2(Controller.Controller):
 class FuzzyController2():
     """
-    Fuzzy controller.
-    
+    \class FuzzyController.FuzzyController2
+    \brief Es la clase encargada de realizar los calculos para el controlador
+    \details  Se utilizo el esqueleto encontrado en la pagina de pyfuzzy
     """
 
     def __init__(self):
+        """
+        \brief Carga valores a las variables necesarias para funcionar la libreria
+        \details  este comando no es necesario utilizarlo es usado al instanciar la clase
+        \param self este parametro no es necesario escribir
+        """
         self.system = _createSystem()
 
 
     def calculate(self,input={},output={'vel':0.0}):
-        '''
-        Calculates the output value.
-        '''
+        """
+        \brief El controlador difuso con sus entradas y salidas
+        \details  Sirve realizar el calculo de la salida dependiendo de la entrada
+        \param self este parametro no es necesario escribir
+        \param input variable de entrada debe ser un diccionario input={"error":500} por ejemplo
+        \param output variable de salida debe ser un diccionario output={"vel":500} por ejemplo no es necesario crearlo a menos que se desee tener un valor de arranque diferente de cero
+        \return output
+        """
         if input["error"]> 5000:
             input["error"] = 5000
         elif input["error"]< -5000:
@@ -176,7 +211,12 @@ class FuzzyController2():
         return output
 
     def createDoc(self,directory):
-        """Create docs of all variables."""
+        """
+        \brief Crea documentacion de todas las variables.
+        \details Crea documentacion de todas las variables.
+        \param self este parametro no es necesario escribir
+        \param directory direccion en donde se van a generar los archivos
+        """
         from fuzzy.doc.plot.gnuplot import doc
         d = doc.Doc(directory)
         d.createDoc(self.system)
@@ -184,7 +224,12 @@ class FuzzyController2():
         d.create3DPlot(self.system,"error","vel",{"X":0.,"dX_dT":0.})
 
     def createDot(self,directory):
-        """Create docs of rules."""
+        """
+        \brief Crea documentacion de las reglas.
+        \details Crea documentacion de las reglas.
+        \param self este parametro no es necesario escribir
+        \param directory direccion en donde se van a generar los archivos
+        """
         import fuzzy.doc.structure.dot.dot
         import subprocess
         for name,rule in self.system.rules.items():
@@ -198,6 +243,14 @@ class FuzzyController2():
         fuzzy.doc.structure.dot.dot.printDot(self.system,f)
 
 def controlador(setpoint=1000,valor=0,error=None,prueba=0):
+	"""
+	\brief Controlador con setpoint, valor de entrada
+	\details Crea documentacion de las reglas.
+	\param setpoint
+	\param valor
+	\param error
+	\param prueba 
+	"""
 	a=FuzzyController2()
 	input_aa={"error":-5000}
 	salida={}
