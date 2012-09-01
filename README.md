@@ -7,8 +7,12 @@ Realizar un mapeo basico y un control difuso de velocidad para la plataforma Pio
 
 Requierimientos:
 
-*Aria y ArNetworking
-*Python 2.5 - 2.7
-*pyGTK
-*openCV
-*pyfuzzy
+-Aria y ArNetworking
+
+-Python 2.5 - 2.7
+
+-pyGTK
+
+-openCV
+
+-pyfuzzy
