@@ -1,0 +1,13 @@
+## Generar conjunto de reglas del controlador en la carpeta especificada
+a=FuzzyController2()
+a.createDot("/home/badanni/tesis_programas/fuzzy/programa/doc/")
+
+## Prueba para un valor fijo en real es: velocidad = controlador(setpoint,valor)
+from FuzzyController import controlador
+print controlador(error=-2249.3,prueba=1)
+print controlador(1500,-4000)
+
+## Prueba para generar todos los valores posibles de respuestas y almacenarlo en una imagen si el parametro 1 caso contrario solo devuelve todos los valores posibles 
+from FuzzyController import prueba_de_controlador
+print prueba_de_controlador()
+
