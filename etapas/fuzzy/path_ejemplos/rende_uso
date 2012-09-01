@@ -1,0 +1,9 @@
+a=renderizado((600,400),"imagen.jpg",(13,13))
+a.cargar()
+a.anadir_punto((5,51),radio=13)
+a.graficar(500)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(200,100,0)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(20,300,-40)
+

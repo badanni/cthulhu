@@ -1,0 +1,301 @@
+\hypertarget{namespacecliente__lib}{
+\section{Paquetes cliente\_\-lib}
+\label{namespacecliente__lib}\index{cliente\_\-lib@{cliente\_\-lib}}
+}
+
+
+libreria para realizar el cliente  
+
+
+\subsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcliente__lib_1_1cliente__lib}{cliente\_\-lib}
+\begin{DoxyCompactList}\small\item\em No dispone ninguna utilidad. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacecliente__lib_afb746084e43cb9c21db470d7b4990cae}{main}
+\item 
+def \hyperlink{namespacecliente__lib_a8634914de8060e8f1b2b0415d66c4885}{valores}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}test\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespacecliente__lib_a5a38e309c8a912c3f6e26a2f8563036b}{envio\_\-ratioDrive}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar la teleoperacion, mandando los parametros. \end{DoxyCompactList}\item 
+def \hyperlink{namespacecliente__lib_abf302612f8395b9ab23beb2fa49f3275}{uC\_\-comandos\_\-movi}
+\begin{DoxyCompactList}\small\item\em Sirve para mandar ordenes de movimiento directamente al controlador de la plataforma movil. \end{DoxyCompactList}\item 
+def \hyperlink{namespacecliente__lib_a60a5dc64680f8fafbaca76940d73111e}{cliente\_\-inicio}
+\begin{DoxyCompactList}\small\item\em Sirve para iniciar la conexion con el servidor. \end{DoxyCompactList}\item 
+def \hyperlink{namespacecliente__lib_a71376d64bf4550c98559a023e1464c48}{cliente\_\-apaga}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar la desconexion con el servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+libreria para realizar el cliente Se debe especificar cual es el IP del servidor \begin{DoxyAuthor}{Autores}
+Danny Vasconez 
+
+Daniel Granda 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2012 
+\end{DoxyDate}
+\begin{DoxyPrecond}{Precondición}
+Tener funcionando el servidor 
+\end{DoxyPrecond}
+\begin{Desc}
+\item[\hyperlink{bug__bug000001}{Bug}]Nada \end{Desc}
+\begin{DoxyWarning}{Atención}
+uso inapropiado puede hacer que la aplicacion falle
+\end{DoxyWarning}
+\hypertarget{index_intro}{}\subsection{Ejemplo de uso}\label{index_intro}
+En el ejemplo se muestra tres maneras de enviar comandos la general que es requestOnce y las otras que son la misma pero modificada para trabajar con comandos especificos 
+\begin{DoxyVerbInclude}
+cliente=cliente_inicio("192.168.1.10")
+cliente=uC_comandos_movi(cliente,"8","3000") #Mover 3000mm hacia adelante
+cliente=envio_ratioDrive(cliente,50,0,0) # fija la velocidad de traslacion a 50mm/s por 5 seg 
+cliente.requestOnce("stop") #parado de emergencia
+cliente_apaga(cliente)
+
+\end{DoxyVerbInclude}
+ 
+
+\subsection{Documentación de las funciones}
+\hypertarget{namespacecliente__lib_a71376d64bf4550c98559a023e1464c48}{
+\index{cliente\_\-lib@{cliente\_\-lib}!cliente\_\-apaga@{cliente\_\-apaga}}
+\index{cliente\_\-apaga@{cliente\_\-apaga}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{cliente\_\-apaga}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-apaga (
+\begin{DoxyParamCaption}
+\item[{}]{client}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_a71376d64bf4550c98559a023e1464c48}
+
+
+Sirve para realizar la desconexion con el servidor. 
+
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 136 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+137                          :
+138         ArUtil.sleep(1000)
+139         client.disconnect()
+140         ArUtil.sleep(50)
+141         return 0
+
+\end{DoxyCode}
+\hypertarget{namespacecliente__lib_a60a5dc64680f8fafbaca76940d73111e}{
+\index{cliente\_\-lib@{cliente\_\-lib}!cliente\_\-inicio@{cliente\_\-inicio}}
+\index{cliente\_\-inicio@{cliente\_\-inicio}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{cliente\_\-inicio}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-inicio (
+\begin{DoxyParamCaption}
+\item[{}]{ip = {\ttfamily \char`\"{}localhost\char`\"{}}}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_a60a5dc64680f8fafbaca76940d73111e}
+
+
+Sirve para iniciar la conexion con el servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em ip=\char`\"{}localhost\char`\"{}} & El valor de local host se lo debe cambiar por el IP del servidor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 109 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+110                                   :
+111         client = ArClientBase()
+112         Aria.init()
+113         
+114         startTime = ArTime()
+115         startTime.setToNow()
+116         if not client.blockingConnect(ip, 7272): #ip y puerto del servidor
+117                 print "Could not connect to server at localhost port 7272, exitin
+      g"
+118                 Aria.exit(1);
+119         print "cliente: Se tardo %ld msec en connectarse\n" % (startTime.mSecSinc
+      e())
+120         
+121         client.runAsync()
+122         client.addHandler("updateNumbers",valores) #Verifica y agrega a la cabece
+      ra de comandos para el servidor
+123         if client.dataExists("ratioDrive"): #comprobar si existe el comando ratio
+      Drive
+124                 print "ratioDrive si existe"
+125         else:
+126                 Aria.exit(1);
+127         #client=envio_ratioDrive(client,TransRatio,RotRatio,LatRatio) #fijar los 
+      valores para mover
+128         #client=uC_comandos_movi(client,comando,parametro) #Lo hace de una manera
+       directa anulando las demas operaciones
+129         #client.requestOnce("updateNumbers")
+130         #client.requestOnce("stop") #parada de emergencia
+        return client
+\end{DoxyCode}
+\hypertarget{namespacecliente__lib_a5a38e309c8a912c3f6e26a2f8563036b}{
+\index{cliente\_\-lib@{cliente\_\-lib}!envio\_\-ratioDrive@{envio\_\-ratioDrive}}
+\index{envio\_\-ratioDrive@{envio\_\-ratioDrive}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{envio\_\-ratioDrive}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.envio\_\-ratioDrive (
+\begin{DoxyParamCaption}
+\item[{}]{client, }
+\item[{}]{TransRatio, }
+\item[{}]{RotRatio, }
+\item[{}]{LatRatio}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_a5a38e309c8a912c3f6e26a2f8563036b}
+
+
+Sirve para realizar la teleoperacion, mandando los parametros. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em client} & Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor \\
+\hline
+{\em TransRatio} & Velocidad de traslacion \\
+\hline
+{\em RotRatio} & Velocidad de rotacion \\
+\hline
+{\em LatRatio} & velocidad lateral para el modelo Pioneer P3-\/DX no se necesario puede ser 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 75 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+76                                                          :
+77         myTransRatio=TransRatio
+78         myRotRatio=RotRatio
+79         myLatRatio=LatRatio
+80         packet=ArNetPacket()
+81         packet.doubleToBuf(myTransRatio)
+82         packet.doubleToBuf(myRotRatio)
+83         packet.doubleToBuf(50) # use half of the robot's maximum.
+84         packet.doubleToBuf(myLatRatio)
+85         client.requestOnce("ratioDrive", packet)
+86         return client
+  
+\end{DoxyCode}
+\hypertarget{namespacecliente__lib_afb746084e43cb9c21db470d7b4990cae}{
+\index{cliente\_\-lib@{cliente\_\-lib}!main@{main}}
+\index{main@{main}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_afb746084e43cb9c21db470d7b4990cae}
+
+
+Definición en la línea 45 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+46           :
+47         
+48         return 0
+
+\end{DoxyCode}
+\hypertarget{namespacecliente__lib_abf302612f8395b9ab23beb2fa49f3275}{
+\index{cliente\_\-lib@{cliente\_\-lib}!uC\_\-comandos\_\-movi@{uC\_\-comandos\_\-movi}}
+\index{uC\_\-comandos\_\-movi@{uC\_\-comandos\_\-movi}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{uC\_\-comandos\_\-movi}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.uC\_\-comandos\_\-movi (
+\begin{DoxyParamCaption}
+\item[{}]{client, }
+\item[{}]{comando, }
+\item[{}]{parametro}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_abf302612f8395b9ab23beb2fa49f3275}
+
+
+Sirve para mandar ordenes de movimiento directamente al controlador de la plataforma movil. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em client} & Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor \\
+\hline
+{\em comando} & es un numero de 1-\/255 que representa una funcion esta informacion se puede encontrar en el API de ARIA \\
+\hline
+{\em parametro} & el parametro de la funcion en caso de no tener se deja el valor en blanco \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 95 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+96                                               :
+97         mi_comando=comando #comando 8 es MOVE parametro un valor de 5000 a -4999 
+      es en mm, 11 LEV y su parametro es velocidad +o- mm/s
+98         mi_parametro=parametro #parametro
+99         packet=ArNetPacket()
+100         packet.strToBuf(mi_comando+" "+mi_parametro)
+101         client.requestOnce("MicroControllerMotionCommand", packet) #MicroControll
+      erMotionCommand
+102         return client
+        
+\end{DoxyCode}
+\hypertarget{namespacecliente__lib_a8634914de8060e8f1b2b0415d66c4885}{
+\index{cliente\_\-lib@{cliente\_\-lib}!valores@{valores}}
+\index{valores@{valores}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{valores}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.valores (
+\begin{DoxyParamCaption}
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_a8634914de8060e8f1b2b0415d66c4885}
+
+
+Sirve cuando se manda el comando \char`\"{}test\char`\"{} en el paquete. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em packet} & el paquete que recibe el cliente del servidor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada, pero imprime los valores X,Y,Th en el terminal 
+\end{DoxyReturn}
+
+
+Definición en la línea 55 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+56                    :
+57         voltaje_vateria=packet.bufToByte2()/10
+58         myX = packet.bufToByte4()#
+59         myY = packet.bufToByte4()
+60         myTh = packet.bufToByte2()
+61         myVel = packet.bufToByte2()
+62         myRotVel = packet.bufToByte2()
+63         myLatVel = packet.bufToByte2()
+64         myTemperature = packet.bufToByte()
+65         print "X= "+str(myX)+" y="+str(myY)+" th="+str(myTh)
+
+\end{DoxyCode}

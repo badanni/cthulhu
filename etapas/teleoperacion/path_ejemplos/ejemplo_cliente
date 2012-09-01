@@ -1,0 +1,5 @@
+cliente=cliente_inicio("192.168.1.10")
+cliente=uC_comandos_movi(cliente,"8","3000") #Mover 3000mm hacia adelante
+cliente=envio_ratioDrive(cliente,50,0,0) # fija la velocidad de traslacion a 50mm/s por 5 seg 
+cliente.requestOnce("stop") #parado de emergencia
+cliente_apaga(cliente)

@@ -1,0 +1,536 @@
+.TH "cliente_lib::cliente_lib" 3 "Martes, 7 de Agosto de 2012" "Version 0.1" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cliente_lib::cliente_lib \- 
+.PP
+es la clase encargada del cliente  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Métodos públicos"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fICarga valores a las variables necesarias para funcionar el cliente. \fP"
+.ti -1c
+.RI "def \fBvalores\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'updateNumbers' en el paquete. \fP"
+.ti -1c
+.RI "def \fBlista_sonares\fP"
+.br
+.RI "\fISirve para leer el paquete arNetPacket con la lista del sonar. \fP"
+.ti -1c
+.RI "def \fBvalores_sonares\fP"
+.br
+.RI "\fISirve para leer el paquete arNetPacket con los valores del sonar. \fP"
+.ti -1c
+.RI "def \fBenvio_ratioDrive\fP"
+.br
+.RI "\fISirve para realizar la teleoperacion, mandando los parametros. \fP"
+.ti -1c
+.RI "def \fBenvio_griper\fP"
+.br
+.RI "\fISirve para realizar la teleoperacion, mandando los parametros. \fP"
+.ti -1c
+.RI "def \fBuC_comandos_movi\fP"
+.br
+.RI "\fISirve para mandar ordenes de movimiento directamente al controlador de la plataforma movil. \fP"
+.ti -1c
+.RI "def \fBenvio_consulta_fisica\fP"
+.br
+.RI "\fISirve para mandar ordenes al servidor utilizando paquetes ArNetPacket con comandos \fBpose\fP y \fBupdateNumbers\fP \fP"
+.ti -1c
+.RI "def \fBcliente_inicio\fP"
+.br
+.RI "\fISirve para iniciar la conexion con el servidor. \fP"
+.ti -1c
+.RI "def \fBcliente_apaga\fP"
+.br
+.RI "\fISirve para realizar la desconexion con el servidor. \fP"
+.ti -1c
+.RI "def \fBdevuelve_valorf\fP"
+.br
+.RI "\fIDevuelve el variable valor_fisico, con usa espera de 100ms. \fP"
+.ti -1c
+.RI "def \fBdevuelve_valors\fP"
+.br
+.RI "\fIDevuelve el variable valor_sonares, con usa espera de 100ms. \fP"
+.in -1c
+.SS "Atributos públicos"
+
+.in +1c
+.ti -1c
+.RI "\fBvalor_fisico\fP"
+.br
+.ti -1c
+.RI "\fBvalor_sonares\fP"
+.br
+.ti -1c
+.RI "\fBip\fP"
+.br
+.ti -1c
+.RI "\fBx\fP"
+.br
+.ti -1c
+.RI "\fBy\fP"
+.br
+.ti -1c
+.RI "\fBt\fP"
+.br
+.ti -1c
+.RI "\fBacu\fP"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+es la clase encargada del cliente 
+
+se lo utiliza de esta manera par poder trabajar con la informacion tanto leyendo las variables o utilizando los comandos 
+.PP
+Definición en la línea 50 del archivo cliente_lib.py.
+.SH "Documentación del constructor y destructor"
+.PP 
+.SS "def cliente_lib.cliente_lib.__init__ (self)"
+.PP
+Carga valores a las variables necesarias para funcionar el cliente. este comando no es necesario utilizarlo es usado al instanciar la clase 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.RE
+.PP
+
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.PP
+.nf
+58                           :
+59                 print 'Cargo modulo para cliente_lib'
+60                 self.valor_fisico=[]
+61                 self.valor_sonares=[] 
+62                 self.ip='localhost'
+63                 self.x={}
+64                 self.y={}
+65                 self.t={}
+66                 self.acu=0
+
+.fi
+.SH "Documentación de las funciones miembro"
+.PP 
+.SS "def cliente_lib.cliente_lib.cliente_apaga (self, client)"
+.PP
+Sirve para realizar la desconexion con el servidor. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIclient\fP para poder desconectar el cliente 
+.RE
+.PP
+
+.PP
+Definición en la línea 252 del archivo cliente_lib.py.
+.PP
+.nf
+253                                       :
+254                 ArUtil.sleep(1000)
+255                 client.disconnect()
+256                 ArUtil.sleep(50)
+                return 0
+.fi
+.SS "def cliente_lib.cliente_lib.cliente_inicio (self)"
+.PP
+Sirve para iniciar la conexion con el servidor. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+client 
+.RE
+.PP
+
+.PP
+Definición en la línea 208 del archivo cliente_lib.py.
+.PP
+.nf
+209                                 :
+210                 client = ArClientBase()
+211                 #Solo funcionar el lectura de datos por TCP
+212                 client.setTcpOnlyFromServer()
+213                 client.setTcpOnlyToServer()
+214                 #
+215                 Aria.init()
+216                 
+217                 startTime = ArTime()
+218                 startTime.setToNow()
+219                 if not client.blockingConnect(self.ip, 7272): #ip y puerto del servidor
+220                         print 'Could not connect to server at %s port 7272, exiting' % self.ip
+221                         
+222                         Aria.exit(1);
+223                 print 'cliente: Se tardo %ld msec en connectarse\n' % (startTime.mSecSince())
+224                 
+225                 client.runAsync()
+226                 client.addHandler('updateNumbers',self.valores)
+227                 #
+228                 #client.request('updateNumbers',100)
+229                 #
+230                 client.addHandler('getSensorList',self.lista_sonares)
+231                 client.addHandler('pose',self.valores_sonares)
+232                 #
+233                 #client.lock()
+234                 #client.request('pose',100)
+235                 #client.unlock()
+236                 #
+237                 
+238                 if client.dataExists('ratioDrive'): #supuestamente devuelve la info del robot con odometria
+239                         print 'ratioDrive si existe'
+240                 else:
+241                         Aria.exit(1);
+242                 #client=envio_ratioDrive(client,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+243                 #client=uC_comandos_movi(client,comando,parametro) #Lo hace de una manera directa anulando las demas operaciones
+244                 #client.requestOnce('updateNumbers')
+245                 #client.requestOnce('stop') #parada de emergencia
+                return client
+.fi
+.SS "def cliente_lib.cliente_lib.devuelve_valorf (self)"
+.PP
+Devuelve el variable valor_fisico, con usa espera de 100ms. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.RE
+.PP
+
+.PP
+Definición en la línea 262 del archivo cliente_lib.py.
+.PP
+.nf
+263                                  :
+264                 ArUtil.sleep(100)
+                return self.valor_fisico
+.fi
+.SS "def cliente_lib.cliente_lib.devuelve_valors (self)"
+.PP
+Devuelve el variable valor_sonares, con usa espera de 100ms. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.RE
+.PP
+
+.PP
+Definición en la línea 270 del archivo cliente_lib.py.
+.PP
+.nf
+271                                  :
+272                 ArUtil.sleep(100)
+273                 valor=self.valor_sonares
+274                 if valor==[]:
+275                         print valor
+276                         return {'x0':-9999,'x1':-9999},{'y0':-9999,'y1':-9999},{'t0':0,'t1':0} #valores quitar despues
+277                 else:
+278                         try:
+279                                 x_br=[]
+280                                 y_br=[]
+281                                 t_br=[]
+282                                 for a in range(int(valor[0])): #el primer valor indica cuantos elementos se tiene de sensores
+283                                         #print valor[1][a]
+284                                         valor[1][a]=valor[1][a].strip('(')
+285                                         valor[1][a]=valor[1][a].strip(')')
+286                                         valor[1][a]=valor[1][a].split(',') #comienza a separar por que viene en forma (X:valor,Y:valor,T:valor)
+287                                         valor[1][a][0]=valor[1][a][0].strip() #borrar los espacios en blanco de los elementos
+288                                         valor[1][a][1]=valor[1][a][1].strip()
+289                                         valor[1][a][2]=valor[1][a][2].strip()
+290                                         x_br+=[valor[1][a][0].strip('X:')]
+291                                         #print x_br
+292                                         y_br+=[valor[1][a][1].strip('Y:')]
+293                                         t_br+=[valor[1][a][2].strip('T:')]
+294                                         
+295                                 #print len(x_br)
+296                                 for a in range(len(x_br)):
+297                                         self.x.update({'x%d' % self.acu:float(x_br[a])}) #Ordena los datos en forma de diccionario, float tiene problemas con 0.000
+298                                         self.y.update({'y%d' % self.acu:float(y_br[a])})
+299                                         #self.t.update({'t%d' % self.acu:float(t_br[a].strip(')'))})
+300                                         self.t.update({'t%d' % self.acu:0})
+301                                         self.acu+=1
+302                                         if self.acu==5000:
+303                                                 self.acu=0
+304                                                 #pass
+305                                 #print self.x
+306                                 #print self.y
+307                                 #print self.t
+308                                 return self.x,self.y,self.t
+309                         except:
+310                                 pass
+311 
+
+.fi
+.SS "def cliente_lib.cliente_lib.envio_consulta_fisica (self, client, mensaje)"
+.PP
+Sirve para mandar ordenes al servidor utilizando paquetes ArNetPacket con comandos \fBpose\fP y \fBupdateNumbers\fP \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIclient\fP Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor 
+.br
+\fImensaje\fP puede ser cualquier comando del servidor que no devuelva informacion a exepcion de pose y updatenumbers 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+client 
+.RE
+.PP
+
+.PP
+Definición en la línea 197 del archivo cliente_lib.py.
+.PP
+.nf
+198                                                       :
+199                 ## se puede usar pose y updateNumbers
+200                 client.requestOnce(mensaje)
+201                 return client
+                
+.fi
+.SS "def cliente_lib.cliente_lib.envio_griper (self, client, TransRatio)"
+.PP
+Sirve para realizar la teleoperacion, mandando los parametros. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIclient\fP Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor 
+.br
+\fITransRatio\fP Velocidad de traslacion 
+.br
+\fIRotRatio\fP Velocidad de rotacion 
+.br
+\fILatRatio\fP velocidad lateral para el modelo Pioneer P3-DX no se necesario puede ser 0 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+client 
+.RE
+.PP
+
+.PP
+Definición en la línea 165 del archivo cliente_lib.py.
+.PP
+.nf
+166                                                 :
+167                 myTransRatio=TransRatio
+168                 packet=ArNetPacket()
+169                 packet.doubleToBuf(myTransRatio)
+170                 client.requestOnce('ComandoGripper', packet)
+171                 return client
+          
+.fi
+.SS "def cliente_lib.cliente_lib.envio_ratioDrive (self, client, TransRatio, RotRatio, LatRatio)"
+.PP
+Sirve para realizar la teleoperacion, mandando los parametros. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIclient\fP Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor 
+.br
+\fITransRatio\fP Velocidad de traslacion 
+.br
+\fIRotRatio\fP Velocidad de rotacion 
+.br
+\fILatRatio\fP velocidad lateral para el modelo Pioneer P3-DX no se necesario puede ser 0 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+client 
+.RE
+.PP
+
+.PP
+Definición en la línea 143 del archivo cliente_lib.py.
+.PP
+.nf
+144                                                                       :
+145                 myTransRatio=TransRatio
+146                 myRotRatio=RotRatio
+147                 myLatRatio=LatRatio
+148                 packet=ArNetPacket()
+149                 packet.doubleToBuf(myTransRatio)
+150                 packet.doubleToBuf(myRotRatio)
+151                 packet.doubleToBuf(50) # use half of the robot's maximum.
+152                 packet.doubleToBuf(myLatRatio)
+153                 client.requestOnce('ratioDrive', packet)
+154                 return client
+        
+.fi
+.SS "def cliente_lib.cliente_lib.lista_sonares (self, packet)"
+.PP
+Sirve para leer el paquete arNetPacket con la lista del sonar. este comando no es necesario utilizarlo es usado solo por el cliente para procesar el paquete 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIpacket\fP este parametro no es necesario escribir 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 98 del archivo cliente_lib.py.
+.PP
+.nf
+99                                       :
+100                 c='                                   '
+101                 numSensor=packet.bufToByte2()
+102                 numSensor2=packet.bufToStr(c,15)
+103                 print str(numSensor)+' '+str(c.strip())
+
+.fi
+.SS "def cliente_lib.cliente_lib.uC_comandos_movi (self, client, comando, parametro)"
+.PP
+Sirve para mandar ordenes de movimiento directamente al controlador de la plataforma movil. \fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIclient\fP Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor 
+.br
+\fIcomando\fP es un numero de 1-255 que representa una funcion esta informacion se puede encontrar en el API de ARIA 
+.br
+\fIparametro\fP el parametro de la funcion en caso de no tener se deja el valor en blanco 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+client 
+.RE
+.PP
+
+.PP
+Definición en la línea 181 del archivo cliente_lib.py.
+.PP
+.nf
+182                                                            :
+183                 mi_comando=comando #comando 8 es MOVE parametro un valor de 5000 a -4999 es en mm, 11 LEV y su parametro es velocidad +o- mm/s
+184                 mi_parametro=parametro #parametro
+185                 packet=ArNetPacket()
+186                 packet.strToBuf(mi_comando+' '+mi_parametro)
+187                 client.requestOnce('MicroControllerMotionCommand', packet) #MicroControllerMotionCommand
+188                 return client
+
+.fi
+.SS "def cliente_lib.cliente_lib.valores (self, packet)"
+.PP
+Sirve cuando se manda el comando 'updateNumbers' en el paquete. este comando no es necesario utilizarlo es usado solo por el cliente para procesar el paquete 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIpacket\fP el paquete que recibe el cliente del servidor, no es necesario escribir 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada, pero guarda en self.valores_fisico [voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperature] 
+.RE
+.PP
+
+.PP
+Definición en la línea 75 del archivo cliente_lib.py.
+.PP
+.nf
+76                                 :
+77                 #devuelve los valores voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperature
+78                 voltaje_bateria=packet.bufToByte2()/10
+79                 myX = packet.bufToByte4()#
+80                 myY = packet.bufToByte4()
+81                 myTh = packet.bufToByte2()
+82                 myVel = packet.bufToByte2()
+83                 myRotVel = packet.bufToByte2()
+84                 myLatVel = packet.bufToByte2()
+85                 myTemperature = packet.bufToByte()
+86                 #print 'X= '+str(myX)+' y='+str(myY)+' th='+str(myTh)
+87                 self.valor_fisico=(voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperature)
+88                 self.valor_fisico=(voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,0)
+89                 #print valor
+
+.fi
+.SS "def cliente_lib.cliente_lib.valores_sonares (self, packet)"
+.PP
+Sirve para leer el paquete arNetPacket con los valores del sonar. este comando no es necesario utilizarlo es usado solo por el cliente para procesar el paquete 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIself\fP este parametro no es necesario escribir 
+.br
+\fIpacket\fP este parametro no es necesario escribir 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 112 del archivo cliente_lib.py.
+.PP
+.nf
+113                                         :
+114                 try:
+115                         bandera1=0
+116                         cantidad=packet.bufToDouble()
+117                         print int(cantidad)
+118                         for i in range(2*int(cantidad)):
+119                                 if bandera1==0:
+120                                         self.x.update({'x%d' % (self.acu):int(packet.bufToByte4())})
+121                                         bandera1=1
+122                                 else:
+123                                         self.y.update({'y%d' % (self.acu):int(packet.bufToByte4())})
+124                                         bandera1=0
+125                                         self.acu=self.acu+1
+126                                 if self.acu==200:
+127                                         self.acu=0
+128                                         self.x={}
+129                                         self.y={}
+130                 except:
+131                         print 'Fallo lectura sensores'
+132                         pass
+
+.fi
+.SH "Documentación de los datos miembro"
+.PP 
+.SS "\fBcliente_lib.cliente_lib.acu\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.SS "\fBcliente_lib.cliente_lib.ip\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.SS "\fBcliente_lib.cliente_lib.t\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.SS "\fBcliente_lib.cliente_lib.valor_fisico\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.SS "\fBcliente_lib.cliente_lib.valor_sonares\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.SS "\fBcliente_lib.cliente_lib.x\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+.SS "\fBcliente_lib.cliente_lib.y\fP"
+.PP
+Definición en la línea 57 del archivo cliente_lib.py.
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

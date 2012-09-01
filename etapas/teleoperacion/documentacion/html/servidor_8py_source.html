@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Teleoperacion: Fichero Fuente servidor.py</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="imagen.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Teleoperacion&#160;<span id="projectnumber">0.1</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetes</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">servidor.py</div>  </div>
+</div>
+<div class="contents">
+<a href="servidor_8py.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespaceservidor.html">00001</a> <span class="comment">#!/usr/bin/env python</span>
+<a name="l00002"></a>00002 <span class="comment"># -*- coding: utf-8 -*-</span>
+<a name="l00003"></a>00003 <span class="comment">#</span>
+<a name="l00004"></a>00004 <span class="comment">#       servidor.py</span>
+<a name="l00005"></a>00005 <span class="comment">#       </span>
+<a name="l00006"></a>00006 <span class="comment">#       Copyright 2012 Danny Enrique Vasconez &lt;dannyvasconeze@gmail.com&gt;</span>
+<a name="l00007"></a>00007 <span class="comment">#                      Daniel Engiberto Granda Guitierrez &lt;degranda87@gmail.com&gt;</span>
+<a name="l00008"></a>00008 <span class="comment">#       </span>
+<a name="l00009"></a>00009 <span class="comment">#       This program is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">#       it under the terms of the GNU General Public License as published by</span>
+<a name="l00011"></a>00011 <span class="comment">#       the Free Software Foundation; either version 2 of the License, or</span>
+<a name="l00012"></a>00012 <span class="comment">#       (at your option) any later version.</span>
+<a name="l00013"></a>00013 <span class="comment">#       </span>
+<a name="l00014"></a>00014 <span class="comment">#       This program is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">#       but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="l00017"></a>00017 <span class="comment">#       GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">#       </span>
+<a name="l00019"></a>00019 <span class="comment">#       You should have received a copy of the GNU General Public License</span>
+<a name="l00020"></a>00020 <span class="comment">#       along with this program; if not, write to the Free Software</span>
+<a name="l00021"></a>00021 <span class="comment">#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,</span>
+<a name="l00022"></a>00022 <span class="comment">#       MA 02110-1301, USA.</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="keyword">from</span> AriaPy <span class="keyword">import</span> *
+<a name="l00026"></a>00026 <span class="keyword">from</span> ArNetworkingPy <span class="keyword">import</span> *
+<a name="l00027"></a>00027 <span class="keyword">import</span> sys
+<a name="l00028"></a>00028 <span class="comment">##</span>
+<a name="l00029"></a>00029 <span class="comment"># \package servidor</span>
+<a name="l00030"></a>00030 <span class="comment">#    \brief Servidor para el Pioneer P3-DX</span>
+<a name="l00031"></a>00031 <span class="comment">#    \details Se lo puede utilizar con multiples conexiones de clientes trabaja en el puerto 7272</span>
+<a name="l00032"></a>00032 <span class="comment">#    La lista de comandos para el paquete ArNetPacket se encuentra en el anexo 1</span>
+<a name="l00033"></a>00033 <span class="comment">#    \authors    Danny Vasconez</span>
+<a name="l00034"></a>00034 <span class="comment">#    \authors   Daniel Granda</span>
+<a name="l00035"></a>00035 <span class="comment">#    \version   0.0.1</span>
+<a name="l00036"></a>00036 <span class="comment">#    \date      2012</span>
+<a name="l00037"></a>00037 <span class="comment">#    \pre       Tener conectada la plataforma Pioneer P3-DX.</span>
+<a name="l00038"></a>00038 <span class="comment">#    \bug       Nada</span>
+<a name="l00039"></a>00039 <span class="comment">#    \warning   uso inapropiado puede hacer que la aplicacion falle</span>
+<a name="l00040"></a>00040 <span class="comment">#    </span>
+<a name="l00041"></a>00041 <span class="comment"># </span>
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="comment">##</span>
+<a name="l00044"></a>00044 <span class="comment"># </span>
+<a name="l00045"></a>00045 <span class="comment">#   \brief Sirve cuando se manda el comando &quot;test&quot; en el paquete</span>
+<a name="l00046"></a>00046 <span class="comment">#   \param client El cliente que manda el paquete</span>
+<a name="l00047"></a>00047 <span class="comment">#   \param packet el paquete que recibe el servidor para el comando </span>
+<a name="l00048"></a>00048 <span class="comment">#   \return Nada</span>
+<a name="l00049"></a>00049 <span class="comment">#   </span>
+<a name="l00050"></a><a class="code" href="namespaceservidor.html#a06ea535cfe56429259d8de76298416cb">00050</a> <span class="keyword">def </span><a class="code" href="namespaceservidor.html#a06ea535cfe56429259d8de76298416cb" title="Sirve cuando se manda el comando &quot;test&quot; en el paquete.">requestCallback</a>(client, packet):
+<a name="l00051"></a>00051   replyPacket = ArNetPacket()
+<a name="l00052"></a>00052   replyPacket.strToBuf(str(robot.getPose().x));
+<a name="l00053"></a>00053   <span class="keywordflow">print</span> <span class="stringliteral">&quot;requestCallback received a packet with command #%d. Sending a reply...\n&quot;</span> % (packet.getCommand())
+<a name="l00054"></a>00054   client.sendPacketTcp(replyPacket)
+<a name="l00055"></a>00055 <span class="comment">##</span>
+<a name="l00056"></a>00056 <span class="comment"># </span>
+<a name="l00057"></a>00057 <span class="comment">#   \brief Sirve cuando se manda el comando &quot;mover&quot; en el paquete</span>
+<a name="l00058"></a>00058 <span class="comment">#   \param client El cliente que manda el paquete</span>
+<a name="l00059"></a>00059 <span class="comment">#   \param packet el paquete que recibe el servidor para el comando </span>
+<a name="l00060"></a>00060 <span class="comment">#   \return Nada</span>
+<a name="l00061"></a>00061 <span class="comment">#   </span>
+<a name="l00062"></a><a class="code" href="namespaceservidor.html#aef5180c02cf1d163167be16732d7250e">00062</a> <span class="keyword">def </span><a class="code" href="namespaceservidor.html#aef5180c02cf1d163167be16732d7250e" title="Sirve cuando se manda el comando &quot;mover&quot; en el paquete.">movimiento</a>(client,packet):
+<a name="l00063"></a>00063   robot.lock()
+<a name="l00064"></a>00064   robot.comInt(8,5000) <span class="comment">#move(5000) para atras move(-4999)</span>
+<a name="l00065"></a>00065   robot.unlock()
+<a name="l00066"></a>00066 <span class="comment">##</span>
+<a name="l00067"></a>00067 <span class="comment"># </span>
+<a name="l00068"></a>00068 <span class="comment">#   \brief Sirve cuando se manda el comando &quot;rotar&quot; en el paquete</span>
+<a name="l00069"></a>00069 <span class="comment">#   \param client El cliente que manda el paquete</span>
+<a name="l00070"></a>00070 <span class="comment">#   \param packet el paquete que recibe el servidor para el comando </span>
+<a name="l00071"></a>00071 <span class="comment">#   \return Nada</span>
+<a name="l00072"></a>00072 <span class="comment">#   </span>
+<a name="l00073"></a><a class="code" href="namespaceservidor.html#a66205c06d52988bbeb961068e554edfc">00073</a> <span class="keyword">def </span><a class="code" href="namespaceservidor.html#a66205c06d52988bbeb961068e554edfc" title="Sirve cuando se manda el comando &quot;rotar&quot; en el paquete.">rotar</a>(client,packet):
+<a name="l00074"></a>00074   robot.lock()
+<a name="l00075"></a>00075   robot.comInt(12,50) 
+<a name="l00076"></a>00076   robot.unlock()
+<a name="l00077"></a>00077 <span class="comment">##</span>
+<a name="l00078"></a>00078 <span class="comment"># </span>
+<a name="l00079"></a>00079 <span class="comment">#   \brief Sirve cuando se manda el comando &quot;pose&quot; en el paquete</span>
+<a name="l00080"></a>00080 <span class="comment">#   \param client El cliente que manda el paquete</span>
+<a name="l00081"></a>00081 <span class="comment">#   \param packet el paquete que recibe el servidor para el comando </span>
+<a name="l00082"></a>00082 <span class="comment">#   \return ArNetPacket con la informacion en coordenadas X,Y,T al cliente</span>
+<a name="l00083"></a>00083 <span class="comment">#   </span>
+<a name="l00084"></a><a class="code" href="namespaceservidor.html#a4f30fc83b9ff1f43b6dde147ed4c31fc">00084</a> <span class="keyword">def </span><a class="code" href="namespaceservidor.html#a4f30fc83b9ff1f43b6dde147ed4c31fc" title="Sirve cuando se manda el comando &quot;pose&quot; en el paquete.">posicion</a>(client,packet):
+<a name="l00085"></a>00085   poses = sonarDev.getCurrentBufferAsVector()
+<a name="l00086"></a>00086   packet=ArNetPacket()
+<a name="l00087"></a>00087   packet.doubleToBuf(len(poses))
+<a name="l00088"></a>00088   <span class="keywordflow">for</span> p <span class="keywordflow">in</span> poses:
+<a name="l00089"></a>00089     packet.strToBuf(str(p))
+<a name="l00090"></a>00090   packet.finalizePacket()
+<a name="l00091"></a>00091   <span class="keywordflow">print</span> packet.verifyCheckSum()
+<a name="l00092"></a>00092   client.sendPacketTcp(packet)
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="comment"># This example demonstrates how to use ArNetworking in Python. </span>
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="comment"># Global library initialization, just like the C++ API:</span>
+<a name="l00097"></a>00097 Aria.init()
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 <span class="comment"># Create a robot object:</span>
+<a name="l00100"></a><a class="code" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">00100</a> robot = ArRobot()
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="comment"># make a gyro </span>
+<a name="l00103"></a><a class="code" href="namespaceservidor.html#a73a7e14af1c6774da1d3c5580e02573c">00103</a> gyro = ArAnalogGyro(robot)
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 <span class="comment">#sonar, must be added to the robot</span>
+<a name="l00106"></a><a class="code" href="namespaceservidor.html#a509c8beb9fe73900b5ab2a0fc5f793b2">00106</a> sonarDev = ArSonarDevice()
+<a name="l00107"></a>00107 <span class="comment">#add the sonar to the robot</span>
+<a name="l00108"></a>00108 robot.addRangeDevice(sonarDev)
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 <span class="comment"># make the core server object:</span>
+<a name="l00111"></a><a class="code" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">00111</a> server = ArServerBase()
+<a name="l00112"></a>00112 <span class="comment">#</span>
+<a name="l00113"></a><a class="code" href="namespaceservidor.html#a159e1bd236b55d72f3fd3cb94afc7650">00113</a> packet = ArNetPacket()
+<a name="l00114"></a>00114 <span class="comment">#</span>
+<a name="l00115"></a>00115 <span class="comment">#anadir comandos</span>
+<a name="l00116"></a>00116 server.addData(<span class="stringliteral">&quot;test&quot;</span>, <span class="stringliteral">&quot;move(30)&quot;</span>, requestCallback, <span class="stringliteral">&quot;none&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>)
+<a name="l00117"></a>00117 server.addData(<span class="stringliteral">&quot;rotar&quot;</span>, <span class="stringliteral">&quot;move(30)&quot;</span>, rotar, <span class="stringliteral">&quot;none&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>)
+<a name="l00118"></a>00118 server.addData(<span class="stringliteral">&quot;mover&quot;</span>, <span class="stringliteral">&quot;move30&quot;</span>, movimiento, <span class="stringliteral">&quot;none&quot;</span>, <span class="stringliteral">&quot;none&quot;</span>)
+<a name="l00119"></a>00119 server.addData(<span class="stringliteral">&quot;pose&quot;</span>, <span class="stringliteral">&quot;valores del sensor en X,Y,T&quot;</span>, posicion, <span class="stringliteral">&quot;none&quot;</span>, <span class="stringliteral">&quot;primero el numero de sensores y luego sus valores X,Y,T&quot;</span>)
+<a name="l00120"></a>00120 <span class="comment">#</span>
+<a name="l00121"></a>00121 <span class="comment"># Create a &quot;simple connector&quot; object and connect to either the simulator</span>
+<a name="l00122"></a>00122 <span class="comment"># or the robot. Unlike the C++ API which takes int and char* pointers, </span>
+<a name="l00123"></a>00123 <span class="comment"># the Python constructor just takes argv as a list.</span>
+<a name="l00124"></a>00124 <span class="keywordflow">print</span> <span class="stringliteral">&quot;Connecting...&quot;</span>
+<a name="l00125"></a>00125 
+<a name="l00126"></a><a class="code" href="namespaceservidor.html#ae78d17158a0f45369b3621468e736bf6">00126</a> con = ArSimpleConnector(sys.argv)
+<a name="l00127"></a>00127 <span class="keywordflow">if</span> (<span class="keywordflow">not</span> con.connectRobot(robot)):
+<a name="l00128"></a>00128     <span class="keywordflow">print</span> <span class="stringliteral">&quot;Could not connect to robot, exiting&quot;</span>
+<a name="l00129"></a>00129     Aria.exit(1)
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 <span class="comment"># Open the server on port 7272:</span>
+<a name="l00133"></a>00133 <span class="keywordflow">if</span> (<span class="keywordflow">not</span> server.open(7272)):
+<a name="l00134"></a>00134     <span class="keywordflow">print</span> <span class="stringliteral">&quot;Could not open server, exiting&quot;</span>
+<a name="l00135"></a>00135     Aria.exit(1)
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 <span class="comment"># Create various services and attach them to the core server</span>
+<a name="l00138"></a><a class="code" href="namespaceservidor.html#a214f853047fdc2f26cfac0db1a9e87b8">00138</a> serverInfoRobot = ArServerInfoRobot(server, robot)
+<a name="l00139"></a><a class="code" href="namespaceservidor.html#ae93d5f481f48442f0db6959867fbf8c4">00139</a> serverInfoSensor = ArServerInfoSensor(server, robot)
+<a name="l00140"></a><a class="code" href="namespaceservidor.html#a691fe74e57a668507d56d3acd8e19ba2">00140</a> drawings = ArServerInfoDrawings(server)
+<a name="l00141"></a>00141 drawings.addRobotsRangeDevices(robot)
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="comment"># ways of moving the robot</span>
+<a name="l00144"></a><a class="code" href="namespaceservidor.html#ae7b0d696eea14b76aba1e014dbfe70f4">00144</a> modeStop = ArServerModeStop(server, robot)
+<a name="l00145"></a><a class="code" href="namespaceservidor.html#ac7cf650e754b329444bd902af26c1527">00145</a> modeRatioDrive = ArServerModeRatioDrive(server, robot)
+<a name="l00146"></a><a class="code" href="namespaceservidor.html#ae22efed138dafc7284a3f71676a6757f">00146</a> modeWander = ArServerModeWander(server, robot)
+<a name="l00147"></a>00147 modeStop.addAsDefaultMode()
+<a name="l00148"></a>00148 modeStop.activate()
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 <span class="comment"># set up the simple commands (&quot;custom commands&quot; in MobileEyes)</span>
+<a name="l00151"></a><a class="code" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">00151</a> commands = ArServerHandlerCommands(server)
+<a name="l00152"></a>00152 <span class="comment"># add the simple commands for the microcontroller</span>
+<a name="l00153"></a><a class="code" href="namespaceservidor.html#aa877c09d4a72ca2434441ff2dc406a29">00153</a> uCCommands = ArServerSimpleComUC(commands, robot)
+<a name="l00154"></a>00154 <span class="comment"># add the simple commands for logging</span>
+<a name="l00155"></a><a class="code" href="namespaceservidor.html#a8f73ad33af2f2a4f3bc9209b9390cfe8">00155</a> loggingCommands = ArServerSimpleComMovementLogging(commands, robot)
+<a name="l00156"></a>00156 <span class="comment"># add the simple commands for the gyro</span>
+<a name="l00157"></a><a class="code" href="namespaceservidor.html#a9bcfd4f54186b9c69cea8188548af8c8">00157</a> gyroCommands = ArServerSimpleComGyro(commands, robot, gyro)
+<a name="l00158"></a>00158 <span class="comment"># Add the simple command for logging the robot config and orig robot config</span>
+<a name="l00159"></a><a class="code" href="namespaceservidor.html#aa210848229916c300b66b7f7958baa24">00159</a> configCommands = ArServerSimpleComLogRobotConfig(commands, robot)
+<a name="l00160"></a>00160     
+<a name="l00161"></a>00161 <span class="comment"># Run the robot and server threads in the background:</span>
+<a name="l00162"></a>00162 <span class="keywordflow">print</span> <span class="stringliteral">&quot;Running...&quot;</span>
+<a name="l00163"></a>00163 robot.runAsync(1)
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165 server.runAsync()
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 robot.enableMotors()
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169 robot.waitForRunExit()
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 <span class="comment">#</span>
+<a name="l00172"></a>00172 <span class="comment">#while (server.getRunningWithLock()):</span>
+<a name="l00173"></a>00173 <span class="comment">#  ArUtil.sleep(1000)</span>
+<a name="l00174"></a>00174 <span class="comment">#  server.broadcastPacketTcp(packet, &quot;updateNumbers&quot;)</span>
+<a name="l00175"></a>00175 <span class="comment">#</span>
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Martes, 7 de Agosto de 2012 10:56:57 para Teleoperacion por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

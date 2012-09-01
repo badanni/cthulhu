@@ -1,0 +1,382 @@
+.TH "inicio::prueba_adqui" 3 "Martes, 7 de Agosto de 2012" "Version 0.3" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+inicio::prueba_adqui \- 
+.PP
+es la clase encargada del entorno grafico y enlace con \fBcliente_lib\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Métodos públicos"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIpara cargar el XML de gtk+ y sus senales \fP"
+.ti -1c
+.RI "def \fBizq_clicked\fP"
+.br
+.ti -1c
+.RI "def \fBder_clicked\fP"
+.br
+.ti -1c
+.RI "def \fBarriba_clicked\fP"
+.br
+.ti -1c
+.RI "def \fBabajo_clicked\fP"
+.br
+.ti -1c
+.RI "def \fBparar_clicked\fP"
+.br
+.ti -1c
+.RI "def \fBbutton1_clicked\fP"
+.br
+.ti -1c
+.RI "def \fBgenerador_mapa\fP"
+.br
+.ti -1c
+.RI "def \fBon_maps_destroy\fP"
+.br
+.in -1c
+.SS "Atributos públicos"
+
+.in +1c
+.ti -1c
+.RI "\fBaument\fP"
+.br
+.ti -1c
+.RI "\fBteleoper\fP"
+.br
+.ti -1c
+.RI "\fBboton\fP"
+.br
+.ti -1c
+.RI "\fBarea\fP"
+.br
+.ti -1c
+.RI "\fBimagen\fP"
+.br
+.ti -1c
+.RI "\fBnombre_archivo\fP"
+.br
+.ti -1c
+.RI "\fBa\fP"
+.br
+.ti -1c
+.RI "\fBcliente\fP"
+.br
+.ti -1c
+.RI "\fBvalores_f\fP"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+es la clase encargada del entorno grafico y enlace con \fBcliente_lib\fP 
+.PP
+Definición en la línea 55 del archivo inicio.py.
+.SH "Documentación del constructor y destructor"
+.PP 
+.SS "def inicio.prueba_adqui.__init__ (self, dimensiones, nombre_archivo, dimensiones_robot)"
+.PP
+para cargar el XML de gtk+ y sus senales \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+self 
+.RE
+.PP
+
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.PP
+.nf
+63                                                                        :
+64                 self.aument=0
+65                 builder = gtk.Builder() #El archivo de glade debe estar en gtkbuilder
+66                 builder.add_from_file('glade/GUI.glade') #Carga el archivo glade
+67                 builder.connect_signals(self) #Toma todas las senales de glade
+68                 self.teleoper = builder.get_object('map') #Ventana principal
+69                 self.boton = builder.get_object('button1')
+70                 self.area=builder.get_object('mapa')
+71                 self.teleoper.show()
+72                 #Inicializa cliente d-bus
+73                 #self.client_dbus = DBusClient()
+74                 #
+75                 #Inicializar visor
+76                 #self.client_dbus.visor()
+77                 #
+78                 #imnicio opencv
+79                 self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
+80                 self.nombre_archivo=nombre_archivo
+81                 self.imagen.cargar()
+82                 #
+83                 self.a=cliente_lib();
+84                 self.a.ip='192.168.1.102'
+85                 self.cliente=self.a.cliente_inicio()
+86                 #self.a.cliente_apaga(self.cliente)
+87                 try:
+88                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+89                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+90                         valor_x=self.a.x
+91                         valor_y=self.a.y
+92                         ArUtil.sleep(100) #cambiar estos comandos por temporisadores de python
+93                         #sleep(0.1)
+94                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+95                         self.valores_f=self.a.devuelve_valorf()
+96                         mi_x=self.valores_f[1]
+97                         mi_y=self.valores_f[2]
+98                         mi_th=self.valores_f[3]
+99                         #print valor_x
+100                         #print valor_y
+101                         print len(valor_x)
+102                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+103                 except:
+104                         print 'Fallo inicio'
+                        pass
+.fi
+.SH "Documentación de las funciones miembro"
+.PP 
+.SS "def inicio.prueba_adqui.abajo_clicked (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 177 del archivo inicio.py.
+.PP
+.nf
+178                                                   :
+179                 try:
+180                         print 'Presiono abajo'
+181                         TransRatio,RotRatio,LatRatio = [-50,0,0]
+182                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+183                         ArUtil.sleep(100)
+184                         #sleep(0.1)
+185                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+186                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+187                         valor_x=self.a.x
+188                         valor_y=self.a.y
+189                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+190                         self.valores_f=self.a.devuelve_valorf()
+191                         mi_x=self.valores_f[1]
+192                         mi_y=self.valores_f[2]
+193                         mi_th=self.valores_f[3]
+194                         #print self.valores_f
+195                         #print valor_x
+196                         #print valor_y
+197                         print len(valor_x)
+198                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+199                 except:
+200                         print 'Fallo'
+                        pass
+.fi
+.SS "def inicio.prueba_adqui.arriba_clicked (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 153 del archivo inicio.py.
+.PP
+.nf
+154                                                    :
+155                 try:
+156                         print 'Presiono arriba'
+157                         TransRatio,RotRatio,LatRatio = [50,0,0]
+158                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+159                         ArUtil.sleep(100)
+160                         #sleep(0.1)
+161                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+162                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+163                         valor_x=self.a.x
+164                         valor_y=self.a.y
+165                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+166                         self.valores_f=self.a.devuelve_valorf()
+167                         mi_x=self.valores_f[1]
+168                         mi_y=self.valores_f[2]
+169                         mi_th=self.valores_f[3]
+170                         #print self.valores_f
+171                         #print valor_x
+172                         #print valor_y
+173                         print len(valor_x)
+174                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+175                 except:
+176                         print 'Fallo'
+                        pass
+.fi
+.SS "def inicio.prueba_adqui.button1_clicked (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 224 del archivo inicio.py.
+.PP
+.nf
+225                                                     :
+226                 try:
+227                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+228                         ArUtil.sleep(100)
+229                         #sleep(0.1)
+230                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+231                         valor_x=self.a.x
+232                         valor_y=self.a.y
+233                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+234                         self.valores_f=self.a.devuelve_valorf()
+235                         mi_x=self.valores_f[1]
+236                         mi_y=self.valores_f[2]
+237                         mi_th=self.valores_f[3]
+238                         #print self.valores_f
+239                         #print valor_x
+240                         #print valor_y
+241                         print len(valor_x)
+242                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+243                 except:
+244                         print 'Fallo paro'
+245                         pass
+
+.fi
+.SS "def inicio.prueba_adqui.der_clicked (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 129 del archivo inicio.py.
+.PP
+.nf
+130                                                 :
+131                 try:
+132                         print 'presiono derecha'
+133                         TransRatio,RotRatio,LatRatio = [0,-90,-90]
+134                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+135                         ArUtil.sleep(100)
+136                         #sleep(0.1)
+137                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+138                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+139                         valor_x=self.a.x
+140                         valor_y=self.a.y
+141                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+142                         self.valores_f=self.a.devuelve_valorf()
+143                         mi_x=self.valores_f[1]
+144                         mi_y=self.valores_f[2]
+145                         mi_th=self.valores_f[3]
+146                         #print self.valores_f
+147                         #print valor_x
+148                         #print valor_y
+149                         print len(valor_x)
+150                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+151                 except:
+152                         print 'Fallo'
+                        pass
+.fi
+.SS "def inicio.prueba_adqui.generador_mapa (self, valor_x, valor_y, mi_x, mi_y, mi_th)"
+.PP
+Definición en la línea 246 del archivo inicio.py.
+.PP
+.nf
+247                                                                 :
+248                 try:
+249                         print valor_x
+250                         if (len(valor_x)>0):
+251                                 for a in range(len(valor_x)): #SIP en c. 
+252                                         self.imagen.anadir_punto((valor_x['x%d' % a]/100+300,valor_y['y%d' % a]/100+200),radio=2)
+253                         self.imagen.crear_imagen()
+254                         self.imagen.rotacion_y_posicion_robot(mi_x/100+300,mi_y/100+200,mi_th)
+255                         self.area.set_from_file(self.nombre_archivo)
+256                 except:
+257                         print 'Fallo mapa'
+258                         pass
+        
+.fi
+.SS "def inicio.prueba_adqui.izq_clicked (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 105 del archivo inicio.py.
+.PP
+.nf
+106                                                 :
+107                 try:
+108                         print 'presiono izquierda'
+109                         TransRatio,RotRatio,LatRatio = [0,90,90]
+110                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+111                         ArUtil.sleep(100)
+112                         #sleep(0.1)
+113                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+114                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+115                         valor_x=self.a.x
+116                         valor_y=self.a.y
+117                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+118                         self.valores_f=self.a.devuelve_valorf()
+119                         mi_x=self.valores_f[1]
+120                         mi_y=self.valores_f[2]
+121                         mi_th=self.valores_f[3]
+122                         #print self.valores_f
+123                         #print valor_x
+124                         #print valor_y
+125                         print len(valor_x)
+126                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+127                 except:
+128                         print 'Fallo init'
+                        pass
+.fi
+.SS "def inicio.prueba_adqui.on_maps_destroy (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 259 del archivo inicio.py.
+.PP
+.nf
+260                                                     :
+261                 print self.a.cliente_apaga(self.cliente)
+                gtk.main_quit()
+.fi
+.SS "def inicio.prueba_adqui.parar_clicked (self, widget, data = \fCNone\fP)"
+.PP
+Definición en la línea 201 del archivo inicio.py.
+.PP
+.nf
+202                                                   :
+203                 try:
+204                         print 'Presiono alto'
+205                         self.cliente.requestOnce('stop') #parada de emergencia
+206                         ArUtil.sleep(100)
+207                         #sleep(0.1)
+208                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'pose')
+209                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+210                         valor_x=self.a.x
+211                         valor_y=self.a.y
+212                         self.cliente=self.a.envio_consulta_fisica(self.cliente,'updateNumbers')
+213                         self.valores_f=self.a.devuelve_valorf()
+214                         mi_x=self.valores_f[1]
+215                         mi_y=self.valores_f[2]
+216                         mi_th=self.valores_f[3]
+217                         #print self.valores_f
+218                         #print valor_x
+219                         #print valor_y
+220                         print len(valor_x)
+221                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+222                 except:
+223                         print 'Fallo'
+                        pass
+.fi
+.SH "Documentación de los datos miembro"
+.PP 
+.SS "\fBinicio.prueba_adqui.a\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.area\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.aument\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.boton\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.cliente\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.imagen\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.nombre_archivo\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.teleoper\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+.SS "\fBinicio.prueba_adqui.valores_f\fP"
+.PP
+Definición en la línea 62 del archivo inicio.py.
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

@@ -1,0 +1,392 @@
+\hypertarget{namespaceservidor}{
+\section{Paquetes servidor}
+\label{namespaceservidor}\index{servidor@{servidor}}
+}
+
+
+Servidor para el Pioneer P3-\/DX.  
+
+
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceservidor_a06ea535cfe56429259d8de76298416cb}{requestCallback}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}test\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceservidor_aef5180c02cf1d163167be16732d7250e}{movimiento}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}mover\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceservidor_a66205c06d52988bbeb961068e554edfc}{rotar}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}rotar\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceservidor_a4f30fc83b9ff1f43b6dde147ed4c31fc}{posicion}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}pose\char`\"{} en el paquete. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot} = ArRobot()
+\item 
+tuple \hyperlink{namespaceservidor_a73a7e14af1c6774da1d3c5580e02573c}{gyro} = ArAnalogGyro(\hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_a509c8beb9fe73900b5ab2a0fc5f793b2}{sonarDev} = ArSonarDevice(2)
+\item 
+tuple \hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server} = ArServerBase()
+\item 
+tuple \hyperlink{namespaceservidor_a159e1bd236b55d72f3fd3cb94afc7650}{packet} = ArNetPacket()
+\item 
+tuple \hyperlink{namespaceservidor_ae78d17158a0f45369b3621468e736bf6}{con} = ArSimpleConnector(sys.argv)
+\item 
+tuple \hyperlink{namespaceservidor_a214f853047fdc2f26cfac0db1a9e87b8}{serverInfoRobot} = ArServerInfoRobot(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_ae93d5f481f48442f0db6959867fbf8c4}{serverInfoSensor} = ArServerInfoSensor(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_a691fe74e57a668507d56d3acd8e19ba2}{drawings} = ArServerInfoDrawings(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server})
+\item 
+tuple \hyperlink{namespaceservidor_ae7b0d696eea14b76aba1e014dbfe70f4}{modeStop} = ArServerModeStop(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_ac7cf650e754b329444bd902af26c1527}{modeRatioDrive} = ArServerModeRatioDrive(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_ae22efed138dafc7284a3f71676a6757f}{modeWander} = ArServerModeWander(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}{commands} = ArServerHandlerCommands(\hyperlink{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{server})
+\item 
+tuple \hyperlink{namespaceservidor_aa877c09d4a72ca2434441ff2dc406a29}{uCCommands} = ArServerSimpleComUC(\hyperlink{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}{commands}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_a8f73ad33af2f2a4f3bc9209b9390cfe8}{loggingCommands} = ArServerSimpleComMovementLogging(\hyperlink{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}{commands}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\item 
+tuple \hyperlink{namespaceservidor_a9bcfd4f54186b9c69cea8188548af8c8}{gyroCommands} = ArServerSimpleComGyro(\hyperlink{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}{commands}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot}, \hyperlink{namespaceservidor_a73a7e14af1c6774da1d3c5580e02573c}{gyro})
+\item 
+tuple \hyperlink{namespaceservidor_aa210848229916c300b66b7f7958baa24}{configCommands} = ArServerSimpleComLogRobotConfig(\hyperlink{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}{commands}, \hyperlink{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{robot})
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Servidor para el Pioneer P3-\/DX. Se lo puede utilizar con multiples conexiones de clientes trabaja en el puerto 7272 La lista de comandos para el paquete ArNetPacket se encuentra en el anexo 1 \begin{DoxyAuthor}{Autores}
+Danny Vasconez 
+
+Daniel Granda 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+0.0.1b 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2012 
+\end{DoxyDate}
+\begin{DoxyPrecond}{Precondición}
+Tener conectada la plataforma Pioneer P3-\/DX. 
+\end{DoxyPrecond}
+\begin{Desc}
+\item[\hyperlink{bug__bug000003}{Bug}]Nada \end{Desc}
+\begin{DoxyWarning}{Atención}
+uso inapropiado puede hacer que la aplicacion falle 
+\end{DoxyWarning}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{namespaceservidor_aef5180c02cf1d163167be16732d7250e}{
+\index{servidor@{servidor}!movimiento@{movimiento}}
+\index{movimiento@{movimiento}!servidor@{servidor}}
+\subsubsection[{movimiento}]{\setlength{\rightskip}{0pt plus 5cm}def servidor.movimiento (
+\begin{DoxyParamCaption}
+\item[{}]{client, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{namespaceservidor_aef5180c02cf1d163167be16732d7250e}
+
+
+Sirve cuando se manda el comando \char`\"{}mover\char`\"{} en el paquete. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em client} & El cliente que manda el paquete \\
+\hline
+{\em packet} & el paquete que recibe el servidor para el comando \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 62 del archivo servidor.py.
+
+
+\begin{DoxyCode}
+63                              :
+64   robot.lock()
+65   robot.comInt(8,5000) #move(5000) para atras move(-4999)
+  robot.unlock()
+\end{DoxyCode}
+\hypertarget{namespaceservidor_a4f30fc83b9ff1f43b6dde147ed4c31fc}{
+\index{servidor@{servidor}!posicion@{posicion}}
+\index{posicion@{posicion}!servidor@{servidor}}
+\subsubsection[{posicion}]{\setlength{\rightskip}{0pt plus 5cm}def servidor.posicion (
+\begin{DoxyParamCaption}
+\item[{}]{client, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{namespaceservidor_a4f30fc83b9ff1f43b6dde147ed4c31fc}
+
+
+Sirve cuando se manda el comando \char`\"{}pose\char`\"{} en el paquete. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em client} & El cliente que manda el paquete \\
+\hline
+{\em packet} & el paquete que recibe el servidor para el comando \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+ArNetPacket con la informacion en coordenadas X,Y,T al cliente 
+\end{DoxyReturn}
+
+
+Definición en la línea 84 del archivo servidor.py.
+
+
+\begin{DoxyCode}
+85                            :
+86   poses = sonarDev.getCurrentBufferAsVector()
+87   packet=ArNetPacket()
+88   packet.doubleToBuf(len(poses))
+89   for p in poses:
+90     packet.strToBuf(str(p))
+91   packet.finalizePacket()
+92   print str(packet.verifyCheckSum()) + " paquete de sonar correcto checksum"
+93   client.sendPacketTcp(packet)
+94 
+95 # This example demonstrates how to use ArNetworking in Python. 
+96 
+97 # Global library initialization, just like the C++ API:
+98 Aria.init()
+99 
+# Create a robot object:
+\end{DoxyCode}
+\hypertarget{namespaceservidor_a06ea535cfe56429259d8de76298416cb}{
+\index{servidor@{servidor}!requestCallback@{requestCallback}}
+\index{requestCallback@{requestCallback}!servidor@{servidor}}
+\subsubsection[{requestCallback}]{\setlength{\rightskip}{0pt plus 5cm}def servidor.requestCallback (
+\begin{DoxyParamCaption}
+\item[{}]{client, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{namespaceservidor_a06ea535cfe56429259d8de76298416cb}
+
+
+Sirve cuando se manda el comando \char`\"{}test\char`\"{} en el paquete. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em client} & El cliente que manda el paquete \\
+\hline
+{\em packet} & el paquete que recibe el servidor para el comando \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 50 del archivo servidor.py.
+
+
+\begin{DoxyCode}
+51                                    :
+52   replyPacket = ArNetPacket()
+53   replyPacket.strToBuf(str(robot.getPose().x));
+54   print "requestCallback received a packet with command #%d. Sending a reply...\n
+      " % (packet.getCommand())
+  client.sendPacketTcp(replyPacket)
+\end{DoxyCode}
+\hypertarget{namespaceservidor_a66205c06d52988bbeb961068e554edfc}{
+\index{servidor@{servidor}!rotar@{rotar}}
+\index{rotar@{rotar}!servidor@{servidor}}
+\subsubsection[{rotar}]{\setlength{\rightskip}{0pt plus 5cm}def servidor.rotar (
+\begin{DoxyParamCaption}
+\item[{}]{client, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{namespaceservidor_a66205c06d52988bbeb961068e554edfc}
+
+
+Sirve cuando se manda el comando \char`\"{}rotar\char`\"{} en el paquete. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em client} & El cliente que manda el paquete \\
+\hline
+{\em packet} & el paquete que recibe el servidor para el comando \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 73 del archivo servidor.py.
+
+
+\begin{DoxyCode}
+74                         :
+75   robot.lock()
+76   robot.comInt(12,50) 
+  robot.unlock()
+\end{DoxyCode}
+
+
+\subsection{Documentación de las variables}
+\hypertarget{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}{
+\index{servidor@{servidor}!commands@{commands}}
+\index{commands@{commands}!servidor@{servidor}}
+\subsubsection[{commands}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.commands} = ArServerHandlerCommands({\bf server})}}
+\label{namespaceservidor_a4bc8244e73099a1e67418ea064c30097}
+
+
+Definición en la línea 151 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_ae78d17158a0f45369b3621468e736bf6}{
+\index{servidor@{servidor}!con@{con}}
+\index{con@{con}!servidor@{servidor}}
+\subsubsection[{con}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.con} = ArSimpleConnector(sys.argv)}}
+\label{namespaceservidor_ae78d17158a0f45369b3621468e736bf6}
+
+
+Definición en la línea 126 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_aa210848229916c300b66b7f7958baa24}{
+\index{servidor@{servidor}!configCommands@{configCommands}}
+\index{configCommands@{configCommands}!servidor@{servidor}}
+\subsubsection[{configCommands}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.configCommands} = ArServerSimpleComLogRobotConfig({\bf commands}, {\bf robot})}}
+\label{namespaceservidor_aa210848229916c300b66b7f7958baa24}
+
+
+Definición en la línea 159 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a691fe74e57a668507d56d3acd8e19ba2}{
+\index{servidor@{servidor}!drawings@{drawings}}
+\index{drawings@{drawings}!servidor@{servidor}}
+\subsubsection[{drawings}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.drawings} = ArServerInfoDrawings({\bf server})}}
+\label{namespaceservidor_a691fe74e57a668507d56d3acd8e19ba2}
+
+
+Definición en la línea 140 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a73a7e14af1c6774da1d3c5580e02573c}{
+\index{servidor@{servidor}!gyro@{gyro}}
+\index{gyro@{gyro}!servidor@{servidor}}
+\subsubsection[{gyro}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.gyro} = ArAnalogGyro({\bf robot})}}
+\label{namespaceservidor_a73a7e14af1c6774da1d3c5580e02573c}
+
+
+Definición en la línea 103 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a9bcfd4f54186b9c69cea8188548af8c8}{
+\index{servidor@{servidor}!gyroCommands@{gyroCommands}}
+\index{gyroCommands@{gyroCommands}!servidor@{servidor}}
+\subsubsection[{gyroCommands}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.gyroCommands} = ArServerSimpleComGyro({\bf commands}, {\bf robot}, {\bf gyro})}}
+\label{namespaceservidor_a9bcfd4f54186b9c69cea8188548af8c8}
+
+
+Definición en la línea 157 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a8f73ad33af2f2a4f3bc9209b9390cfe8}{
+\index{servidor@{servidor}!loggingCommands@{loggingCommands}}
+\index{loggingCommands@{loggingCommands}!servidor@{servidor}}
+\subsubsection[{loggingCommands}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.loggingCommands} = ArServerSimpleComMovementLogging({\bf commands}, {\bf robot})}}
+\label{namespaceservidor_a8f73ad33af2f2a4f3bc9209b9390cfe8}
+
+
+Definición en la línea 155 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_ac7cf650e754b329444bd902af26c1527}{
+\index{servidor@{servidor}!modeRatioDrive@{modeRatioDrive}}
+\index{modeRatioDrive@{modeRatioDrive}!servidor@{servidor}}
+\subsubsection[{modeRatioDrive}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.modeRatioDrive} = ArServerModeRatioDrive({\bf server}, {\bf robot})}}
+\label{namespaceservidor_ac7cf650e754b329444bd902af26c1527}
+
+
+Definición en la línea 145 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_ae7b0d696eea14b76aba1e014dbfe70f4}{
+\index{servidor@{servidor}!modeStop@{modeStop}}
+\index{modeStop@{modeStop}!servidor@{servidor}}
+\subsubsection[{modeStop}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.modeStop} = ArServerModeStop({\bf server}, {\bf robot})}}
+\label{namespaceservidor_ae7b0d696eea14b76aba1e014dbfe70f4}
+
+
+Definición en la línea 144 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_ae22efed138dafc7284a3f71676a6757f}{
+\index{servidor@{servidor}!modeWander@{modeWander}}
+\index{modeWander@{modeWander}!servidor@{servidor}}
+\subsubsection[{modeWander}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.modeWander} = ArServerModeWander({\bf server}, {\bf robot})}}
+\label{namespaceservidor_ae22efed138dafc7284a3f71676a6757f}
+
+
+Definición en la línea 146 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a159e1bd236b55d72f3fd3cb94afc7650}{
+\index{servidor@{servidor}!packet@{packet}}
+\index{packet@{packet}!servidor@{servidor}}
+\subsubsection[{packet}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.packet} = ArNetPacket()}}
+\label{namespaceservidor_a159e1bd236b55d72f3fd3cb94afc7650}
+
+
+Definición en la línea 113 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}{
+\index{servidor@{servidor}!robot@{robot}}
+\index{robot@{robot}!servidor@{servidor}}
+\subsubsection[{robot}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.robot} = ArRobot()}}
+\label{namespaceservidor_a20c40528942a814c3ba639d6fdf80c34}
+
+
+Definición en la línea 100 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}{
+\index{servidor@{servidor}!server@{server}}
+\index{server@{server}!servidor@{servidor}}
+\subsubsection[{server}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.server} = ArServerBase()}}
+\label{namespaceservidor_adfced13b57fb69c12f8ab5a84d1a2356}
+
+
+Definición en la línea 111 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a214f853047fdc2f26cfac0db1a9e87b8}{
+\index{servidor@{servidor}!serverInfoRobot@{serverInfoRobot}}
+\index{serverInfoRobot@{serverInfoRobot}!servidor@{servidor}}
+\subsubsection[{serverInfoRobot}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.serverInfoRobot} = ArServerInfoRobot({\bf server}, {\bf robot})}}
+\label{namespaceservidor_a214f853047fdc2f26cfac0db1a9e87b8}
+
+
+Definición en la línea 138 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_ae93d5f481f48442f0db6959867fbf8c4}{
+\index{servidor@{servidor}!serverInfoSensor@{serverInfoSensor}}
+\index{serverInfoSensor@{serverInfoSensor}!servidor@{servidor}}
+\subsubsection[{serverInfoSensor}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.serverInfoSensor} = ArServerInfoSensor({\bf server}, {\bf robot})}}
+\label{namespaceservidor_ae93d5f481f48442f0db6959867fbf8c4}
+
+
+Definición en la línea 139 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_a509c8beb9fe73900b5ab2a0fc5f793b2}{
+\index{servidor@{servidor}!sonarDev@{sonarDev}}
+\index{sonarDev@{sonarDev}!servidor@{servidor}}
+\subsubsection[{sonarDev}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.sonarDev} = ArSonarDevice(2)}}
+\label{namespaceservidor_a509c8beb9fe73900b5ab2a0fc5f793b2}
+
+
+Definición en la línea 106 del archivo servidor.py.
+
+\hypertarget{namespaceservidor_aa877c09d4a72ca2434441ff2dc406a29}{
+\index{servidor@{servidor}!uCCommands@{uCCommands}}
+\index{uCCommands@{uCCommands}!servidor@{servidor}}
+\subsubsection[{uCCommands}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf servidor.uCCommands} = ArServerSimpleComUC({\bf commands}, {\bf robot})}}
+\label{namespaceservidor_aa877c09d4a72ca2434441ff2dc406a29}
+
+
+Definición en la línea 153 del archivo servidor.py.
+

@@ -1,0 +1,46 @@
+.TH "inicio" 3 "Martes, 7 de Agosto de 2012" "Version 0.1" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+inicio \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Clases"
+
+.in +1c
+.ti -1c
+.RI "class \fBprueba_adqui\fP"
+.br
+.RI "\fIes la clase encargada del entorno grafico y enlace con \fBcliente_lib\fP \fP"
+.in -1c
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "def \fBmain\fP"
+.br
+.RI "\fIEl encargado al momento de ejcutar la aplicacion de instanciar el objeto prueba_teleoperacion. \fP"
+.in -1c
+.SH "Documentación de las funciones"
+.PP 
+.SS "def inicio.main ()"
+.PP
+El encargado al momento de ejcutar la aplicacion de instanciar el objeto prueba_teleoperacion. 
+.PP
+Definición en la línea 267 del archivo inicio.py.
+.PP
+.nf
+268           :
+269         if os.name=='posix': #verifica que sea un entorno Linux
+270                 dimensiones=(600,400)
+271                 nombre_archivo='filenamea.jpg'
+272                 dimensiones_robot=(13,13)
+273                 app = prueba_adqui(dimensiones,nombre_archivo,dimensiones_robot) #instancia el objeto GUI con las senales enlazadas
+274                 gtk.main() #levanta el motor GTK para poder visualizar
+275   
+
+.fi
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

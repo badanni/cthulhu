@@ -1,0 +1,377 @@
+\hypertarget{classrenderizado_1_1renderizado}{
+\section{Referencia de la Clase renderizado.renderizado}
+\label{classrenderizado_1_1renderizado}\index{renderizado::renderizado@{renderizado::renderizado}}
+}
+
+
+es la clase encargada de la generacion del mapa atravez de comandos.  
+
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classrenderizado_1_1renderizado_a4c17dcbfcfe999944d4bb4829b833b66}{\_\-\_\-init\_\-\_\-}
+\begin{DoxyCompactList}\small\item\em Inicio de variable de uso de la libreria. \end{DoxyCompactList}\item 
+def \hyperlink{classrenderizado_1_1renderizado_a64752e268753f383d7b9d252070c65f4}{cargar}
+\begin{DoxyCompactList}\small\item\em genera el los lienzos del mapa y del robot \end{DoxyCompactList}\item 
+def \hyperlink{classrenderizado_1_1renderizado_a52891772883b0606be993163a87b70ae}{anadir\_\-punto}
+\begin{DoxyCompactList}\small\item\em crear un punto en el lienzo del mapa \end{DoxyCompactList}\item 
+def \hyperlink{classrenderizado_1_1renderizado_a43054b88bb47c71371321e31c406003e}{graficar}
+\begin{DoxyCompactList}\small\item\em Comando solo utilizado para la prueba del paquete para visualizar los lienzos. \end{DoxyCompactList}\item 
+def \hyperlink{classrenderizado_1_1renderizado_a890510a320079ad0fee8e2e87adda69e}{crear\_\-imagen}
+\begin{DoxyCompactList}\small\item\em Crea la imagen para cargarla en el programa con el lienzo ya finalizado. \end{DoxyCompactList}\item 
+def \hyperlink{classrenderizado_1_1renderizado_a1b2c9f08cee1a5ee13e0e130f598efc0}{rotacion\_\-y\_\-posicion\_\-robot}
+\begin{DoxyCompactList}\small\item\em graficar el robot en el lienzo de mapa \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrenderizado_1_1renderizado_af7128f70b3c3a2131bde3e83dbb28da0}{nombre\_\-archivo}
+\item 
+\hyperlink{classrenderizado_1_1renderizado_a99de1ed3c1a24b5d9a3da2b2905bd571}{nombre\_\-archivo1}
+\item 
+\hyperlink{classrenderizado_1_1renderizado_a70a61493b255b1624edf30547356c83e}{dimeniones}
+\item 
+\hyperlink{classrenderizado_1_1renderizado_ab835e8ffdd4128f40fd35258f3bdcfce}{dimensiones\_\-robot}
+\item 
+\hyperlink{classrenderizado_1_1renderizado_a54c4ebbaf251f0aa7e540f58f5b0f5eb}{image}
+\item 
+\hyperlink{classrenderizado_1_1renderizado_af50ef1daafbc8bf96205e5487dc54503}{robot}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+es la clase encargada de la generacion del mapa atravez de comandos. 
+
+Definición en la línea 51 del archivo renderizado.py.
+
+
+
+\subsection{Documentación del constructor y destructor}
+\hypertarget{classrenderizado_1_1renderizado_a4c17dcbfcfe999944d4bb4829b833b66}{
+\index{renderizado::renderizado@{renderizado::renderizado}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def renderizado.renderizado.\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{dimensiones, }
+\item[{}]{nombre\_\-archivo, }
+\item[{}]{dimensiones\_\-robot}
+\end{DoxyParamCaption}
+)}}
+\label{classrenderizado_1_1renderizado_a4c17dcbfcfe999944d4bb4829b833b66}
+
+
+Inicio de variable de uso de la libreria. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+{\em dimensiones} & Es una tupla con las dimensiones de la imagen a generar \\
+\hline
+{\em nombre\_\-archivo} & Es un string con el nombre de la imagen a crear como por ejemplo imagen.jpg \\
+\hline
+{\em dimensiones\_\-robot} & Las dimensiones en pixeles de la imagen robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 61 del archivo renderizado.py.
+
+
+\begin{DoxyCode}
+62                                                                        :
+63                 self.nombre_archivo=nombre_archivo
+64                 self.nombre_archivo1=nombre_archivo.replace(".jpg",".acdc")+".jpg
+      "
+65                 self.dimeniones=dimensiones
+66                 self.dimensiones_robot=dimensiones_robot
+67                 self.image=cv.CreateImage(dimensiones,8,3)
+68                 cv.Not(self.image,self.image)
+                cv.SaveImage(self.nombre_archivo1,self.image)
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classrenderizado_1_1renderizado_a52891772883b0606be993163a87b70ae}{
+\index{renderizado::renderizado@{renderizado::renderizado}!anadir\_\-punto@{anadir\_\-punto}}
+\index{anadir\_\-punto@{anadir\_\-punto}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{anadir\_\-punto}]{\setlength{\rightskip}{0pt plus 5cm}def renderizado.renderizado.anadir\_\-punto (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{punto, }
+\item[{}]{color = {\ttfamily 0}, }
+\item[{}]{radio = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}
+\label{classrenderizado_1_1renderizado_a52891772883b0606be993163a87b70ae}
+
+
+crear un punto en el lienzo del mapa 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+{\em punto} & la coordenada donde se va a graficar el circulo \\
+\hline
+{\em color} & para cambiar el color del circulo, si no se incluye se grafica en negro \\
+\hline
+{\em radio} & para definir el radio del circulo, si no se incluye es tomado como 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 87 del archivo renderizado.py.
+
+
+\begin{DoxyCode}
+88                                                     :
+89                 #font = cv.InitFont(cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 3, 8) #C
+      reates a font
+90                 #x = 30
+91                 #y = 40
+92                 #cv.PutText(self.image,"Hello World!!!", (x,y),font, 255) #Draw t
+      he text
+93                 #cv.Line(image,(a*50,60),9(90,90),cv.RGB(17*a, 110-a, 255))
+94                 cv.Circle(self.image,punto,radio,cv.RGB(255*color, 255*color, 255
+      *color),-1) # ultimo parametro para grosor de la linea negativo lleno
+                #self.image1=self.image
+\end{DoxyCode}
+\hypertarget{classrenderizado_1_1renderizado_a64752e268753f383d7b9d252070c65f4}{
+\index{renderizado::renderizado@{renderizado::renderizado}!cargar@{cargar}}
+\index{cargar@{cargar}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{cargar}]{\setlength{\rightskip}{0pt plus 5cm}def renderizado.renderizado.cargar (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classrenderizado_1_1renderizado_a64752e268753f383d7b9d252070c65f4}
+
+
+genera el los lienzos del mapa y del robot 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 75 del archivo renderizado.py.
+
+
+\begin{DoxyCode}
+76                         :
+77                 self.image=cv.LoadImage(self.nombre_archivo1, cv.CV_LOAD_IMAGE_CO
+      LOR) #Load the image
+                self.robot=cv.LoadImage("robot.jpg", cv.CV_LOAD_IMAGE_COLOR) #Loa
+      d the image
+\end{DoxyCode}
+\hypertarget{classrenderizado_1_1renderizado_a890510a320079ad0fee8e2e87adda69e}{
+\index{renderizado::renderizado@{renderizado::renderizado}!crear\_\-imagen@{crear\_\-imagen}}
+\index{crear\_\-imagen@{crear\_\-imagen}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{crear\_\-imagen}]{\setlength{\rightskip}{0pt plus 5cm}def renderizado.renderizado.crear\_\-imagen (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classrenderizado_1_1renderizado_a890510a320079ad0fee8e2e87adda69e}
+
+
+Crea la imagen para cargarla en el programa con el lienzo ya finalizado. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 116 del archivo renderizado.py.
+
+
+\begin{DoxyCode}
+117                               :
+118                 cv.SaveImage(self.nombre_archivo1, self.image) #Saves the image#
+                
+\end{DoxyCode}
+\hypertarget{classrenderizado_1_1renderizado_a43054b88bb47c71371321e31c406003e}{
+\index{renderizado::renderizado@{renderizado::renderizado}!graficar@{graficar}}
+\index{graficar@{graficar}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{graficar}]{\setlength{\rightskip}{0pt plus 5cm}def renderizado.renderizado.graficar (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{tiempo\_\-ms, }
+\item[{}]{imagen = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}
+\label{classrenderizado_1_1renderizado_a43054b88bb47c71371321e31c406003e}
+
+
+Comando solo utilizado para la prueba del paquete para visualizar los lienzos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+{\em tiempo\_\-ms} & tiempo en milisegundos que se va a mostrar la imagen \\
+\hline
+{\em imagen} & es el lienzo que va a ser graficado si no se lo incluye es tomado como cero. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 103 del archivo renderizado.py.
+
+
+\begin{DoxyCode}
+104                                              :
+105                 if imagen==0:
+106                         cv.ShowImage('Mapa Robot',self.image) #Show the image
+107                         cv.WaitKey(tiempo_ms)
+108                 else:
+109                         cv.ShowImage('Mapa Robot',imagen) #Show the image
+                        cv.WaitKey(tiempo_ms)
+\end{DoxyCode}
+\hypertarget{classrenderizado_1_1renderizado_a1b2c9f08cee1a5ee13e0e130f598efc0}{
+\index{renderizado::renderizado@{renderizado::renderizado}!rotacion\_\-y\_\-posicion\_\-robot@{rotacion\_\-y\_\-posicion\_\-robot}}
+\index{rotacion\_\-y\_\-posicion\_\-robot@{rotacion\_\-y\_\-posicion\_\-robot}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{rotacion\_\-y\_\-posicion\_\-robot}]{\setlength{\rightskip}{0pt plus 5cm}def renderizado.renderizado.rotacion\_\-y\_\-posicion\_\-robot (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{robo\_\-x = {\ttfamily 200}, }
+\item[{}]{robo\_\-y = {\ttfamily 100}, }
+\item[{}]{robo\_\-th = {\ttfamily 80}}
+\end{DoxyParamCaption}
+)}}
+\label{classrenderizado_1_1renderizado_a1b2c9f08cee1a5ee13e0e130f598efc0}
+
+
+graficar el robot en el lienzo de mapa 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+{\em robo\_\-x} & coordenada x de la odometria del robot \\
+\hline
+{\em robo\_\-y} & coordenada y de la odometria del robot \\
+\hline
+{\em robo\_\-th} & Valor Th del robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 128 del archivo renderizado.py.
+
+
+\begin{DoxyCode}
+129                                                                             :
+130                 image_mapa=cv.LoadImage(self.nombre_archivo1, cv.CV_LOAD_IMAGE_CO
+      LOR)
+131                 dimensiones_robot=self.dimensiones_robot
+132                 image1=cv.CreateImage(dimensiones_robot,8,3)
+133                 image_mascara=cv.CreateImage(dimensiones_robot,8,1)
+134                 
+135                 ##rotacion
+136                 #Rotar el robot
+137                 src_center=dimensiones_robot[0]/2,dimensiones_robot[1]/2
+138                 rot_mat=cv.CreateMat( 2, 3, cv.CV_32FC1 )
+139                 cv.GetRotationMatrix2D(src_center, robo_th, 1.0,rot_mat);
+140                 cv.WarpAffine(self.robot,image1,rot_mat)
+141                 #crear filtro para negro
+142                 cv.InRangeS(image1,cv.RGB(0,0,0),cv.RGB(14,14,14),image_mascara)
+143                 cv.Not(image_mascara,image_mascara)
+144                 #cv.ReleaseImage(image1)
+145                 
+146                 #reducir y posicion
+147                 cv.SetImageROI(image_mapa,(robo_x,robo_y, dimensiones_robot[0], d
+      imensiones_robot[1]));
+148                 cv.Copy(image1,image_mapa,mask=image_mascara)
+149                 cv.ResetImageROI(image_mapa);
+150                 cv.SaveImage(self.nombre_archivo, image_mapa) #Saves the image#
+151                 #self.graficar(2000,image_mapa)
+152                 
+
+\end{DoxyCode}
+
+
+\subsection{Documentación de los datos miembro}
+\hypertarget{classrenderizado_1_1renderizado_a70a61493b255b1624edf30547356c83e}{
+\index{renderizado::renderizado@{renderizado::renderizado}!dimeniones@{dimeniones}}
+\index{dimeniones@{dimeniones}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{dimeniones}]{\setlength{\rightskip}{0pt plus 5cm}{\bf renderizado.renderizado.dimeniones}}}
+\label{classrenderizado_1_1renderizado_a70a61493b255b1624edf30547356c83e}
+
+
+Definición en la línea 61 del archivo renderizado.py.
+
+\hypertarget{classrenderizado_1_1renderizado_ab835e8ffdd4128f40fd35258f3bdcfce}{
+\index{renderizado::renderizado@{renderizado::renderizado}!dimensiones\_\-robot@{dimensiones\_\-robot}}
+\index{dimensiones\_\-robot@{dimensiones\_\-robot}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{dimensiones\_\-robot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf renderizado.renderizado.dimensiones\_\-robot}}}
+\label{classrenderizado_1_1renderizado_ab835e8ffdd4128f40fd35258f3bdcfce}
+
+
+Definición en la línea 61 del archivo renderizado.py.
+
+\hypertarget{classrenderizado_1_1renderizado_a54c4ebbaf251f0aa7e540f58f5b0f5eb}{
+\index{renderizado::renderizado@{renderizado::renderizado}!image@{image}}
+\index{image@{image}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf renderizado.renderizado.image}}}
+\label{classrenderizado_1_1renderizado_a54c4ebbaf251f0aa7e540f58f5b0f5eb}
+
+
+Definición en la línea 61 del archivo renderizado.py.
+
+\hypertarget{classrenderizado_1_1renderizado_af7128f70b3c3a2131bde3e83dbb28da0}{
+\index{renderizado::renderizado@{renderizado::renderizado}!nombre\_\-archivo@{nombre\_\-archivo}}
+\index{nombre\_\-archivo@{nombre\_\-archivo}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{nombre\_\-archivo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf renderizado.renderizado.nombre\_\-archivo}}}
+\label{classrenderizado_1_1renderizado_af7128f70b3c3a2131bde3e83dbb28da0}
+
+
+Definición en la línea 61 del archivo renderizado.py.
+
+\hypertarget{classrenderizado_1_1renderizado_a99de1ed3c1a24b5d9a3da2b2905bd571}{
+\index{renderizado::renderizado@{renderizado::renderizado}!nombre\_\-archivo1@{nombre\_\-archivo1}}
+\index{nombre\_\-archivo1@{nombre\_\-archivo1}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{nombre\_\-archivo1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf renderizado.renderizado.nombre\_\-archivo1}}}
+\label{classrenderizado_1_1renderizado_a99de1ed3c1a24b5d9a3da2b2905bd571}
+
+
+Definición en la línea 61 del archivo renderizado.py.
+
+\hypertarget{classrenderizado_1_1renderizado_af50ef1daafbc8bf96205e5487dc54503}{
+\index{renderizado::renderizado@{renderizado::renderizado}!robot@{robot}}
+\index{robot@{robot}!renderizado::renderizado@{renderizado::renderizado}}
+\subsubsection[{robot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf renderizado.renderizado.robot}}}
+\label{classrenderizado_1_1renderizado_af50ef1daafbc8bf96205e5487dc54503}
+
+
+Definición en la línea 75 del archivo renderizado.py.
+
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{renderizado_8py}{renderizado.py}\end{DoxyCompactItemize}

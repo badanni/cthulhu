@@ -1,0 +1,553 @@
+\hypertarget{classinicio_1_1prueba__adqui}{
+\section{Referencia de la Clase inicio.prueba\_\-adqui}
+\label{classinicio_1_1prueba__adqui}\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}}
+}
+
+
+es la clase encargada del entorno grafico y enlace con \hyperlink{namespacecliente__lib}{cliente\_\-lib}  
+
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_adab3c8bf1d5be6b8523065ccd474765a}{\_\-\_\-init\_\-\_\-}
+\begin{DoxyCompactList}\small\item\em para cargar el XML de gtk+ y sus senales \end{DoxyCompactList}\item 
+def \hyperlink{classinicio_1_1prueba__adqui_af626267088da2ac8ad96d85b91850c05}{izq\_\-clicked}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_ad5348d604e42fe8466b4c1f7338068bf}{der\_\-clicked}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_add1484bca105dc4a14533c487e6f7a78}{arriba\_\-clicked}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_abac92d1dcf8c253686ddbf0ef741f692}{abajo\_\-clicked}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a133dddf01f8261f6cca38064b8ae006f}{parar\_\-clicked}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a903f8caf83ea99a6a35a31089cee5944}{button1\_\-clicked}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a24ae8befd66a50575811e300464e7f1a}{generador\_\-mapa}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a448fd223767febb13d3f929fcddc85cf}{on\_\-maps\_\-destroy}
+\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a7c099b095d3893076bcd6dcc22aa5ce4}{aument}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a32103b146bd571e752923638e680db8b}{teleoper}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_abc25d678f19639848ca3b7509a842566}{boton}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a1f0a7213982dc7228773c19258e425f4}{area}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a1f0c7dfba4bed8128426c5058c255dbe}{imagen}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a073ec339511e7a2660c9ae92c613f293}{nombre\_\-archivo}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a5a6710e93f733c84b360e42513fdd4a9}{a}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a3519a8ae5deb71530289fc1274500b7e}{cliente}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_aafd8544e61c02137d45d1202e4330da5}{valores\_\-f}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+es la clase encargada del entorno grafico y enlace con \hyperlink{namespacecliente__lib}{cliente\_\-lib} 
+
+Definición en la línea 55 del archivo inicio.py.
+
+
+
+\subsection{Documentación del constructor y destructor}
+\hypertarget{classinicio_1_1prueba__adqui_adab3c8bf1d5be6b8523065ccd474765a}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{dimensiones, }
+\item[{}]{nombre\_\-archivo, }
+\item[{}]{dimensiones\_\-robot}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_adab3c8bf1d5be6b8523065ccd474765a}
+
+
+para cargar el XML de gtk+ y sus senales 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+63                                                                        :
+64                 self.aument=0
+65                 builder = gtk.Builder() #El archivo de glade debe estar en gtkbui
+      lder
+66                 builder.add_from_file("glade/GUI.glade") #Carga el archivo glade
+67                 builder.connect_signals(self) #Toma todas las senales de glade
+68                 self.teleoper = builder.get_object("map") #Ventana principal
+69                 self.boton = builder.get_object("button1")
+70                 self.area=builder.get_object("mapa")
+71                 self.teleoper.show()
+72                 #Inicializa cliente d-bus
+73                 #self.client_dbus = DBusClient()
+74                 #
+75                 #Inicializar visor
+76                 #self.client_dbus.visor()
+77                 #
+78                 #imnicio opencv
+79                 self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
+80                 self.nombre_archivo=nombre_archivo
+81                 self.imagen.cargar()
+82                 #
+83                 self.a=cliente_lib();
+84                 self.a.ip="192.168.1.102"
+85                 self.cliente=self.a.cliente_inicio()
+86                 #self.a.cliente_apaga(self.cliente)
+87                 try:
+88                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+89                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+90                         valor_x=self.a.x
+91                         valor_y=self.a.y
+92                         ArUtil.sleep(100) #cambiar estos comandos por temporisado
+      res de python
+93                         #sleep(0.1)
+94                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+95                         self.valores_f=self.a.devuelve_valorf()
+96                         mi_x=self.valores_f[1]
+97                         mi_y=self.valores_f[2]
+98                         mi_th=self.valores_f[3]
+99                         #print valor_x
+100                         #print valor_y
+101                         print len(valor_x)
+102                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+103                 except:
+104                         print "Fallo inicio"
+                        pass
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classinicio_1_1prueba__adqui_abac92d1dcf8c253686ddbf0ef741f692}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!abajo\_\-clicked@{abajo\_\-clicked}}
+\index{abajo\_\-clicked@{abajo\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{abajo\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.abajo\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_abac92d1dcf8c253686ddbf0ef741f692}
+
+
+Definición en la línea 177 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+178                                                   :
+179                 try:
+180                         print "Presiono abajo"
+181                         TransRatio,RotRatio,LatRatio = [-50,0,0]
+182                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRa
+      tio,RotRatio,LatRatio) #fijar los valores para mover
+183                         ArUtil.sleep(100)
+184                         #sleep(0.1)
+185                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+186                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+187                         valor_x=self.a.x
+188                         valor_y=self.a.y
+189                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+190                         self.valores_f=self.a.devuelve_valorf()
+191                         mi_x=self.valores_f[1]
+192                         mi_y=self.valores_f[2]
+193                         mi_th=self.valores_f[3]
+194                         #print self.valores_f
+195                         #print valor_x
+196                         #print valor_y
+197                         print len(valor_x)
+198                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+199                 except:
+200                         print "Fallo"
+                        pass
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_add1484bca105dc4a14533c487e6f7a78}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!arriba\_\-clicked@{arriba\_\-clicked}}
+\index{arriba\_\-clicked@{arriba\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{arriba\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.arriba\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_add1484bca105dc4a14533c487e6f7a78}
+
+
+Definición en la línea 153 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+154                                                    :
+155                 try:
+156                         print "Presiono arriba"
+157                         TransRatio,RotRatio,LatRatio = [50,0,0]
+158                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRa
+      tio,RotRatio,LatRatio) #fijar los valores para mover
+159                         ArUtil.sleep(100)
+160                         #sleep(0.1)
+161                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+162                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+163                         valor_x=self.a.x
+164                         valor_y=self.a.y
+165                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+166                         self.valores_f=self.a.devuelve_valorf()
+167                         mi_x=self.valores_f[1]
+168                         mi_y=self.valores_f[2]
+169                         mi_th=self.valores_f[3]
+170                         #print self.valores_f
+171                         #print valor_x
+172                         #print valor_y
+173                         print len(valor_x)
+174                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+175                 except:
+176                         print "Fallo"
+                        pass
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_a903f8caf83ea99a6a35a31089cee5944}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!button1\_\-clicked@{button1\_\-clicked}}
+\index{button1\_\-clicked@{button1\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{button1\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.button1\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a903f8caf83ea99a6a35a31089cee5944}
+
+
+Definición en la línea 224 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+225                                                     :
+226                 try:
+227                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+228                         ArUtil.sleep(100)
+229                         #sleep(0.1)
+230                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+231                         valor_x=self.a.x
+232                         valor_y=self.a.y
+233                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+234                         self.valores_f=self.a.devuelve_valorf()
+235                         mi_x=self.valores_f[1]
+236                         mi_y=self.valores_f[2]
+237                         mi_th=self.valores_f[3]
+238                         #print self.valores_f
+239                         #print valor_x
+240                         #print valor_y
+241                         print len(valor_x)
+242                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+243                 except:
+244                         print "Fallo paro"
+245                         pass
+
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_ad5348d604e42fe8466b4c1f7338068bf}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!der\_\-clicked@{der\_\-clicked}}
+\index{der\_\-clicked@{der\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{der\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.der\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_ad5348d604e42fe8466b4c1f7338068bf}
+
+
+Definición en la línea 129 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+130                                                 :
+131                 try:
+132                         print "presiono derecha"
+133                         TransRatio,RotRatio,LatRatio = [0,-90,-90]
+134                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRa
+      tio,RotRatio,LatRatio) #fijar los valores para mover
+135                         ArUtil.sleep(100)
+136                         #sleep(0.1)
+137                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+138                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+139                         valor_x=self.a.x
+140                         valor_y=self.a.y
+141                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+142                         self.valores_f=self.a.devuelve_valorf()
+143                         mi_x=self.valores_f[1]
+144                         mi_y=self.valores_f[2]
+145                         mi_th=self.valores_f[3]
+146                         #print self.valores_f
+147                         #print valor_x
+148                         #print valor_y
+149                         print len(valor_x)
+150                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+151                 except:
+152                         print "Fallo"
+                        pass
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_a24ae8befd66a50575811e300464e7f1a}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!generador\_\-mapa@{generador\_\-mapa}}
+\index{generador\_\-mapa@{generador\_\-mapa}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{generador\_\-mapa}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.generador\_\-mapa (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{valor\_\-x, }
+\item[{}]{valor\_\-y, }
+\item[{}]{mi\_\-x, }
+\item[{}]{mi\_\-y, }
+\item[{}]{mi\_\-th}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a24ae8befd66a50575811e300464e7f1a}
+
+
+Definición en la línea 246 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+247                                                                 :
+248                 try:
+249                         print valor_x
+250                         if (len(valor_x)>0):
+251                                 for a in range(len(valor_x)): #SIP en c. 
+252                                         self.imagen.anadir_punto((valor_x['x%d' %
+       a]/100+300,valor_y['y%d' % a]/100+200),radio=2)
+253                         self.imagen.crear_imagen()
+254                         self.imagen.rotacion_y_posicion_robot(mi_x/100+300,mi_y/1
+      00+200,mi_th)
+255                         self.area.set_from_file(self.nombre_archivo)
+256                 except:
+257                         print "Fallo mapa"
+258                         pass
+        
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_af626267088da2ac8ad96d85b91850c05}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!izq\_\-clicked@{izq\_\-clicked}}
+\index{izq\_\-clicked@{izq\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{izq\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.izq\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_af626267088da2ac8ad96d85b91850c05}
+
+
+Definición en la línea 105 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+106                                                 :
+107                 try:
+108                         print "presiono izquierda"
+109                         TransRatio,RotRatio,LatRatio = [0,90,90]
+110                         self.cliente=self.a.envio_ratioDrive(self.cliente,TransRa
+      tio,RotRatio,LatRatio) #fijar los valores para mover
+111                         ArUtil.sleep(100)
+112                         #sleep(0.1)
+113                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+114                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+115                         valor_x=self.a.x
+116                         valor_y=self.a.y
+117                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+118                         self.valores_f=self.a.devuelve_valorf()
+119                         mi_x=self.valores_f[1]
+120                         mi_y=self.valores_f[2]
+121                         mi_th=self.valores_f[3]
+122                         #print self.valores_f
+123                         #print valor_x
+124                         #print valor_y
+125                         print len(valor_x)
+126                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+127                 except:
+128                         print "Fallo init"
+                        pass
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_a448fd223767febb13d3f929fcddc85cf}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!on\_\-maps\_\-destroy@{on\_\-maps\_\-destroy}}
+\index{on\_\-maps\_\-destroy@{on\_\-maps\_\-destroy}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{on\_\-maps\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.on\_\-maps\_\-destroy (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a448fd223767febb13d3f929fcddc85cf}
+
+
+Definición en la línea 259 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+260                                                     :
+261                 print self.a.cliente_apaga(self.cliente)
+                gtk.main_quit()
+\end{DoxyCode}
+\hypertarget{classinicio_1_1prueba__adqui_a133dddf01f8261f6cca38064b8ae006f}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!parar\_\-clicked@{parar\_\-clicked}}
+\index{parar\_\-clicked@{parar\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{parar\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.parar\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{widget, }
+\item[{}]{data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a133dddf01f8261f6cca38064b8ae006f}
+
+
+Definición en la línea 201 del archivo inicio.py.
+
+
+\begin{DoxyCode}
+202                                                   :
+203                 try:
+204                         print "Presiono alto"
+205                         self.cliente.requestOnce("stop") #parada de emergencia
+206                         ArUtil.sleep(100)
+207                         #sleep(0.1)
+208                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"p
+      ose")
+209                         #valor_x,valor_y,valor_t=self.a.devuelve_valors()
+210                         valor_x=self.a.x
+211                         valor_y=self.a.y
+212                         self.cliente=self.a.envio_consulta_fisica(self.cliente,"u
+      pdateNumbers")
+213                         self.valores_f=self.a.devuelve_valorf()
+214                         mi_x=self.valores_f[1]
+215                         mi_y=self.valores_f[2]
+216                         mi_th=self.valores_f[3]
+217                         #print self.valores_f
+218                         #print valor_x
+219                         #print valor_y
+220                         print len(valor_x)
+221                         self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+222                 except:
+223                         print "Fallo"
+                        pass
+\end{DoxyCode}
+
+
+\subsection{Documentación de los datos miembro}
+\hypertarget{classinicio_1_1prueba__adqui_a5a6710e93f733c84b360e42513fdd4a9}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!a@{a}}
+\index{a@{a}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.a}}}
+\label{classinicio_1_1prueba__adqui_a5a6710e93f733c84b360e42513fdd4a9}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a1f0a7213982dc7228773c19258e425f4}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!area@{area}}
+\index{area@{area}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{area}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.area}}}
+\label{classinicio_1_1prueba__adqui_a1f0a7213982dc7228773c19258e425f4}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a7c099b095d3893076bcd6dcc22aa5ce4}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!aument@{aument}}
+\index{aument@{aument}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{aument}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.aument}}}
+\label{classinicio_1_1prueba__adqui_a7c099b095d3893076bcd6dcc22aa5ce4}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_abc25d678f19639848ca3b7509a842566}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!boton@{boton}}
+\index{boton@{boton}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{boton}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.boton}}}
+\label{classinicio_1_1prueba__adqui_abc25d678f19639848ca3b7509a842566}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a3519a8ae5deb71530289fc1274500b7e}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!cliente@{cliente}}
+\index{cliente@{cliente}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{cliente}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.cliente}}}
+\label{classinicio_1_1prueba__adqui_a3519a8ae5deb71530289fc1274500b7e}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a1f0c7dfba4bed8128426c5058c255dbe}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!imagen@{imagen}}
+\index{imagen@{imagen}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{imagen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.imagen}}}
+\label{classinicio_1_1prueba__adqui_a1f0c7dfba4bed8128426c5058c255dbe}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a073ec339511e7a2660c9ae92c613f293}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!nombre\_\-archivo@{nombre\_\-archivo}}
+\index{nombre\_\-archivo@{nombre\_\-archivo}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{nombre\_\-archivo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.nombre\_\-archivo}}}
+\label{classinicio_1_1prueba__adqui_a073ec339511e7a2660c9ae92c613f293}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a32103b146bd571e752923638e680db8b}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!teleoper@{teleoper}}
+\index{teleoper@{teleoper}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{teleoper}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.teleoper}}}
+\label{classinicio_1_1prueba__adqui_a32103b146bd571e752923638e680db8b}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_aafd8544e61c02137d45d1202e4330da5}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!valores\_\-f@{valores\_\-f}}
+\index{valores\_\-f@{valores\_\-f}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{valores\_\-f}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.valores\_\-f}}}
+\label{classinicio_1_1prueba__adqui_aafd8544e61c02137d45d1202e4330da5}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{inicio_8py}{inicio.py}\end{DoxyCompactItemize}

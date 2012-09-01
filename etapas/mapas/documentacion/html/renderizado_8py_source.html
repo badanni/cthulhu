@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Generacion de Mapas: Fichero Fuente renderizado.py</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="imagen.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Generacion de Mapas&#160;<span id="projectnumber">0.1</span></div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetes</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;archivos</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">renderizado.py</div>  </div>
+</div>
+<div class="contents">
+<a href="renderizado_8py.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacerenderizado.html">00001</a> <span class="comment">#!/usr/bin/env python</span>
+<a name="l00002"></a>00002 <span class="comment"># -*- coding: utf-8 -*-</span>
+<a name="l00003"></a>00003 <span class="comment">#</span>
+<a name="l00004"></a>00004 <span class="comment">#       renderizado.py</span>
+<a name="l00005"></a>00005 <span class="comment">#       </span>
+<a name="l00006"></a>00006 <span class="comment">#       Copyright 2012 Danny Enrique Vasconez &lt;dannyvasconeze@gmail.com&gt;</span>
+<a name="l00007"></a>00007 <span class="comment">#                      Daniel Engiberto Granda Guitierrez &lt;degranda87@gmail.com&gt;</span>
+<a name="l00008"></a>00008 <span class="comment">#       </span>
+<a name="l00009"></a>00009 <span class="comment">#       This program is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">#       it under the terms of the GNU General Public License as published by</span>
+<a name="l00011"></a>00011 <span class="comment">#       the Free Software Foundation; either version 2 of the License, or</span>
+<a name="l00012"></a>00012 <span class="comment">#       (at your option) any later version.</span>
+<a name="l00013"></a>00013 <span class="comment">#       </span>
+<a name="l00014"></a>00014 <span class="comment">#       This program is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">#       but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="l00017"></a>00017 <span class="comment">#       GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">#       </span>
+<a name="l00019"></a>00019 <span class="comment">#       You should have received a copy of the GNU General Public License</span>
+<a name="l00020"></a>00020 <span class="comment">#       along with this program; if not, write to the Free Software</span>
+<a name="l00021"></a>00021 <span class="comment">#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,</span>
+<a name="l00022"></a>00022 <span class="comment">#       MA 02110-1301, USA.</span>
+<a name="l00023"></a>00023 <span class="comment">#       </span>
+<a name="l00024"></a>00024 <span class="comment">#       </span>
+<a name="l00025"></a>00025 <span class="keyword">import</span> cv
+<a name="l00026"></a>00026 <span class="keyword">from</span> opencv <span class="keyword">import</span> highgui <span class="comment">#Import functions from OpenCV</span>
+<a name="l00027"></a>00027 <span class="keyword">import</span> os
+<a name="l00028"></a>00028 <span class="comment">##</span>
+<a name="l00029"></a>00029 <span class="comment"># \package renderizado</span>
+<a name="l00030"></a>00030 <span class="comment">#    \brief programa que utiliza la libreria openCV para la generacion del lienzo </span>
+<a name="l00031"></a>00031 <span class="comment">#    \details Programa para realizar el mapa con la informacion del sonar y odometria en la plataforma movil.</span>
+<a name="l00032"></a>00032 <span class="comment">#    \authors   Danny Vasconez</span>
+<a name="l00033"></a>00033 <span class="comment">#    \authors   Daniel Granda</span>
+<a name="l00034"></a>00034 <span class="comment">#    \version   0.0.1</span>
+<a name="l00035"></a>00035 <span class="comment">#    \date      2012</span>
+<a name="l00036"></a>00036 <span class="comment">#    \pre       Ningun requisito</span>
+<a name="l00037"></a>00037 <span class="comment">#    \bug       Si la posicion del robot se sale del lienzo proboca un error en la matriz de la imagen.</span>
+<a name="l00038"></a>00038 <span class="comment">#    \warning   uso inapropiado puede hacer que la aplicacion falle</span>
+<a name="l00039"></a>00039 <span class="comment">#    </span>
+<a name="l00040"></a>00040 <span class="comment"># </span>
+<a name="l00041"></a>00041 <span class="comment"># </span>
+<a name="l00042"></a>00042 <span class="comment">#    \section intro Ejemplo de uso</span>
+<a name="l00043"></a>00043 <span class="comment">#    En el ejemplo se muestra como se debe utilizar este paquete</span>
+<a name="l00044"></a>00044 <span class="comment">#    \verbinclude rende_uso</span>
+<a name="l00045"></a>00045 <span class="comment"># </span>
+<a name="l00046"></a>00046 <span class="comment">##</span>
+<a name="l00047"></a>00047 <span class="comment"># </span>
+<a name="l00048"></a>00048 <span class="comment">#       \class renderizado.renderizado</span>
+<a name="l00049"></a>00049 <span class="comment">#       \brief es la clase encargada de la generacion del mapa atravez de comandos.</span>
+<a name="l00050"></a>00050 <span class="comment">#       </span>
+<a name="l00051"></a><a class="code" href="classrenderizado_1_1renderizado.html">00051</a> <span class="keyword">class </span><a class="code" href="classrenderizado_1_1renderizado.html" title="es la clase encargada de la generacion del mapa atravez de comandos.">renderizado</a>():
+<a name="l00052"></a>00052         <span class="comment">##</span>
+<a name="l00053"></a>00053         <span class="comment"># </span>
+<a name="l00054"></a>00054         <span class="comment">#               \brief Inicio de variable de uso de la libreria </span>
+<a name="l00055"></a>00055         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00056"></a>00056         <span class="comment">#               \param dimensiones Es una tupla con las dimensiones de la imagen a generar</span>
+<a name="l00057"></a>00057         <span class="comment">#               \param nombre_archivo Es un string con el nombre de la imagen a crear como por ejemplo imagen.jpg</span>
+<a name="l00058"></a>00058         <span class="comment">#               \param dimensiones_robot Las dimensiones en pixeles de la imagen robot</span>
+<a name="l00059"></a>00059         <span class="comment">#               \return Nada</span>
+<a name="l00060"></a>00060         <span class="comment">#               </span>
+<a name="l00061"></a><a class="code" href="classrenderizado_1_1renderizado.html#a99de1ed3c1a24b5d9a3da2b2905bd571">00061</a>         <span class="keyword">def </span><a class="code" href="classrenderizado_1_1renderizado.html#a4c17dcbfcfe999944d4bb4829b833b66" title="Inicio de variable de uso de la libreria.">__init__</a>(self,dimensiones,nombre_archivo,dimensiones_robot):
+<a name="l00062"></a>00062                 self.<a class="code" href="classrenderizado_1_1renderizado.html#af7128f70b3c3a2131bde3e83dbb28da0">nombre_archivo</a>=nombre_archivo
+<a name="l00063"></a>00063                 self.<a class="code" href="classrenderizado_1_1renderizado.html#a99de1ed3c1a24b5d9a3da2b2905bd571">nombre_archivo1</a>=nombre_archivo.replace(<span class="stringliteral">&quot;.jpg&quot;</span>,<span class="stringliteral">&quot;.acdc&quot;</span>)+<span class="stringliteral">&quot;.jpg&quot;</span>
+<a name="l00064"></a>00064                 self.<a class="code" href="classrenderizado_1_1renderizado.html#a70a61493b255b1624edf30547356c83e">dimeniones</a>=dimensiones
+<a name="l00065"></a>00065                 self.<a class="code" href="classrenderizado_1_1renderizado.html#ab835e8ffdd4128f40fd35258f3bdcfce">dimensiones_robot</a>=dimensiones_robot
+<a name="l00066"></a>00066                 self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>=cv.CreateImage(dimensiones,8,3)
+<a name="l00067"></a>00067                 cv.Not(self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>,self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>)
+<a name="l00068"></a>00068                 cv.SaveImage(self.<a class="code" href="classrenderizado_1_1renderizado.html#a99de1ed3c1a24b5d9a3da2b2905bd571">nombre_archivo1</a>,self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>)
+<a name="l00069"></a>00069         <span class="comment">##</span>
+<a name="l00070"></a>00070         <span class="comment"># </span>
+<a name="l00071"></a>00071         <span class="comment">#               \brief genera el los lienzos del mapa y del robot  </span>
+<a name="l00072"></a>00072         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00073"></a>00073         <span class="comment">#               \return Nada</span>
+<a name="l00074"></a>00074         <span class="comment">#               </span>
+<a name="l00075"></a><a class="code" href="classrenderizado_1_1renderizado.html#af50ef1daafbc8bf96205e5487dc54503">00075</a>         <span class="keyword">def </span><a class="code" href="classrenderizado_1_1renderizado.html#a64752e268753f383d7b9d252070c65f4" title="genera el los lienzos del mapa y del robot">cargar</a>(self):
+<a name="l00076"></a>00076                 self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>=cv.LoadImage(self.<a class="code" href="classrenderizado_1_1renderizado.html#a99de1ed3c1a24b5d9a3da2b2905bd571">nombre_archivo1</a>, cv.CV_LOAD_IMAGE_COLOR) <span class="comment">#Load the image</span>
+<a name="l00077"></a>00077                 self.<a class="code" href="classrenderizado_1_1renderizado.html#af50ef1daafbc8bf96205e5487dc54503">robot</a>=cv.LoadImage(<span class="stringliteral">&quot;robot.jpg&quot;</span>, cv.CV_LOAD_IMAGE_COLOR) <span class="comment">#Load the image</span>
+<a name="l00078"></a>00078         <span class="comment">##</span>
+<a name="l00079"></a>00079         <span class="comment"># </span>
+<a name="l00080"></a>00080         <span class="comment">#               \brief crear un punto en el lienzo del mapa</span>
+<a name="l00081"></a>00081         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00082"></a>00082         <span class="comment">#               \param punto la coordenada donde se va a graficar el circulo</span>
+<a name="l00083"></a>00083         <span class="comment">#               \param color para cambiar el color del circulo, si no se incluye se grafica en negro</span>
+<a name="l00084"></a>00084         <span class="comment">#               \param radio para definir el radio del circulo, si no se incluye es tomado como 1</span>
+<a name="l00085"></a>00085         <span class="comment">#               \return Nada</span>
+<a name="l00086"></a>00086         <span class="comment">#               </span>
+<a name="l00087"></a><a class="code" href="classrenderizado_1_1renderizado.html#a52891772883b0606be993163a87b70ae">00087</a>         <span class="keyword">def </span><a class="code" href="classrenderizado_1_1renderizado.html#a52891772883b0606be993163a87b70ae" title="crear un punto en el lienzo del mapa">anadir_punto</a>(self,punto,color=0,radio=1):
+<a name="l00088"></a>00088                 <span class="comment">#font = cv.InitFont(cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 3, 8) #Creates a font</span>
+<a name="l00089"></a>00089                 <span class="comment">#x = 30</span>
+<a name="l00090"></a>00090                 <span class="comment">#y = 40</span>
+<a name="l00091"></a>00091                 <span class="comment">#cv.PutText(self.image,&quot;Hello World!!!&quot;, (x,y),font, 255) #Draw the text</span>
+<a name="l00092"></a>00092                 <span class="comment">#cv.Line(image,(a*50,60),9(90,90),cv.RGB(17*a, 110-a, 255))</span>
+<a name="l00093"></a>00093                 cv.Circle(self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>,punto,radio,cv.RGB(255*color, 255*color, 255*color),-1) <span class="comment"># ultimo parametro para grosor de la linea negativo lleno</span>
+<a name="l00094"></a>00094                 <span class="comment">#self.image1=self.image</span>
+<a name="l00095"></a>00095         <span class="comment">##</span>
+<a name="l00096"></a>00096         <span class="comment"># </span>
+<a name="l00097"></a>00097         <span class="comment">#               \brief Comando solo utilizado para la prueba del paquete para visualizar los lienzos</span>
+<a name="l00098"></a>00098         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00099"></a>00099         <span class="comment">#               \param tiempo_ms tiempo en milisegundos que se va a mostrar la imagen</span>
+<a name="l00100"></a>00100         <span class="comment">#               \param imagen es el lienzo que va a ser graficado si no se lo incluye es tomado como cero.</span>
+<a name="l00101"></a>00101         <span class="comment">#               \return Nada</span>
+<a name="l00102"></a>00102         <span class="comment">#               </span>
+<a name="l00103"></a><a class="code" href="classrenderizado_1_1renderizado.html#a43054b88bb47c71371321e31c406003e">00103</a>         <span class="keyword">def </span><a class="code" href="classrenderizado_1_1renderizado.html#a43054b88bb47c71371321e31c406003e" title="Comando solo utilizado para la prueba del paquete para visualizar los lienzos.">graficar</a>(self,tiempo_ms,imagen=0):
+<a name="l00104"></a>00104                 <span class="keywordflow">if</span> imagen==0:
+<a name="l00105"></a>00105                         cv.ShowImage(<span class="stringliteral">&#39;Mapa Robot&#39;</span>,self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>) <span class="comment">#Show the image</span>
+<a name="l00106"></a>00106                         cv.WaitKey(tiempo_ms)
+<a name="l00107"></a>00107                 <span class="keywordflow">else</span>:
+<a name="l00108"></a>00108                         cv.ShowImage(<span class="stringliteral">&#39;Mapa Robot&#39;</span>,imagen) <span class="comment">#Show the image</span>
+<a name="l00109"></a>00109                         cv.WaitKey(tiempo_ms)
+<a name="l00110"></a>00110         <span class="comment">##</span>
+<a name="l00111"></a>00111         <span class="comment"># </span>
+<a name="l00112"></a>00112         <span class="comment">#               \brief Crea la imagen para cargarla en el programa con el lienzo ya finalizado</span>
+<a name="l00113"></a>00113         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00114"></a>00114         <span class="comment">#               \return Nada</span>
+<a name="l00115"></a>00115         <span class="comment">#               </span>
+<a name="l00116"></a><a class="code" href="classrenderizado_1_1renderizado.html#a890510a320079ad0fee8e2e87adda69e">00116</a>         <span class="keyword">def </span><a class="code" href="classrenderizado_1_1renderizado.html#a890510a320079ad0fee8e2e87adda69e" title="Crea la imagen para cargarla en el programa con el lienzo ya finalizado.">crear_imagen</a>(self):
+<a name="l00117"></a>00117                 cv.SaveImage(self.<a class="code" href="classrenderizado_1_1renderizado.html#a99de1ed3c1a24b5d9a3da2b2905bd571">nombre_archivo1</a>, self.<a class="code" href="classrenderizado_1_1renderizado.html#a54c4ebbaf251f0aa7e540f58f5b0f5eb">image</a>) <span class="comment">#Saves the image#</span>
+<a name="l00118"></a>00118                 
+<a name="l00119"></a>00119         <span class="comment">##</span>
+<a name="l00120"></a>00120         <span class="comment"># </span>
+<a name="l00121"></a>00121         <span class="comment">#               \brief graficar el robot en el lienzo de mapa </span>
+<a name="l00122"></a>00122         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00123"></a>00123         <span class="comment">#               \param robo_x coordenada x de la odometria del robot </span>
+<a name="l00124"></a>00124         <span class="comment">#               \param robo_y coordenada y de la odometria del robot </span>
+<a name="l00125"></a>00125         <span class="comment">#               \param robo_th Valor Th del robot</span>
+<a name="l00126"></a>00126         <span class="comment">#               \return Nada</span>
+<a name="l00127"></a>00127         <span class="comment">#               </span>
+<a name="l00128"></a><a class="code" href="classrenderizado_1_1renderizado.html#a1b2c9f08cee1a5ee13e0e130f598efc0">00128</a>         <span class="keyword">def </span><a class="code" href="classrenderizado_1_1renderizado.html#a1b2c9f08cee1a5ee13e0e130f598efc0" title="graficar el robot en el lienzo de mapa">rotacion_y_posicion_robot</a>(self,robo_x=200,robo_y=100,robo_th=80):
+<a name="l00129"></a>00129                 image_mapa=cv.LoadImage(self.<a class="code" href="classrenderizado_1_1renderizado.html#a99de1ed3c1a24b5d9a3da2b2905bd571">nombre_archivo1</a>, cv.CV_LOAD_IMAGE_COLOR)
+<a name="l00130"></a>00130                 dimensiones_robot=self.<a class="code" href="classrenderizado_1_1renderizado.html#ab835e8ffdd4128f40fd35258f3bdcfce">dimensiones_robot</a>
+<a name="l00131"></a>00131                 image1=cv.CreateImage(dimensiones_robot,8,3)
+<a name="l00132"></a>00132                 image_mascara=cv.CreateImage(dimensiones_robot,8,1)
+<a name="l00133"></a>00133                 
+<a name="l00134"></a>00134                 <span class="comment">##rotacion</span>
+<a name="l00135"></a>00135                 <span class="comment">#Rotar el robot</span>
+<a name="l00136"></a>00136                 src_center=dimensiones_robot[0]/2,dimensiones_robot[1]/2
+<a name="l00137"></a>00137                 rot_mat=cv.CreateMat( 2, 3, cv.CV_32FC1 )
+<a name="l00138"></a>00138                 cv.GetRotationMatrix2D(src_center, robo_th, 1.0,rot_mat);
+<a name="l00139"></a>00139                 cv.WarpAffine(self.<a class="code" href="classrenderizado_1_1renderizado.html#af50ef1daafbc8bf96205e5487dc54503">robot</a>,image1,rot_mat)
+<a name="l00140"></a>00140                 <span class="comment">#crear filtro para negro</span>
+<a name="l00141"></a>00141                 cv.InRangeS(image1,cv.RGB(0,0,0),cv.RGB(14,14,14),image_mascara)
+<a name="l00142"></a>00142                 cv.Not(image_mascara,image_mascara)
+<a name="l00143"></a>00143                 <span class="comment">#cv.ReleaseImage(image1)</span>
+<a name="l00144"></a>00144                 
+<a name="l00145"></a>00145                 <span class="comment">#reducir y posicion</span>
+<a name="l00146"></a>00146                 cv.SetImageROI(image_mapa,(robo_x,robo_y, dimensiones_robot[0], dimensiones_robot[1]));
+<a name="l00147"></a>00147                 cv.Copy(image1,image_mapa,mask=image_mascara)
+<a name="l00148"></a>00148                 cv.ResetImageROI(image_mapa);
+<a name="l00149"></a>00149                 cv.SaveImage(self.<a class="code" href="classrenderizado_1_1renderizado.html#af7128f70b3c3a2131bde3e83dbb28da0">nombre_archivo</a>, image_mapa) <span class="comment">#Saves the image#</span>
+<a name="l00150"></a>00150                 <span class="comment">#self.graficar(2000,image_mapa)</span>
+<a name="l00151"></a>00151                 
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&#39;__main__&#39;</span>:
+<a name="l00154"></a><a class="code" href="namespacerenderizado.html#a67d5237e7cc5eff92a6e3b9d4782723e">00154</a>         a=renderizado((600,400),<span class="stringliteral">&quot;imagen.jpg&quot;</span>,(13,13))
+<a name="l00155"></a>00155         a.cargar()
+<a name="l00156"></a>00156         <span class="keywordflow">for</span> aa <span class="keywordflow">in</span> range(5):
+<a name="l00157"></a>00157                 a.anadir_punto((5*aa,5*aa),radio=3*aa)
+<a name="l00158"></a>00158                 a.graficar(500)
+<a name="l00159"></a>00159         a.crear_imagen()
+<a name="l00160"></a>00160         a.rotacion_y_posicion_robot(200,100,0)
+<a name="l00161"></a>00161         a.crear_imagen()
+<a name="l00162"></a>00162         a.rotacion_y_posicion_robot(20,300,-40)
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Martes, 7 de Agosto de 2012 11:49:15 para Generacion de Mapas por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

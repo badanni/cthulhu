@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Adquisicion de datos: Fichero Fuente inicio.py</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&nbsp;relacionadas</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetes</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<h1>inicio.py</h1>  </div>
+</div>
+<div class="contents">
+<a href="inicio_8py.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespaceinicio.html">00001</a> <span class="comment">#!/usr/bin/env python</span>
+<a name="l00002"></a>00002 <span class="comment"># -*- coding: utf-8 -*-</span>
+<a name="l00003"></a>00003 <span class="comment">#</span>
+<a name="l00004"></a>00004 <span class="comment">#       inicio.py</span>
+<a name="l00005"></a>00005 <span class="comment">#       </span>
+<a name="l00006"></a>00006 <span class="comment">#       Copyright 2012 Danny Enrique Vasconez &lt;badanni@bzkkx&gt;</span>
+<a name="l00007"></a>00007 <span class="comment">#       </span>
+<a name="l00008"></a>00008 <span class="comment">#       This program is free software; you can redistribute it and/or modify</span>
+<a name="l00009"></a>00009 <span class="comment">#       it under the terms of the GNU General Public License as published by</span>
+<a name="l00010"></a>00010 <span class="comment">#       the Free Software Foundation; either version 2 of the License, or</span>
+<a name="l00011"></a>00011 <span class="comment">#       (at your option) any later version.</span>
+<a name="l00012"></a>00012 <span class="comment">#       </span>
+<a name="l00013"></a>00013 <span class="comment">#       This program is distributed in the hope that it will be useful,</span>
+<a name="l00014"></a>00014 <span class="comment">#       but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00015"></a>00015 <span class="comment">#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<a name="l00016"></a>00016 <span class="comment">#       GNU General Public License for more details.</span>
+<a name="l00017"></a>00017 <span class="comment">#       </span>
+<a name="l00018"></a>00018 <span class="comment">#       You should have received a copy of the GNU General Public License</span>
+<a name="l00019"></a>00019 <span class="comment">#       along with this program; if not, write to the Free Software</span>
+<a name="l00020"></a>00020 <span class="comment">#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,</span>
+<a name="l00021"></a>00021 <span class="comment">#       MA 02110-1301, USA.</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">import</span> pygtk
+<a name="l00024"></a>00024 pygtk.require(<span class="stringliteral">&quot;2.0&quot;</span>)
+<a name="l00025"></a>00025 <span class="keyword">import</span> gtk
+<a name="l00026"></a>00026 <span class="comment">#from time import sleep</span>
+<a name="l00027"></a>00027 <span class="keyword">import</span> os
+<a name="l00028"></a>00028 <span class="keyword">import</span> sys
+<a name="l00029"></a>00029 <span class="keyword">from</span> cliente_lib <span class="keyword">import</span> *
+<a name="l00030"></a>00030 <span class="stringliteral">&quot;&quot;&quot;\package inicio</span>
+<a name="l00031"></a>00031 <span class="stringliteral">   \brief programa que utiliza la libreria cliente_lib</span>
+<a name="l00032"></a>00032 <span class="stringliteral">   \details Programa que utiliza el XML de gtk+ y la libreria cliente_lib para comunicarse con el servidor de la plataforma movil utilizando una interfaz grafica</span>
+<a name="l00033"></a>00033 <span class="stringliteral">   \authors   Danny Vasconez</span>
+<a name="l00034"></a>00034 <span class="stringliteral">   \authors   Daniel Granda</span>
+<a name="l00035"></a>00035 <span class="stringliteral">   \version   0.0.1</span>
+<a name="l00036"></a>00036 <span class="stringliteral">   \date      2012</span>
+<a name="l00037"></a>00037 <span class="stringliteral">   \pre       Tener funcionando el servidor</span>
+<a name="l00038"></a>00038 <span class="stringliteral">   \bug       Nada</span>
+<a name="l00039"></a>00039 <span class="stringliteral">   \warning   uso inapropiado puede hacer que la aplicacion falle</span>
+<a name="l00040"></a>00040 <span class="stringliteral">   </span>
+<a name="l00041"></a>00041 <span class="stringliteral">&quot;&quot;&quot;</span>
+<a name="l00042"></a>00042 <span class="comment">##</span>
+<a name="l00043"></a>00043 <span class="comment"># </span>
+<a name="l00044"></a>00044 <span class="comment">#       \class inicio.prueba_adqui</span>
+<a name="l00045"></a>00045 <span class="comment">#       \brief es la clase encargada del entorno grafico y enlace con cliente_lib </span>
+<a name="l00046"></a>00046 <span class="comment">#       </span>
+<a name="l00047"></a><a class="code" href="classinicio_1_1prueba__adqui.html">00047</a> <span class="keyword">class </span><a class="code" href="classinicio_1_1prueba__adqui.html" title="es la clase encargada del entorno grafico y enlace con cliente_lib">prueba_adqui</a>(object):
+<a name="l00048"></a>00048         <span class="comment">##</span>
+<a name="l00049"></a>00049         <span class="comment"># </span>
+<a name="l00050"></a>00050         <span class="comment">#               \brief para cargar el XML de gtk+ y sus senales</span>
+<a name="l00051"></a>00051         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00052"></a>00052         <span class="comment">#               \return self</span>
+<a name="l00053"></a>00053         <span class="comment">#               </span>
+<a name="l00054"></a><a class="code" href="classinicio_1_1prueba__adqui.html#adab3c8bf1d5be6b8523065ccd474765a">00054</a>         <span class="keyword">def </span><a class="code" href="classinicio_1_1prueba__adqui.html#adab3c8bf1d5be6b8523065ccd474765a" title="para cargar el XML de gtk+ y sus senales">__init__</a>(self):
+<a name="l00055"></a>00055                 builder = gtk.Builder() <span class="comment">#El archivo de glade debe estar en gtkbuilder</span>
+<a name="l00056"></a>00056                 builder.add_from_file(<span class="stringliteral">&quot;glade/GUI.glade&quot;</span>) <span class="comment">#Carga el archivo glade</span>
+<a name="l00057"></a>00057                 builder.connect_signals(self) <span class="comment">#Toma todas las senales de glade</span>
+<a name="l00058"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a51eaad41d48c56482b7e7dc2af0f352f">00058</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a51eaad41d48c56482b7e7dc2af0f352f">about</a> = builder.get_object(<span class="stringliteral">&quot;about&quot;</span>) <span class="comment">#Ventana about</span>
+<a name="l00059"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a32103b146bd571e752923638e680db8b">00059</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a32103b146bd571e752923638e680db8b">teleoper</a> = builder.get_object(<span class="stringliteral">&quot;adqui_datos&quot;</span>) <span class="comment">#Ventana principal</span>
+<a name="l00060"></a><a class="code" href="classinicio_1_1prueba__adqui.html#ac00108c4677fe544c8a187c120369d27">00060</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#ac00108c4677fe544c8a187c120369d27">texto_datos</a> = builder.get_object(<span class="stringliteral">&quot;datos&quot;</span>) <span class="comment">#boton arriba</span>
+<a name="l00061"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a960901fb7d1086379f6c3de6076b7fab">00061</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a960901fb7d1086379f6c3de6076b7fab">texto_datos_sonar</a> = builder.get_object(<span class="stringliteral">&quot;datos_sonar&quot;</span>) <span class="comment">#boton arriba</span>
+<a name="l00062"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a44a9d5479ccbb7494838db31c4e07233">00062</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a44a9d5479ccbb7494838db31c4e07233">boton_foto</a> = builder.get_object(<span class="stringliteral">&quot;imagen0&quot;</span>) <span class="comment">#imagen para el dibujo de la plataforma movil</span>
+<a name="l00063"></a>00063                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a32103b146bd571e752923638e680db8b">teleoper</a>.show()
+<a name="l00064"></a>00064                 datos_fisicos=(-11.90,500,4000,-34,15,5,3,14)
+<a name="l00065"></a>00065                 mensaje=<span class="stringliteral">&quot;Voltaje bateria: %f [V] \nX: %d [mm]\nY: %d [mm]\nTh: %d [grad]\nvelocidad: %d [mm/s]\nVelocidad de giro: %d [rad/s]\nVelocidad lateral: %d [mm/s]\ntemp: %d \n &quot;</span> % (datos_fisicos)
+<a name="l00066"></a>00066                 <span class="comment">#[voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperature]</span>
+<a name="l00067"></a>00067                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#ac00108c4677fe544c8a187c120369d27">texto_datos</a>.set_text(mensaje)
+<a name="l00068"></a>00068                 <span class="comment">#Arranca el cliente</span>
+<a name="l00069"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">00069</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>=cliente_lib()
+<a name="l00070"></a>00070                 <span class="comment">#self.a.ip=&quot;192.168.1.10&quot;</span>
+<a name="l00071"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">00071</a>                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>=self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.cliente_inicio() 
+<a name="l00072"></a>00072         <span class="comment">##</span>
+<a name="l00073"></a>00073         <span class="comment"># </span>
+<a name="l00074"></a>00074         <span class="comment">#               \brief senal de menu &quot;Salir&quot; y cierra la conexion al salir</span>
+<a name="l00075"></a>00075         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00076"></a>00076         <span class="comment">#               \param widget no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz</span>
+<a name="l00077"></a>00077         <span class="comment">#               param data=None este no es necesario incluirlo ya que viene predefinido con valor None</span>
+<a name="l00078"></a>00078         <span class="comment">#               \return self</span>
+<a name="l00079"></a>00079         <span class="comment">#               </span>
+<a name="l00080"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a8c6a3aea6c366d774c06bb10590997db">00080</a>         <span class="keyword">def </span><a class="code" href="classinicio_1_1prueba__adqui.html#a8c6a3aea6c366d774c06bb10590997db" title="senal de menu &amp;quot;Salir&amp;quot; y cierra la conexion al salir">on_menuitem_quit_activate</a>(self, widget, data=None):
+<a name="l00081"></a>00081                 <span class="keywordflow">print</span> self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.cliente_apaga(self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>)
+<a name="l00082"></a>00082                 gtk.main_quit()
+<a name="l00083"></a>00083         <span class="comment">##</span>
+<a name="l00084"></a>00084         <span class="comment"># </span>
+<a name="l00085"></a>00085         <span class="comment">#               \brief cierra la conexion al cerrar la ventana</span>
+<a name="l00086"></a>00086         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00087"></a>00087         <span class="comment">#               \param widget no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz</span>
+<a name="l00088"></a>00088         <span class="comment">#               param data=None este no es necesario incluirlo ya que viene predefinido con valor None</span>
+<a name="l00089"></a>00089         <span class="comment">#               \return self</span>
+<a name="l00090"></a>00090         <span class="comment">#               </span>
+<a name="l00091"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a7eab73096bb40a159687460826d5bfa7">00091</a>         <span class="keyword">def </span><a class="code" href="classinicio_1_1prueba__adqui.html#a7eab73096bb40a159687460826d5bfa7" title="cierra la conexion al cerrar la ventana">on_adqui_datos_destroy</a>(self, widget, data=None):
+<a name="l00092"></a>00092                 <span class="keywordflow">print</span> self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.cliente_apaga(self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>)
+<a name="l00093"></a>00093                 gtk.main_quit()
+<a name="l00094"></a>00094         <span class="comment">##</span>
+<a name="l00095"></a>00095         <span class="comment"># </span>
+<a name="l00096"></a>00096         <span class="comment">#               \brief cierra la ventana about</span>
+<a name="l00097"></a>00097         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00098"></a>00098         <span class="comment">#               \param widget no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz</span>
+<a name="l00099"></a>00099         <span class="comment">#               \param data=None este no es necesario incluirlo ya que viene predefinido con valor None</span>
+<a name="l00100"></a>00100         <span class="comment">#               \return self</span>
+<a name="l00101"></a>00101         <span class="comment">#               </span>
+<a name="l00102"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a29aff32a047ab1f8771d47f90fc8efb7">00102</a>         <span class="keyword">def </span><a class="code" href="classinicio_1_1prueba__adqui.html#a29aff32a047ab1f8771d47f90fc8efb7" title="cierra la ventana about">on_about_response</a>(self, widget, data=None):
+<a name="l00103"></a>00103                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a51eaad41d48c56482b7e7dc2af0f352f">about</a>.hide()
+<a name="l00104"></a>00104         <span class="comment">##</span>
+<a name="l00105"></a>00105         <span class="comment"># </span>
+<a name="l00106"></a>00106         <span class="comment">#               \brief senal de menu about</span>
+<a name="l00107"></a>00107         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00108"></a>00108         <span class="comment">#               \param widget no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz</span>
+<a name="l00109"></a>00109         <span class="comment">#               param data=None este no es necesario incluirlo ya que viene predefinido con valor None</span>
+<a name="l00110"></a>00110         <span class="comment">#               \return self</span>
+<a name="l00111"></a>00111         <span class="comment">#               </span>
+<a name="l00112"></a><a class="code" href="classinicio_1_1prueba__adqui.html#ac5b1c3821f39cc144ef5b4f0236817a8">00112</a>         <span class="keyword">def </span><a class="code" href="classinicio_1_1prueba__adqui.html#ac5b1c3821f39cc144ef5b4f0236817a8" title="senal de menu about">on_menuitem_abuot_activate</a>(self, widget, data=None):
+<a name="l00113"></a>00113                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a51eaad41d48c56482b7e7dc2af0f352f">about</a>.show() <span class="comment">#Muestra la ventana about</span>
+<a name="l00114"></a>00114         <span class="comment">##</span>
+<a name="l00115"></a>00115         <span class="comment"># </span>
+<a name="l00116"></a>00116         <span class="comment">#               \brief senal de boton para leer datos de la plataforma movil</span>
+<a name="l00117"></a>00117         <span class="comment">#               \param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase</span>
+<a name="l00118"></a>00118         <span class="comment">#               \param widget no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz</span>
+<a name="l00119"></a>00119         <span class="comment">#               param data=None este no es necesario incluirlo ya que viene predefinido con valor None</span>
+<a name="l00120"></a>00120         <span class="comment">#               \return self</span>
+<a name="l00121"></a>00121         <span class="comment">#               </span>
+<a name="l00122"></a><a class="code" href="classinicio_1_1prueba__adqui.html#a3a6f8fec14c16dbb62dd3cbad2843669">00122</a>         <span class="keyword">def </span><a class="code" href="classinicio_1_1prueba__adqui.html#a3a6f8fec14c16dbb62dd3cbad2843669" title="senal de boton para leer datos de la plataforma movil">on_button1_clicked</a>(self, widget, data=None):
+<a name="l00123"></a>00123                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>=self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.envio_consulta_fisica(self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>,<span class="stringliteral">&quot;updateNumbers&quot;</span>)
+<a name="l00124"></a>00124                 valor=self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.devuelve_valorf()
+<a name="l00125"></a>00125                 <span class="comment">#toca corregir el dato de temp en cliente_lib &#39;\x81&#39; a &#39;0x81&#39;</span>
+<a name="l00126"></a>00126                 mensaje=<span class="stringliteral">&quot;Voltaje bateria: %f [V] \nX: %d [mm]\nY: %d [mm]\nTh: %d [grad]\nvelocidad: %d [mm/s]\nVelocidad de giro: %d [rad/s]\nVelocidad lateral: %d [mm/s]\ntemp: %d \n&quot;</span> % (valor)
+<a name="l00127"></a>00127                 <span class="comment">#[voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperature]</span>
+<a name="l00128"></a>00128                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#ac00108c4677fe544c8a187c120369d27">texto_datos</a>.set_text(mensaje)
+<a name="l00129"></a>00129                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>=self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.envio_consulta_fisica(self.<a class="code" href="classinicio_1_1prueba__adqui.html#a3519a8ae5deb71530289fc1274500b7e">cliente</a>,<span class="stringliteral">&quot;pose&quot;</span>)
+<a name="l00130"></a>00130                 valor=self.<a class="code" href="classinicio_1_1prueba__adqui.html#a5a6710e93f733c84b360e42513fdd4a9">a</a>.devuelve_valors()
+<a name="l00131"></a>00131                 mensaje=<span class="stringliteral">&#39;&#39;</span>
+<a name="l00132"></a>00132                 <span class="keywordflow">for</span> a <span class="keywordflow">in</span> range(int(valor[0])): <span class="comment">#el primer valor indica cuantos elementos se tiene de sensores</span>
+<a name="l00133"></a>00133                         mensaje+=<span class="stringliteral">&quot;sonar &quot;</span>+str(a)+<span class="stringliteral">&quot; &quot;</span>+valor[1][a]+<span class="stringliteral">&quot;\n&quot;</span>
+<a name="l00134"></a>00134                 self.<a class="code" href="classinicio_1_1prueba__adqui.html#a960901fb7d1086379f6c3de6076b7fab">texto_datos_sonar</a>.set_text(mensaje)
+<a name="l00135"></a>00135         
+<a name="l00136"></a>00136 <span class="comment">##</span>
+<a name="l00137"></a>00137 <span class="comment"># </span>
+<a name="l00138"></a>00138 <span class="comment">#       \brief El encargado al momento de ejcutar la aplicacion de instanciar el objeto prueba_teleoperacion</span>
+<a name="l00139"></a>00139 <span class="comment">#       </span>
+<a name="l00140"></a><a class="code" href="namespaceinicio.html#a518864d4ff815064f5de420ab3996d94">00140</a> <span class="keyword">def </span><a class="code" href="namespaceinicio.html#a518864d4ff815064f5de420ab3996d94" title="El encargado al momento de ejcutar la aplicacion de instanciar el objeto prueba_teleoperacion.">main</a>():
+<a name="l00141"></a>00141         <span class="keywordflow">if</span> os.name==<span class="stringliteral">&quot;posix&quot;</span>: <span class="comment">#verifica que sea un entorno Linux</span>
+<a name="l00142"></a>00142                 app = prueba_adqui() <span class="comment">#instancia el objeto GUI con las senales enlazadas</span>
+<a name="l00143"></a>00143                 gtk.main() <span class="comment">#levanta el motor GTK para poder visualizar</span>
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="keywordflow">if</span> __name__ == <span class="stringliteral">&#39;__main__&#39;</span>:
+<a name="l00146"></a>00146         main()
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148 
+</pre></div></div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 26 de Marzo de 2012 08:07:12 para Adquisicion de datos por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
+</body>
+</html>

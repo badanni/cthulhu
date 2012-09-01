@@ -1,0 +1,135 @@
+.TH "cliente_lib" 3 "Martes, 7 de Agosto de 2012" "Version 0.3" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+cliente_lib \- 
+.PP
+libreria para realizar el cliente  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Clases"
+
+.in +1c
+.ti -1c
+.RI "class \fBcliente_lib\fP"
+.br
+.RI "\fIes la clase encargada del cliente \fP"
+.in -1c
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "def \fBmain\fP"
+.br
+.RI "\fISirve para realizar pruebas de conexion. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+libreria para realizar el cliente 
+
+Se debe especificar cual es el IP del servidor 
+.PP
+\fBAutores:\fP
+.RS 4
+Danny Vasconez 
+.PP
+Daniel Granda 
+.RE
+.PP
+\fBVersión:\fP
+.RS 4
+0.0.3 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2012 
+.RE
+.PP
+\fBPrecondición:\fP
+.RS 4
+Tener funcionando el servidor 
+.RE
+.PP
+\fBBug\fP
+.RS 4
+myTemperature tiene falla por el tipo de dato en formato a python '' toca pasar a '0x81', devuelve_valors fallo cuando no tiene valores 
+.RE
+.PP
+\fBAtención:\fP
+.RS 4
+uso inapropiado puede hacer que la aplicacion falle
+.RE
+.PP
+.SH "Ejemplo de uso"
+.PP
+En el ejemplo se muestra tres maneras de enviar comandos la general que es requestOnce y las otras que son la misma pero modificada para trabajar con comandos especificos 
+.PP
+.nf
+a=cliente_lib() #Instancia a la clase cliete_lib
+a.ip="192.168.1.10"
+CLIENTE=a.cliente_inicio() 
+# para realizar movimiento 
+TransRatio,RotRatio,LatRatio = [-50,0,0]
+CLIENTE=a.envio_ratioDrive(CLIENTE,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+#
+#para conocer valores como fisicos de la plataforma movil
+CLIENTE=a.envio_consulta_fisica(CLIENTE,"updateNumbers")
+valor=a.devuelve_valorf()
+print valor
+#
+#para conocer los valores de los sonares
+CLIENTE.requestOnce("pose")
+valor=a.devuelve_valors()
+print valor
+#
+ArUtil.sleep(1000)
+a.cliente_apaga(CLIENTE)
+
+
+.fi
+.PP
+ 
+.SH "Documentación de las funciones"
+.PP 
+.SS "def cliente_lib.main ()"
+.PP
+Sirve para realizar pruebas de conexion. sin tener que ejecutar la aplicacion completa; de la siguiente forma 'python2.5 cliente_lib.py' 
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 
+.RE
+.PP
+
+.PP
+Definición en la línea 318 del archivo cliente_lib.py.
+.PP
+.nf
+319           :
+320         #prueba de la libreria
+321         a=cliente_lib()
+322         #a.ip='192.168.10.5' #Si el servidor esta en otra maquina 
+323         CLIENTE=a.cliente_inicio()
+324         #TransRatio,RotRatio,LatRatio = [-50,0,0]
+325         #CLIENTE=a.envio_ratioDrive(CLIENTE,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+326         TransRatio=5
+327         #for i in range(500):
+328                 #CLIENTE=a.envio_consulta_fisica(CLIENTE,'pose')
+329         CLIENTE=a.envio_griper(CLIENTE,TransRatio) #fijar los valores para mover
+330         ArUtil.sleep(500)
+331                 #print 'Longitud X',len(a.x)
+332                 #print 'Longitud Y',len(a.y)
+333         #print 'X:', a.x
+334         #print 'Y:', a.y
+335                 
+336         #CLIENTE.requestOnce('pose')
+337         #ArUtil.sleep(100)
+338         a.cliente_apaga(CLIENTE)
+        return 0
+.fi
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

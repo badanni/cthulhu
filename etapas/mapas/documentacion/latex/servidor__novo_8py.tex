@@ -1,0 +1,61 @@
+\hypertarget{servidor__novo_8py}{
+\section{Referencia del Archivo servidor\_\-novo.py}
+\label{servidor__novo_8py}\index{servidor\_\-novo.py@{servidor\_\-novo.py}}
+}
+\subsection*{Paquetes}
+\begin{DoxyCompactItemize}
+\item 
+package \hyperlink{namespaceservidor__novo}{servidor\_\-novo}
+
+
+\begin{DoxyCompactList}\small\item\em Servidor para el Pioneer P3-\/DX. \end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceservidor__novo_a994b4e4dc22448a609ecd86baa9ff6da}{servidor\_\-novo.requestCallback}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}test\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceservidor__novo_ae02aab4783a9544975ff25e7d2fde80a}{servidor\_\-novo.movimiento}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}mover\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceservidor__novo_a8af363dfe669e9277832c4491d253db3}{servidor\_\-novo.rotar}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}rotar\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceservidor__novo_a6bb7f16cf80ec7b45c715da84a62257d}{servidor\_\-novo.posicion}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}pose\char`\"{} en el paquete. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespaceservidor__novo_ae604d92f7f5c43d2a993ae9402534424}{servidor\_\-novo.robot} = ArRobot()
+\item 
+tuple \hyperlink{namespaceservidor__novo_a2b0e3a19479a3a456184ce1f64a648a0}{servidor\_\-novo.gyro} = ArAnalogGyro(robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a966ece9821b12a79fc5b83f628987f7d}{servidor\_\-novo.sonarDev} = ArSonarDevice(7)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a538b68fbb948f9cf0573a119042c9e0d}{servidor\_\-novo.server} = ArServerBase()
+\item 
+tuple \hyperlink{namespaceservidor__novo_a4644b693a5931c2f1a9d68500534d955}{servidor\_\-novo.packet} = ArNetPacket()
+\item 
+tuple \hyperlink{namespaceservidor__novo_a201a5b59bc2f5a75d2a4c82d81f17180}{servidor\_\-novo.con} = ArSimpleConnector(sys.argv)
+\item 
+tuple \hyperlink{namespaceservidor__novo_aae2aad1feed83599e4783f4d39086ee6}{servidor\_\-novo.serverInfoRobot} = ArServerInfoRobot(server, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a31795a5817e65297017799e1fdbc6fdd}{servidor\_\-novo.serverInfoSensor} = ArServerInfoSensor(server, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_aaddb28ac7dd14daa90eaadd8fde37bbd}{servidor\_\-novo.drawings} = ArServerInfoDrawings(server)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a63f8dd02ccddbc7be4de022c23246578}{servidor\_\-novo.modeStop} = ArServerModeStop(server, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a17ac782014a1ecc8ae25509094a6812b}{servidor\_\-novo.modeRatioDrive} = ArServerModeRatioDrive(server, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a1f0f40c9f2b17d9579e189b4ec8f4ffe}{servidor\_\-novo.modeWander} = ArServerModeWander(server, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a1cd792305e65be0c6e06c0cd885b1593}{servidor\_\-novo.commands} = ArServerHandlerCommands(server)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a9cc0dcde8396c1ff04833e8811a1df74}{servidor\_\-novo.uCCommands} = ArServerSimpleComUC(commands, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a0407c97de55cf4fa7aac903f2813aa50}{servidor\_\-novo.loggingCommands} = ArServerSimpleComMovementLogging(commands, robot)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a20fff7251fe63ba8161a62b254023d04}{servidor\_\-novo.gyroCommands} = ArServerSimpleComGyro(commands, robot, gyro)
+\item 
+tuple \hyperlink{namespaceservidor__novo_a0b77e4ad4ff622636ae781f9e76c0bba}{servidor\_\-novo.configCommands} = ArServerSimpleComLogRobotConfig(commands, robot)
+\end{DoxyCompactItemize}

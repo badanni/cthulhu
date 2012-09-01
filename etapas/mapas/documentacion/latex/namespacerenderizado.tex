@@ -1,0 +1,67 @@
+\hypertarget{namespacerenderizado}{
+\section{Paquetes renderizado}
+\label{namespacerenderizado}\index{renderizado@{renderizado}}
+}
+
+
+programa que utiliza la libreria openCV para la generacion del lienzo  
+
+
+\subsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classrenderizado_1_1renderizado}{renderizado}
+\begin{DoxyCompactList}\small\item\em es la clase encargada de la generacion del mapa atravez de comandos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespacerenderizado_a67d5237e7cc5eff92a6e3b9d4782723e}{a} = \hyperlink{classrenderizado_1_1renderizado}{renderizado}((600,400),\char`\"{}imagen.jpg\char`\"{},(13,13))
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+programa que utiliza la libreria openCV para la generacion del lienzo Programa para realizar el mapa con la informacion del sonar y odometria en la plataforma movil. \begin{DoxyAuthor}{Autores}
+Danny Vasconez 
+
+Daniel Granda 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+0.0.1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2012 
+\end{DoxyDate}
+\begin{DoxyPrecond}{Precondición}
+Ningun requisito 
+\end{DoxyPrecond}
+\begin{Desc}
+\item[\hyperlink{bug__bug000002}{Bug}]Si la posicion del robot se sale del lienzo proboca un error en la matriz de la imagen. \end{Desc}
+\begin{DoxyWarning}{Atención}
+uso inapropiado puede hacer que la aplicacion falle
+\end{DoxyWarning}
+\hypertarget{index_intro}{}\subsection{Ejemplo de uso}\label{index_intro}
+En el ejemplo se muestra como se debe utilizar este paquete 
+\begin{DoxyVerbInclude}
+a=renderizado((600,400),"imagen.jpg",(13,13))
+a.cargar()
+a.anadir_punto((5,51),radio=13)
+a.graficar(500)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(200,100,0)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(20,300,-40)
+
+
+\end{DoxyVerbInclude}
+ 
+
+\subsection{Documentación de las variables}
+\hypertarget{namespacerenderizado_a67d5237e7cc5eff92a6e3b9d4782723e}{
+\index{renderizado@{renderizado}!a@{a}}
+\index{a@{a}!renderizado@{renderizado}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}tuple {\bf renderizado.a} = {\bf renderizado}((600,400),\char`\"{}imagen.jpg\char`\"{},(13,13))}}
+\label{namespacerenderizado_a67d5237e7cc5eff92a6e3b9d4782723e}
+
+
+Definición en la línea 154 del archivo renderizado.py.
+

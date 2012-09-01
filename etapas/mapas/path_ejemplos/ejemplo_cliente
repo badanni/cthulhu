@@ -1,0 +1,19 @@
+a=cliente_lib() #Instancia a la clase cliete_lib
+a.ip="192.168.1.10"
+CLIENTE=a.cliente_inicio() 
+# para realizar movimiento 
+TransRatio,RotRatio,LatRatio = [-50,0,0]
+CLIENTE=a.envio_ratioDrive(CLIENTE,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+#
+#para conocer valores como fisicos de la plataforma movil
+CLIENTE=a.envio_consulta_fisica(CLIENTE,"updateNumbers")
+valor=a.devuelve_valorf()
+print valor
+#
+#para conocer los valores de los sonares
+CLIENTE.requestOnce("pose")
+valor=a.devuelve_valors()
+print valor
+#
+ArUtil.sleep(1000)
+a.cliente_apaga(CLIENTE)

@@ -1,0 +1,110 @@
+\hypertarget{namespacecliente__lib}{
+\section{Paquetes cliente\_\-lib}
+\label{namespacecliente__lib}\index{cliente\_\-lib@{cliente\_\-lib}}
+}
+
+
+libreria para realizar el cliente  
+
+
+\subsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcliente__lib_1_1cliente__lib}{cliente\_\-lib}
+\begin{DoxyCompactList}\small\item\em es la clase encargada del cliente \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacecliente__lib_afb746084e43cb9c21db470d7b4990cae}{main}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar pruebas de conexion. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+libreria para realizar el cliente Se debe especificar cual es el IP del servidor \begin{DoxyAuthor}{Autores}
+Danny Vasconez 
+
+Daniel Granda 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+0.0.2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Fecha}
+2012 
+\end{DoxyDate}
+\begin{DoxyPrecond}{Precondición}
+Tener funcionando el servidor 
+\end{DoxyPrecond}
+\begin{Desc}
+\item[\hyperlink{bug__bug000001}{Bug}]myTemperature tiene falla por el tipo de dato en formato a python '' toca pasar a '0x81' \end{Desc}
+\begin{DoxyWarning}{Atención}
+uso inapropiado puede hacer que la aplicacion falle
+\end{DoxyWarning}
+\hypertarget{index_intro}{}\subsection{Ejemplo de uso}\label{index_intro}
+En el ejemplo se muestra tres maneras de enviar comandos la general que es requestOnce y las otras que son la misma pero modificada para trabajar con comandos especificos 
+\begin{DoxyVerbInclude}
+a=cliente_lib() #Instancia a la clase cliete_lib
+a.ip="192.168.1.10"
+CLIENTE=a.cliente_inicio() 
+# para realizar movimiento 
+TransRatio,RotRatio,LatRatio = [-50,0,0]
+CLIENTE=a.envio_ratioDrive(CLIENTE,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+#
+#para conocer valores como fisicos de la plataforma movil
+CLIENTE=a.envio_consulta_fisica(CLIENTE,"updateNumbers")
+valor=a.devuelve_valorf()
+print valor
+#
+#para conocer los valores de los sonares
+CLIENTE.requestOnce("pose")
+valor=a.devuelve_valors()
+print valor
+#
+ArUtil.sleep(1000)
+a.cliente_apaga(CLIENTE)
+
+\end{DoxyVerbInclude}
+ 
+
+\subsection{Documentación de las funciones}
+\hypertarget{namespacecliente__lib_afb746084e43cb9c21db470d7b4990cae}{
+\index{cliente\_\-lib@{cliente\_\-lib}!main@{main}}
+\index{main@{main}!cliente_lib@{cliente\_\-lib}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib_afb746084e43cb9c21db470d7b4990cae}
+
+
+Sirve para realizar pruebas de conexion. 
+
+sin tener que ejecutar la aplicacion completa; de la siguiente forma \char`\"{}python2.5 cliente\_\-lib.py\char`\"{} \begin{DoxyReturn}{Devuelve}
+0 
+\end{DoxyReturn}
+
+
+Definición en la línea 236 del archivo cliente\_\-lib.py.
+
+
+
+
+\begin{DoxyCode}
+237           :
+238         #prueba de la libreria
+239         a=cliente_lib()
+240         a.ip="192.168.1.10" #Si el servidor esta en otra maquina 
+241         CLIENTE=a.cliente_inicio()
+242         TransRatio,RotRatio,LatRatio = [-50,0,0]
+243         CLIENTE=a.envio_ratioDrive(CLIENTE,TransRatio,RotRatio,LatRatio) #fijar l
+      os valores para mover
+244         CLIENTE=a.envio_consulta_fisica(CLIENTE,"updateNumbers")
+245         valor=a.devuelve_valorf()
+246         print valor
+247         CLIENTE.requestOnce("pose")
+248         ArUtil.sleep(1000)
+249         a.cliente_apaga(CLIENTE)
+        return 0
+\end{DoxyCode}
+
+

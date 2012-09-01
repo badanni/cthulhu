@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Adquisicion de datos: Paquetes servidor</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javaScript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Generado por Doxygen 1.7.1 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+--></script>
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&nbsp;relacionadas</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetes</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="namespaces.html"><span>Paquetes</span></a></li>
+      <li><a href="namespacemembers.html"><span>Funciones&nbsp;del&nbsp;'package'</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<h1>Paquetes servidor</h1>  </div>
+</div>
+<div class="contents">
+
+<p>Servidor para el Pioneer P3-DX.  
+<a href="#_details">Más...</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a06ea535cfe56429259d8de76298416cb">requestCallback</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sirve cuando se manda el comando "test" en el paquete.  <a href="#a06ea535cfe56429259d8de76298416cb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#aef5180c02cf1d163167be16732d7250e">movimiento</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sirve cuando se manda el comando "mover" en el paquete.  <a href="#aef5180c02cf1d163167be16732d7250e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a66205c06d52988bbeb961068e554edfc">rotar</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sirve cuando se manda el comando "rotar" en el paquete.  <a href="#a66205c06d52988bbeb961068e554edfc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a4f30fc83b9ff1f43b6dde147ed4c31fc">posicion</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sirve cuando se manda el comando "pose" en el paquete.  <a href="#a4f30fc83b9ff1f43b6dde147ed4c31fc"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a> = ArRobot()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a73a7e14af1c6774da1d3c5580e02573c">gyro</a> = ArAnalogGyro(<a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a509c8beb9fe73900b5ab2a0fc5f793b2">sonarDev</a> = ArSonarDevice()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a> = ArServerBase()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a159e1bd236b55d72f3fd3cb94afc7650">packet</a> = ArNetPacket()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#ae78d17158a0f45369b3621468e736bf6">con</a> = ArSimpleConnector(sys.argv)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a214f853047fdc2f26cfac0db1a9e87b8">serverInfoRobot</a> = ArServerInfoRobot(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#ae93d5f481f48442f0db6959867fbf8c4">serverInfoSensor</a> = ArServerInfoSensor(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a691fe74e57a668507d56d3acd8e19ba2">drawings</a> = ArServerInfoDrawings(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#ae7b0d696eea14b76aba1e014dbfe70f4">modeStop</a> = ArServerModeStop(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#ac7cf650e754b329444bd902af26c1527">modeRatioDrive</a> = ArServerModeRatioDrive(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#ae22efed138dafc7284a3f71676a6757f">modeWander</a> = ArServerModeWander(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a> = ArServerHandlerCommands(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#aa877c09d4a72ca2434441ff2dc406a29">uCCommands</a> = ArServerSimpleComUC(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a8f73ad33af2f2a4f3bc9209b9390cfe8">loggingCommands</a> = ArServerSimpleComMovementLogging(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#a9bcfd4f54186b9c69cea8188548af8c8">gyroCommands</a> = ArServerSimpleComGyro(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>, <a class="el" href="namespaceservidor.html#a73a7e14af1c6774da1d3c5580e02573c">gyro</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceservidor.html#aa210848229916c300b66b7f7958baa24">configCommands</a> = ArServerSimpleComLogRobotConfig(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Descripción detallada</h2>
+<p>Servidor para el Pioneer P3-DX. </p>
+<p>Se lo puede utilizar con multiples conexiones de clientes trabaja en el puerto 7272 La lista de comandos para el paquete ArNetPacket se encuentra en el anexo 1 </p>
+<dl class="author"><dt><b>Autores:</b></dt><dd>Danny Vasconez </dd>
+<dd>
+Daniel Granda </dd></dl>
+<dl class="version"><dt><b>Versión:</b></dt><dd>0.0.1b </dd></dl>
+<dl class="date"><dt><b>Fecha:</b></dt><dd>2012 </dd></dl>
+<dl class="pre"><dt><b>Precondición:</b></dt><dd>Tener conectada la plataforma Pioneer P3-DX. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug:</a></b></dt><dd>Nada </dd></dl>
+<dl class="warning"><dt><b>Atención:</b></dt><dd>uso inapropiado puede hacer que la aplicacion falle </dd></dl>
+<hr/><h2>Documentación de las funciones</h2>
+<a class="anchor" id="aef5180c02cf1d163167be16732d7250e"></a><!-- doxytag: member="servidor::movimiento" ref="aef5180c02cf1d163167be16732d7250e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def servidor.movimiento </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>packet</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sirve cuando se manda el comando "mover" en el paquete. </p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>client</em>&nbsp;</td><td>El cliente que manda el paquete </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packet</em>&nbsp;</td><td>el paquete que recibe el servidor para el comando </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Nada </dd></dl>
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00062">62</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00063"></a>00063                              :
+<a name="l00064"></a>00064   robot.lock()
+<a name="l00065"></a>00065   robot.comInt(8,5000) <span class="comment">#move(5000) para atras move(-4999)</span>
+  robot.unlock()
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a4f30fc83b9ff1f43b6dde147ed4c31fc"></a><!-- doxytag: member="servidor::posicion" ref="a4f30fc83b9ff1f43b6dde147ed4c31fc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def servidor.posicion </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>packet</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sirve cuando se manda el comando "pose" en el paquete. </p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>client</em>&nbsp;</td><td>El cliente que manda el paquete </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packet</em>&nbsp;</td><td>el paquete que recibe el servidor para el comando </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>ArNetPacket con la informacion en coordenadas X,Y,T al cliente </dd></dl>
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00084">84</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00085"></a>00085                            :
+<a name="l00086"></a>00086   poses = sonarDev.getCurrentBufferAsVector()
+<a name="l00087"></a>00087   packet=ArNetPacket()
+<a name="l00088"></a>00088   packet.doubleToBuf(len(poses))
+<a name="l00089"></a>00089   <span class="keywordflow">for</span> p <span class="keywordflow">in</span> poses:
+<a name="l00090"></a>00090     packet.strToBuf(str(p))
+<a name="l00091"></a>00091   packet.finalizePacket()
+<a name="l00092"></a>00092   <span class="keywordflow">print</span> str(packet.verifyCheckSum()) + <span class="stringliteral">&quot; paquete de sonar correcto checksum&quot;</span>
+<a name="l00093"></a>00093   client.sendPacketTcp(packet)
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="comment"># This example demonstrates how to use ArNetworking in Python. </span>
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 <span class="comment"># Global library initialization, just like the C++ API:</span>
+<a name="l00098"></a>00098 Aria.init()
+<a name="l00099"></a>00099 
+<span class="comment"># Create a robot object:</span>
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a06ea535cfe56429259d8de76298416cb"></a><!-- doxytag: member="servidor::requestCallback" ref="a06ea535cfe56429259d8de76298416cb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def servidor.requestCallback </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>packet</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sirve cuando se manda el comando "test" en el paquete. </p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>client</em>&nbsp;</td><td>El cliente que manda el paquete </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packet</em>&nbsp;</td><td>el paquete que recibe el servidor para el comando </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Nada </dd></dl>
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00050">50</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00051"></a>00051                                    :
+<a name="l00052"></a>00052   replyPacket = ArNetPacket()
+<a name="l00053"></a>00053   replyPacket.strToBuf(str(robot.getPose().x));
+<a name="l00054"></a>00054   <span class="keywordflow">print</span> <span class="stringliteral">&quot;requestCallback received a packet with command #%d. Sending a reply...\n&quot;</span> % (packet.getCommand())
+  client.sendPacketTcp(replyPacket)
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a66205c06d52988bbeb961068e554edfc"></a><!-- doxytag: member="servidor::rotar" ref="a66205c06d52988bbeb961068e554edfc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def servidor.rotar </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>packet</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sirve cuando se manda el comando "rotar" en el paquete. </p>
+<dl><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>client</em>&nbsp;</td><td>El cliente que manda el paquete </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>packet</em>&nbsp;</td><td>el paquete que recibe el servidor para el comando </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>Nada </dd></dl>
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00073">73</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00074"></a>00074                         :
+<a name="l00075"></a>00075   robot.lock()
+<a name="l00076"></a>00076   robot.comInt(12,50) 
+  robot.unlock()
+</pre></div></p>
+
+</div>
+</div>
+<hr/><h2>Documentación de las variables</h2>
+<a class="anchor" id="a4bc8244e73099a1e67418ea064c30097"></a><!-- doxytag: member="servidor::commands" ref="a4bc8244e73099a1e67418ea064c30097" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">servidor.commands</a> = ArServerHandlerCommands(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00151">151</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae78d17158a0f45369b3621468e736bf6"></a><!-- doxytag: member="servidor::con" ref="ae78d17158a0f45369b3621468e736bf6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#ae78d17158a0f45369b3621468e736bf6">servidor.con</a> = ArSimpleConnector(sys.argv)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00126">126</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa210848229916c300b66b7f7958baa24"></a><!-- doxytag: member="servidor::configCommands" ref="aa210848229916c300b66b7f7958baa24" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#aa210848229916c300b66b7f7958baa24">servidor.configCommands</a> = ArServerSimpleComLogRobotConfig(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00159">159</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a691fe74e57a668507d56d3acd8e19ba2"></a><!-- doxytag: member="servidor::drawings" ref="a691fe74e57a668507d56d3acd8e19ba2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a691fe74e57a668507d56d3acd8e19ba2">servidor.drawings</a> = ArServerInfoDrawings(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00140">140</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a73a7e14af1c6774da1d3c5580e02573c"></a><!-- doxytag: member="servidor::gyro" ref="a73a7e14af1c6774da1d3c5580e02573c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a73a7e14af1c6774da1d3c5580e02573c">servidor.gyro</a> = ArAnalogGyro(<a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00103">103</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9bcfd4f54186b9c69cea8188548af8c8"></a><!-- doxytag: member="servidor::gyroCommands" ref="a9bcfd4f54186b9c69cea8188548af8c8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a9bcfd4f54186b9c69cea8188548af8c8">servidor.gyroCommands</a> = ArServerSimpleComGyro(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>, <a class="el" href="namespaceservidor.html#a73a7e14af1c6774da1d3c5580e02573c">gyro</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00157">157</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8f73ad33af2f2a4f3bc9209b9390cfe8"></a><!-- doxytag: member="servidor::loggingCommands" ref="a8f73ad33af2f2a4f3bc9209b9390cfe8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a8f73ad33af2f2a4f3bc9209b9390cfe8">servidor.loggingCommands</a> = ArServerSimpleComMovementLogging(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00155">155</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac7cf650e754b329444bd902af26c1527"></a><!-- doxytag: member="servidor::modeRatioDrive" ref="ac7cf650e754b329444bd902af26c1527" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#ac7cf650e754b329444bd902af26c1527">servidor.modeRatioDrive</a> = ArServerModeRatioDrive(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00145">145</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7b0d696eea14b76aba1e014dbfe70f4"></a><!-- doxytag: member="servidor::modeStop" ref="ae7b0d696eea14b76aba1e014dbfe70f4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#ae7b0d696eea14b76aba1e014dbfe70f4">servidor.modeStop</a> = ArServerModeStop(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00144">144</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae22efed138dafc7284a3f71676a6757f"></a><!-- doxytag: member="servidor::modeWander" ref="ae22efed138dafc7284a3f71676a6757f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#ae22efed138dafc7284a3f71676a6757f">servidor.modeWander</a> = ArServerModeWander(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00146">146</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a159e1bd236b55d72f3fd3cb94afc7650"></a><!-- doxytag: member="servidor::packet" ref="a159e1bd236b55d72f3fd3cb94afc7650" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a159e1bd236b55d72f3fd3cb94afc7650">servidor.packet</a> = ArNetPacket()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00113">113</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a20c40528942a814c3ba639d6fdf80c34"></a><!-- doxytag: member="servidor::robot" ref="a20c40528942a814c3ba639d6fdf80c34" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">servidor.robot</a> = ArRobot()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00100">100</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adfced13b57fb69c12f8ab5a84d1a2356"></a><!-- doxytag: member="servidor::server" ref="adfced13b57fb69c12f8ab5a84d1a2356" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">servidor.server</a> = ArServerBase()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00111">111</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a214f853047fdc2f26cfac0db1a9e87b8"></a><!-- doxytag: member="servidor::serverInfoRobot" ref="a214f853047fdc2f26cfac0db1a9e87b8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a214f853047fdc2f26cfac0db1a9e87b8">servidor.serverInfoRobot</a> = ArServerInfoRobot(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00138">138</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae93d5f481f48442f0db6959867fbf8c4"></a><!-- doxytag: member="servidor::serverInfoSensor" ref="ae93d5f481f48442f0db6959867fbf8c4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#ae93d5f481f48442f0db6959867fbf8c4">servidor.serverInfoSensor</a> = ArServerInfoSensor(<a class="el" href="namespaceservidor.html#adfced13b57fb69c12f8ab5a84d1a2356">server</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00139">139</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a509c8beb9fe73900b5ab2a0fc5f793b2"></a><!-- doxytag: member="servidor::sonarDev" ref="a509c8beb9fe73900b5ab2a0fc5f793b2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#a509c8beb9fe73900b5ab2a0fc5f793b2">servidor.sonarDev</a> = ArSonarDevice()</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00106">106</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa877c09d4a72ca2434441ff2dc406a29"></a><!-- doxytag: member="servidor::uCCommands" ref="aa877c09d4a72ca2434441ff2dc406a29" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespaceservidor.html#aa877c09d4a72ca2434441ff2dc406a29">servidor.uCCommands</a> = ArServerSimpleComUC(<a class="el" href="namespaceservidor.html#a4bc8244e73099a1e67418ea064c30097">commands</a>, <a class="el" href="namespaceservidor.html#a20c40528942a814c3ba639d6fdf80c34">robot</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definición en la línea <a class="el" href="servidor_8py_source.html#l00153">153</a> del archivo <a class="el" href="servidor_8py_source.html">servidor.py</a>.</p>
+
+</div>
+</div>
+</div>
+<!--- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&nbsp;</span>Todo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&nbsp;</span>Clases</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&nbsp;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&nbsp;</span>Archivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&nbsp;</span>Funciones</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&nbsp;</span>Variables</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Generado el Lunes, 26 de Marzo de 2012 08:07:14 para Adquisicion de datos por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.1 </small></address>
+</body>
+</html>

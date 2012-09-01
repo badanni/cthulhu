@@ -1,0 +1,55 @@
+\hypertarget{namespacecliente__lib__original}{
+\section{Paquetes cliente\_\-lib\_\-original}
+\label{namespacecliente__lib__original}\index{cliente\_\-lib\_\-original@{cliente\_\-lib\_\-original}}
+}
+\subsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcliente__lib__original_1_1cliente__lib}{cliente\_\-lib}
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacecliente__lib__original_a41a934cc972855341f15854b1daff426}{main}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar pruebas de conexion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{namespacecliente__lib__original_a41a934cc972855341f15854b1daff426}{
+\index{cliente\_\-lib\_\-original@{cliente\_\-lib\_\-original}!main@{main}}
+\index{main@{main}!cliente_lib_original@{cliente\_\-lib\_\-original}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib\_\-original.main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespacecliente__lib__original_a41a934cc972855341f15854b1daff426}
+
+
+Sirve para realizar pruebas de conexion. 
+
+sin tener que ejecutar la aplicacion completa; de la siguiente forma \char`\"{}python2.5 cliente\_\-lib.py\char`\"{} \begin{DoxyReturn}{Devuelve}
+0 
+\end{DoxyReturn}
+
+
+Definición en la línea 273 del archivo cliente\_\-lib\_\-original.py.
+
+
+\begin{DoxyCode}
+274           :
+275         #prueba de la libreria
+276         a=cliente_lib()
+277         a.ip="192.168.0.124" #Si el servidor esta en otra maquina 
+278         CLIENTE=a.cliente_inicio()
+279         TransRatio,RotRatio,LatRatio = [-50,0,0]
+280         CLIENTE=a.envio_ratioDrive(CLIENTE,TransRatio,RotRatio,LatRatio) #fijar l
+      os valores para mover
+281         CLIENTE=a.envio_consulta_fisica(CLIENTE,"updateNumbers")
+282         valor=a.devuelve_valorf()
+283         print valor
+284         CLIENTE.requestOnce("pose")
+285         ArUtil.sleep(1000)
+286         a.cliente_apaga(CLIENTE)
+        return 0
+\end{DoxyCode}

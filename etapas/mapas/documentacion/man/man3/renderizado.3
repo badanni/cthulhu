@@ -1,0 +1,91 @@
+.TH "renderizado" 3 "Martes, 7 de Agosto de 2012" "Version 0.1" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+renderizado \- 
+.PP
+programa que utiliza la libreria openCV para la generacion del lienzo  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Clases"
+
+.in +1c
+.ti -1c
+.RI "class \fBrenderizado\fP"
+.br
+.RI "\fIes la clase encargada de la generacion del mapa atravez de comandos. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBa\fP = \fBrenderizado\fP((600,400),'imagen.jpg',(13,13))"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+programa que utiliza la libreria openCV para la generacion del lienzo 
+
+Programa para realizar el mapa con la informacion del sonar y odometria en la plataforma movil. 
+.PP
+\fBAutores:\fP
+.RS 4
+Danny Vasconez 
+.PP
+Daniel Granda 
+.RE
+.PP
+\fBVersión:\fP
+.RS 4
+0.0.1 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2012 
+.RE
+.PP
+\fBPrecondición:\fP
+.RS 4
+Ningun requisito 
+.RE
+.PP
+\fBBug\fP
+.RS 4
+Si la posicion del robot se sale del lienzo proboca un error en la matriz de la imagen. 
+.RE
+.PP
+\fBAtención:\fP
+.RS 4
+uso inapropiado puede hacer que la aplicacion falle
+.RE
+.PP
+.SH "Ejemplo de uso"
+.PP
+En el ejemplo se muestra como se debe utilizar este paquete 
+.PP
+.nf
+a=renderizado((600,400),"imagen.jpg",(13,13))
+a.cargar()
+a.anadir_punto((5,51),radio=13)
+a.graficar(500)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(200,100,0)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(20,300,-40)
+
+
+
+.fi
+.PP
+ 
+.SH "Documentación de las variables"
+.PP 
+.SS "tuple \fBrenderizado.a\fP = \fBrenderizado\fP((600,400),'imagen.jpg',(13,13))"
+.PP
+Definición en la línea 154 del archivo renderizado.py.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

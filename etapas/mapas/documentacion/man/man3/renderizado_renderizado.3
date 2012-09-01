@@ -1,0 +1,278 @@
+.TH "renderizado::renderizado" 3 "Martes, 7 de Agosto de 2012" "Version 0.1" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+renderizado::renderizado \- 
+.PP
+es la clase encargada de la generacion del mapa atravez de comandos.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Métodos públicos"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIInicio de variable de uso de la libreria. \fP"
+.ti -1c
+.RI "def \fBcargar\fP"
+.br
+.RI "\fIgenera el los lienzos del mapa y del robot \fP"
+.ti -1c
+.RI "def \fBanadir_punto\fP"
+.br
+.RI "\fIcrear un punto en el lienzo del mapa \fP"
+.ti -1c
+.RI "def \fBgraficar\fP"
+.br
+.RI "\fIComando solo utilizado para la prueba del paquete para visualizar los lienzos. \fP"
+.ti -1c
+.RI "def \fBcrear_imagen\fP"
+.br
+.RI "\fICrea la imagen para cargarla en el programa con el lienzo ya finalizado. \fP"
+.ti -1c
+.RI "def \fBrotacion_y_posicion_robot\fP"
+.br
+.RI "\fIgraficar el robot en el lienzo de mapa \fP"
+.in -1c
+.SS "Atributos públicos"
+
+.in +1c
+.ti -1c
+.RI "\fBnombre_archivo\fP"
+.br
+.ti -1c
+.RI "\fBnombre_archivo1\fP"
+.br
+.ti -1c
+.RI "\fBdimeniones\fP"
+.br
+.ti -1c
+.RI "\fBdimensiones_robot\fP"
+.br
+.ti -1c
+.RI "\fBimage\fP"
+.br
+.ti -1c
+.RI "\fBrobot\fP"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+es la clase encargada de la generacion del mapa atravez de comandos. 
+.PP
+Definición en la línea 51 del archivo renderizado.py.
+.SH "Documentación del constructor y destructor"
+.PP 
+.SS "def renderizado.renderizado.__init__ (self, dimensiones, nombre_archivo, dimensiones_robot)"
+.PP
+Inicio de variable de uso de la libreria. \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.br
+\fIdimensiones\fP Es una tupla con las dimensiones de la imagen a generar 
+.br
+\fInombre_archivo\fP Es un string con el nombre de la imagen a crear como por ejemplo imagen.jpg 
+.br
+\fIdimensiones_robot\fP Las dimensiones en pixeles de la imagen robot 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 61 del archivo renderizado.py.
+.PP
+.nf
+62                                                                        :
+63                 self.nombre_archivo=nombre_archivo
+64                 self.nombre_archivo1=nombre_archivo.replace('.jpg','.acdc')+'.jpg'
+65                 self.dimeniones=dimensiones
+66                 self.dimensiones_robot=dimensiones_robot
+67                 self.image=cv.CreateImage(dimensiones,8,3)
+68                 cv.Not(self.image,self.image)
+                cv.SaveImage(self.nombre_archivo1,self.image)
+.fi
+.SH "Documentación de las funciones miembro"
+.PP 
+.SS "def renderizado.renderizado.anadir_punto (self, punto, color = \fC0\fP, radio = \fC1\fP)"
+.PP
+crear un punto en el lienzo del mapa \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.br
+\fIpunto\fP la coordenada donde se va a graficar el circulo 
+.br
+\fIcolor\fP para cambiar el color del circulo, si no se incluye se grafica en negro 
+.br
+\fIradio\fP para definir el radio del circulo, si no se incluye es tomado como 1 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 87 del archivo renderizado.py.
+.PP
+.nf
+88                                                     :
+89                 #font = cv.InitFont(cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 3, 8) #Creates a font
+90                 #x = 30
+91                 #y = 40
+92                 #cv.PutText(self.image,'Hello World!!!', (x,y),font, 255) #Draw the text
+93                 #cv.Line(image,(a*50,60),9(90,90),cv.RGB(17*a, 110-a, 255))
+94                 cv.Circle(self.image,punto,radio,cv.RGB(255*color, 255*color, 255*color),-1) # ultimo parametro para grosor de la linea negativo lleno
+                #self.image1=self.image
+.fi
+.SS "def renderizado.renderizado.cargar (self)"
+.PP
+genera el los lienzos del mapa y del robot \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 75 del archivo renderizado.py.
+.PP
+.nf
+76                         :
+77                 self.image=cv.LoadImage(self.nombre_archivo1, cv.CV_LOAD_IMAGE_COLOR) #Load the image
+                self.robot=cv.LoadImage('robot.jpg', cv.CV_LOAD_IMAGE_COLOR) #Load the image
+.fi
+.SS "def renderizado.renderizado.crear_imagen (self)"
+.PP
+Crea la imagen para cargarla en el programa con el lienzo ya finalizado. \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 116 del archivo renderizado.py.
+.PP
+.nf
+117                               :
+118                 cv.SaveImage(self.nombre_archivo1, self.image) #Saves the image#
+                
+.fi
+.SS "def renderizado.renderizado.graficar (self, tiempo_ms, imagen = \fC0\fP)"
+.PP
+Comando solo utilizado para la prueba del paquete para visualizar los lienzos. \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.br
+\fItiempo_ms\fP tiempo en milisegundos que se va a mostrar la imagen 
+.br
+\fIimagen\fP es el lienzo que va a ser graficado si no se lo incluye es tomado como cero. 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 103 del archivo renderizado.py.
+.PP
+.nf
+104                                              :
+105                 if imagen==0:
+106                         cv.ShowImage('Mapa Robot',self.image) #Show the image
+107                         cv.WaitKey(tiempo_ms)
+108                 else:
+109                         cv.ShowImage('Mapa Robot',imagen) #Show the image
+                        cv.WaitKey(tiempo_ms)
+.fi
+.SS "def renderizado.renderizado.rotacion_y_posicion_robot (self, robo_x = \fC200\fP, robo_y = \fC100\fP, robo_th = \fC80\fP)"
+.PP
+graficar el robot en el lienzo de mapa \fBParámetros:\fP
+.RS 4
+\fIself\fP no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase 
+.br
+\fIrobo_x\fP coordenada x de la odometria del robot 
+.br
+\fIrobo_y\fP coordenada y de la odometria del robot 
+.br
+\fIrobo_th\fP Valor Th del robot 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 128 del archivo renderizado.py.
+.PP
+.nf
+129                                                                             :
+130                 image_mapa=cv.LoadImage(self.nombre_archivo1, cv.CV_LOAD_IMAGE_COLOR)
+131                 dimensiones_robot=self.dimensiones_robot
+132                 image1=cv.CreateImage(dimensiones_robot,8,3)
+133                 image_mascara=cv.CreateImage(dimensiones_robot,8,1)
+134                 
+135                 ##rotacion
+136                 #Rotar el robot
+137                 src_center=dimensiones_robot[0]/2,dimensiones_robot[1]/2
+138                 rot_mat=cv.CreateMat( 2, 3, cv.CV_32FC1 )
+139                 cv.GetRotationMatrix2D(src_center, robo_th, 1.0,rot_mat);
+140                 cv.WarpAffine(self.robot,image1,rot_mat)
+141                 #crear filtro para negro
+142                 cv.InRangeS(image1,cv.RGB(0,0,0),cv.RGB(14,14,14),image_mascara)
+143                 cv.Not(image_mascara,image_mascara)
+144                 #cv.ReleaseImage(image1)
+145                 
+146                 #reducir y posicion
+147                 cv.SetImageROI(image_mapa,(robo_x,robo_y, dimensiones_robot[0], dimensiones_robot[1]));
+148                 cv.Copy(image1,image_mapa,mask=image_mascara)
+149                 cv.ResetImageROI(image_mapa);
+150                 cv.SaveImage(self.nombre_archivo, image_mapa) #Saves the image#
+151                 #self.graficar(2000,image_mapa)
+152                 
+
+.fi
+.SH "Documentación de los datos miembro"
+.PP 
+.SS "\fBrenderizado.renderizado.dimeniones\fP"
+.PP
+Definición en la línea 61 del archivo renderizado.py.
+.SS "\fBrenderizado.renderizado.dimensiones_robot\fP"
+.PP
+Definición en la línea 61 del archivo renderizado.py.
+.SS "\fBrenderizado.renderizado.image\fP"
+.PP
+Definición en la línea 61 del archivo renderizado.py.
+.SS "\fBrenderizado.renderizado.nombre_archivo\fP"
+.PP
+Definición en la línea 61 del archivo renderizado.py.
+.SS "\fBrenderizado.renderizado.nombre_archivo1\fP"
+.PP
+Definición en la línea 61 del archivo renderizado.py.
+.SS "\fBrenderizado.renderizado.robot\fP"
+.PP
+Definición en la línea 75 del archivo renderizado.py.
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

@@ -1,0 +1,366 @@
+\hypertarget{classinicio_1_1prueba__adqui}{
+\section{Referencia de la Clase inicio.prueba\_\-adqui}
+\label{classinicio_1_1prueba__adqui}\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}}
+}
+
+
+es la clase encargada del entorno grafico y enlace con \hyperlink{namespacecliente__lib}{cliente\_\-lib}  
+
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classinicio_1_1prueba__adqui_adab3c8bf1d5be6b8523065ccd474765a}{\_\-\_\-init\_\-\_\-}
+\begin{DoxyCompactList}\small\item\em para cargar el XML de gtk+ y sus senales \item\end{DoxyCompactList}\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a8c6a3aea6c366d774c06bb10590997db}{on\_\-menuitem\_\-quit\_\-activate}
+\begin{DoxyCompactList}\small\item\em senal de menu \char`\"{}Salir\char`\"{} y cierra la conexion al salir \item\end{DoxyCompactList}\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a7eab73096bb40a159687460826d5bfa7}{on\_\-adqui\_\-datos\_\-destroy}
+\begin{DoxyCompactList}\small\item\em cierra la conexion al cerrar la ventana \item\end{DoxyCompactList}\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a29aff32a047ab1f8771d47f90fc8efb7}{on\_\-about\_\-response}
+\begin{DoxyCompactList}\small\item\em cierra la ventana about \item\end{DoxyCompactList}\item 
+def \hyperlink{classinicio_1_1prueba__adqui_ac5b1c3821f39cc144ef5b4f0236817a8}{on\_\-menuitem\_\-abuot\_\-activate}
+\begin{DoxyCompactList}\small\item\em senal de menu about \item\end{DoxyCompactList}\item 
+def \hyperlink{classinicio_1_1prueba__adqui_a3a6f8fec14c16dbb62dd3cbad2843669}{on\_\-button1\_\-clicked}
+\begin{DoxyCompactList}\small\item\em senal de boton para leer datos de la plataforma movil \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a51eaad41d48c56482b7e7dc2af0f352f}{about}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a32103b146bd571e752923638e680db8b}{teleoper}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_ac00108c4677fe544c8a187c120369d27}{texto\_\-datos}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a960901fb7d1086379f6c3de6076b7fab}{texto\_\-datos\_\-sonar}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a44a9d5479ccbb7494838db31c4e07233}{boton\_\-foto}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a5a6710e93f733c84b360e42513fdd4a9}{a}
+\item 
+\hyperlink{classinicio_1_1prueba__adqui_a3519a8ae5deb71530289fc1274500b7e}{cliente}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+es la clase encargada del entorno grafico y enlace con \hyperlink{namespacecliente__lib}{cliente\_\-lib} 
+
+Definición en la línea 47 del archivo inicio.py.
+
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classinicio_1_1prueba__adqui_adab3c8bf1d5be6b8523065ccd474765a}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{ self}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_adab3c8bf1d5be6b8523065ccd474765a}
+
+
+para cargar el XML de gtk+ y sus senales 
+
+
+\begin{DoxyParams}{Parámetros}
+\item[{\em self}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 54 del archivo inicio.py.
+
+
+
+
+\begin{DoxyCode}
+55                           :
+56                 builder = gtk.Builder() #El archivo de glade debe estar en gtkbui
+      lder
+57                 builder.add_from_file("glade/GUI.glade") #Carga el archivo glade
+58                 builder.connect_signals(self) #Toma todas las senales de glade
+59                 self.about = builder.get_object("about") #Ventana about
+60                 self.teleoper = builder.get_object("adqui_datos") #Ventana princi
+      pal
+61                 self.texto_datos = builder.get_object("datos") #boton arriba
+62                 self.texto_datos_sonar = builder.get_object("datos_sonar") #boton
+       arriba
+63                 self.boton_foto = builder.get_object("imagen0") #imagen para el d
+      ibujo de la plataforma movil
+64                 self.teleoper.show()
+65                 datos_fisicos=(-11.90,500,4000,-34,15,5,3,14)
+66                 mensaje="Voltaje bateria: %f [V] \nX: %d [mm]\nY: %d [mm]\nTh: %d
+       [grad]\nvelocidad: %d [mm/s]\nVelocidad de giro: %d [rad/s]\nVelocidad lateral: 
+      %d [mm/s]\ntemp: %d \n " % (datos_fisicos)
+67                 #[voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperat
+      ure]
+68                 self.texto_datos.set_text(mensaje)
+69                 #Arranca el cliente
+70                 self.a=cliente_lib()
+71                 #self.a.ip="192.168.1.10"
+                self.cliente=self.a.cliente_inicio() 
+\end{DoxyCode}
+
+
+\hypertarget{classinicio_1_1prueba__adqui_a29aff32a047ab1f8771d47f90fc8efb7}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!on\_\-about\_\-response@{on\_\-about\_\-response}}
+\index{on\_\-about\_\-response@{on\_\-about\_\-response}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{on\_\-about\_\-response}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.on\_\-about\_\-response (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ widget, }
+\item[{}]{ data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a29aff32a047ab1f8771d47f90fc8efb7}
+
+
+cierra la ventana about 
+
+
+\begin{DoxyParams}{Parámetros}
+\item[{\em self}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \item[{\em widget}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz \item[{\em data=None}]este no es necesario incluirlo ya que viene predefinido con valor None \end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 102 del archivo inicio.py.
+
+
+
+
+\begin{DoxyCode}
+103                                                       :
+                self.about.hide()
+\end{DoxyCode}
+
+
+\hypertarget{classinicio_1_1prueba__adqui_a7eab73096bb40a159687460826d5bfa7}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!on\_\-adqui\_\-datos\_\-destroy@{on\_\-adqui\_\-datos\_\-destroy}}
+\index{on\_\-adqui\_\-datos\_\-destroy@{on\_\-adqui\_\-datos\_\-destroy}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{on\_\-adqui\_\-datos\_\-destroy}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.on\_\-adqui\_\-datos\_\-destroy (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ widget, }
+\item[{}]{ data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a7eab73096bb40a159687460826d5bfa7}
+
+
+cierra la conexion al cerrar la ventana 
+
+
+\begin{DoxyParams}{Parámetros}
+\item[{\em self}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \item[{\em widget}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz param data=None este no es necesario incluirlo ya que viene predefinido con valor None \end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 91 del archivo inicio.py.
+
+
+
+
+\begin{DoxyCode}
+92                                                            :
+93                 print self.a.cliente_apaga(self.cliente)
+                gtk.main_quit()
+\end{DoxyCode}
+
+
+\hypertarget{classinicio_1_1prueba__adqui_a3a6f8fec14c16dbb62dd3cbad2843669}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!on\_\-button1\_\-clicked@{on\_\-button1\_\-clicked}}
+\index{on\_\-button1\_\-clicked@{on\_\-button1\_\-clicked}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{on\_\-button1\_\-clicked}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.on\_\-button1\_\-clicked (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ widget, }
+\item[{}]{ data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a3a6f8fec14c16dbb62dd3cbad2843669}
+
+
+senal de boton para leer datos de la plataforma movil 
+
+
+\begin{DoxyParams}{Parámetros}
+\item[{\em self}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \item[{\em widget}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz param data=None este no es necesario incluirlo ya que viene predefinido con valor None \end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 122 del archivo inicio.py.
+
+
+
+
+\begin{DoxyCode}
+123                                                        :
+124                 self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNum
+      bers")
+125                 valor=self.a.devuelve_valorf()
+126                 #toca corregir el dato de temp en cliente_lib '\x81' a '0x81'
+127                 mensaje="Voltaje bateria: %f [V] \nX: %d [mm]\nY: %d [mm]\nTh: %d
+       [grad]\nvelocidad: %d [mm/s]\nVelocidad de giro: %d [rad/s]\nVelocidad lateral: 
+      %d [mm/s]\ntemp: %d \n" % (valor)
+128                 #[voltaje_bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperat
+      ure]
+129                 self.texto_datos.set_text(mensaje)
+130                 self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
+131                 valor=self.a.devuelve_valors()
+132                 mensaje=''
+133                 for a in range(int(valor[0])): #el primer valor indica cuantos el
+      ementos se tiene de sensores
+134                         mensaje+="sonar "+str(a)+" "+valor[1][a]+"\n"
+135                 self.texto_datos_sonar.set_text(mensaje)
+        
+\end{DoxyCode}
+
+
+\hypertarget{classinicio_1_1prueba__adqui_ac5b1c3821f39cc144ef5b4f0236817a8}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!on\_\-menuitem\_\-abuot\_\-activate@{on\_\-menuitem\_\-abuot\_\-activate}}
+\index{on\_\-menuitem\_\-abuot\_\-activate@{on\_\-menuitem\_\-abuot\_\-activate}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{on\_\-menuitem\_\-abuot\_\-activate}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.on\_\-menuitem\_\-abuot\_\-activate (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ widget, }
+\item[{}]{ data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_ac5b1c3821f39cc144ef5b4f0236817a8}
+
+
+senal de menu about 
+
+
+\begin{DoxyParams}{Parámetros}
+\item[{\em self}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \item[{\em widget}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz param data=None este no es necesario incluirlo ya que viene predefinido con valor None \end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 112 del archivo inicio.py.
+
+
+
+
+\begin{DoxyCode}
+113                                                                :
+                self.about.show() #Muestra la ventana about
+\end{DoxyCode}
+
+
+\hypertarget{classinicio_1_1prueba__adqui_a8c6a3aea6c366d774c06bb10590997db}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!on\_\-menuitem\_\-quit\_\-activate@{on\_\-menuitem\_\-quit\_\-activate}}
+\index{on\_\-menuitem\_\-quit\_\-activate@{on\_\-menuitem\_\-quit\_\-activate}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{on\_\-menuitem\_\-quit\_\-activate}]{\setlength{\rightskip}{0pt plus 5cm}def inicio.prueba\_\-adqui.on\_\-menuitem\_\-quit\_\-activate (
+\begin{DoxyParamCaption}
+\item[{}]{ self, }
+\item[{}]{ widget, }
+\item[{}]{ data = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}
+\label{classinicio_1_1prueba__adqui_a8c6a3aea6c366d774c06bb10590997db}
+
+
+senal de menu \char`\"{}Salir\char`\"{} y cierra la conexion al salir 
+
+
+\begin{DoxyParams}{Parámetros}
+\item[{\em self}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase \item[{\em widget}]no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la senal de la interfaz param data=None este no es necesario incluirlo ya que viene predefinido con valor None \end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+self 
+\end{DoxyReturn}
+
+
+Definición en la línea 80 del archivo inicio.py.
+
+
+
+
+\begin{DoxyCode}
+81                                                               :
+82                 print self.a.cliente_apaga(self.cliente)
+                gtk.main_quit()
+\end{DoxyCode}
+
+
+
+
+\subsection{Documentación de los datos miembro}
+\hypertarget{classinicio_1_1prueba__adqui_a5a6710e93f733c84b360e42513fdd4a9}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!a@{a}}
+\index{a@{a}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.a}}}
+\label{classinicio_1_1prueba__adqui_a5a6710e93f733c84b360e42513fdd4a9}
+
+
+Definición en la línea 69 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a51eaad41d48c56482b7e7dc2af0f352f}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!about@{about}}
+\index{about@{about}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{about}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.about}}}
+\label{classinicio_1_1prueba__adqui_a51eaad41d48c56482b7e7dc2af0f352f}
+
+
+Definición en la línea 58 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a44a9d5479ccbb7494838db31c4e07233}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!boton\_\-foto@{boton\_\-foto}}
+\index{boton\_\-foto@{boton\_\-foto}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{boton\_\-foto}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.boton\_\-foto}}}
+\label{classinicio_1_1prueba__adqui_a44a9d5479ccbb7494838db31c4e07233}
+
+
+Definición en la línea 62 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a3519a8ae5deb71530289fc1274500b7e}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!cliente@{cliente}}
+\index{cliente@{cliente}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{cliente}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.cliente}}}
+\label{classinicio_1_1prueba__adqui_a3519a8ae5deb71530289fc1274500b7e}
+
+
+Definición en la línea 71 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a32103b146bd571e752923638e680db8b}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!teleoper@{teleoper}}
+\index{teleoper@{teleoper}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{teleoper}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.teleoper}}}
+\label{classinicio_1_1prueba__adqui_a32103b146bd571e752923638e680db8b}
+
+
+Definición en la línea 59 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_ac00108c4677fe544c8a187c120369d27}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!texto\_\-datos@{texto\_\-datos}}
+\index{texto\_\-datos@{texto\_\-datos}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{texto\_\-datos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.texto\_\-datos}}}
+\label{classinicio_1_1prueba__adqui_ac00108c4677fe544c8a187c120369d27}
+
+
+Definición en la línea 60 del archivo inicio.py.
+
+\hypertarget{classinicio_1_1prueba__adqui_a960901fb7d1086379f6c3de6076b7fab}{
+\index{inicio::prueba\_\-adqui@{inicio::prueba\_\-adqui}!texto\_\-datos\_\-sonar@{texto\_\-datos\_\-sonar}}
+\index{texto\_\-datos\_\-sonar@{texto\_\-datos\_\-sonar}!inicio::prueba_adqui@{inicio::prueba\_\-adqui}}
+\subsubsection[{texto\_\-datos\_\-sonar}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inicio.prueba\_\-adqui.texto\_\-datos\_\-sonar}}}
+\label{classinicio_1_1prueba__adqui_a960901fb7d1086379f6c3de6076b7fab}
+
+
+Definición en la línea 61 del archivo inicio.py.
+
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{inicio_8py}{inicio.py}\end{DoxyCompactItemize}

@@ -1,0 +1,96 @@
+.TH "servidor_novo.py" 3 "Martes, 7 de Agosto de 2012" "Version 0.3" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+servidor_novo.py \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Paquetes"
+
+.in +1c
+.ti -1c
+.RI "package \fBservidor_novo\fP"
+.br
+.PP
+
+.RI "\fIServidor para el Pioneer P3-DX. \fP"
+.in -1c
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "def \fBservidor_novo.requestCallback\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'test' en el paquete. \fP"
+.ti -1c
+.RI "def \fBservidor_novo.movimiento\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'mover' en el paquete. \fP"
+.ti -1c
+.RI "def \fBservidor_novo.rotar\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'rotar' en el paquete. \fP"
+.ti -1c
+.RI "def \fBservidor_novo.posicion\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'pose' en el paquete. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBservidor_novo.robot\fP = ArRobot()"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.gyro\fP = ArAnalogGyro(robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.sonarDev\fP = ArSonarDevice(7)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.server\fP = ArServerBase()"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.packet\fP = ArNetPacket()"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.con\fP = ArSimpleConnector(sys.argv)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.serverInfoRobot\fP = ArServerInfoRobot(server, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.serverInfoSensor\fP = ArServerInfoSensor(server, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.drawings\fP = ArServerInfoDrawings(server)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.modeStop\fP = ArServerModeStop(server, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.modeRatioDrive\fP = ArServerModeRatioDrive(server, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.modeWander\fP = ArServerModeWander(server, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.commands\fP = ArServerHandlerCommands(server)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.uCCommands\fP = ArServerSimpleComUC(commands, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.loggingCommands\fP = ArServerSimpleComMovementLogging(commands, robot)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.gyroCommands\fP = ArServerSimpleComGyro(commands, robot, gyro)"
+.br
+.ti -1c
+.RI "tuple \fBservidor_novo.configCommands\fP = ArServerSimpleComLogRobotConfig(commands, robot)"
+.br
+.in -1c
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

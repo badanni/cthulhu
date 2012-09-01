@@ -1,0 +1,83 @@
+\documentclass[a4paper]{book}
+\usepackage{a4wide}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{times}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large Teleoperacion }\\
+\vspace*{1cm}
+{\large Generado por Doxygen 1.7.1}\\
+\vspace*{0.5cm}
+{\small Lunes, 26 de Marzo de 2012 01:58:34}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+\chapter{Teleoperacion para Pioneer P3-\/DX}
+\label{index}\hypertarget{index}{}\input{index}
+\chapter{Lista de tareas pendientes}
+\label{todo}
+\hypertarget{todo}{}
+\input{todo}
+\chapter{Lista de bugs}
+\label{bug}
+\hypertarget{bug}{}
+\input{bug}
+\chapter{Indice de namespaces}
+\input{namespaces}
+\chapter{Índice de clases}
+\input{annotated}
+\chapter{Indice de archivos}
+\input{files}
+\chapter{Documentación de namespaces}
+\input{namespacecliente__lib}
+\input{namespaceinicio}
+\input{namespaceservidor}
+\chapter{Documentación de las clases}
+\input{classcliente__lib_1_1cliente__lib}
+\input{classinicio_1_1prueba__teleoperacion}
+\chapter{Documentación de archivos}
+\input{cliente__lib_8py}
+\input{inicio_8py}
+\input{mainpage_8dox}
+\input{servidor_8py}
+\printindex
+\end{document}

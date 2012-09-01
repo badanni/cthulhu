@@ -1,0 +1,300 @@
+.TH "servidor_novo" 3 "Martes, 7 de Agosto de 2012" "Version 0.3" "Generacion de Mapas" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+servidor_novo \- 
+.PP
+Servidor para el Pioneer P3-DX.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "def \fBrequestCallback\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'test' en el paquete. \fP"
+.ti -1c
+.RI "def \fBmovimiento\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'mover' en el paquete. \fP"
+.ti -1c
+.RI "def \fBrotar\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'rotar' en el paquete. \fP"
+.ti -1c
+.RI "def \fBposicion\fP"
+.br
+.RI "\fISirve cuando se manda el comando 'pose' en el paquete. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "tuple \fBrobot\fP = ArRobot()"
+.br
+.ti -1c
+.RI "tuple \fBgyro\fP = ArAnalogGyro(\fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBsonarDev\fP = ArSonarDevice(7)"
+.br
+.ti -1c
+.RI "tuple \fBserver\fP = ArServerBase()"
+.br
+.ti -1c
+.RI "tuple \fBpacket\fP = ArNetPacket()"
+.br
+.ti -1c
+.RI "tuple \fBcon\fP = ArSimpleConnector(sys.argv)"
+.br
+.ti -1c
+.RI "tuple \fBserverInfoRobot\fP = ArServerInfoRobot(\fBserver\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBserverInfoSensor\fP = ArServerInfoSensor(\fBserver\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBdrawings\fP = ArServerInfoDrawings(\fBserver\fP)"
+.br
+.ti -1c
+.RI "tuple \fBmodeStop\fP = ArServerModeStop(\fBserver\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBmodeRatioDrive\fP = ArServerModeRatioDrive(\fBserver\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBmodeWander\fP = ArServerModeWander(\fBserver\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBcommands\fP = ArServerHandlerCommands(\fBserver\fP)"
+.br
+.ti -1c
+.RI "tuple \fBuCCommands\fP = ArServerSimpleComUC(\fBcommands\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBloggingCommands\fP = ArServerSimpleComMovementLogging(\fBcommands\fP, \fBrobot\fP)"
+.br
+.ti -1c
+.RI "tuple \fBgyroCommands\fP = ArServerSimpleComGyro(\fBcommands\fP, \fBrobot\fP, \fBgyro\fP)"
+.br
+.ti -1c
+.RI "tuple \fBconfigCommands\fP = ArServerSimpleComLogRobotConfig(\fBcommands\fP, \fBrobot\fP)"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Servidor para el Pioneer P3-DX. 
+
+Se lo puede utilizar con multiples conexiones de clientes trabaja en el puerto 7272 La lista de comandos para el paquete ArNetPacket se encuentra en el anexo 1 
+.PP
+\fBAutores:\fP
+.RS 4
+Danny Vasconez 
+.PP
+Daniel Granda 
+.RE
+.PP
+\fBVersión:\fP
+.RS 4
+0.0.2 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2012 
+.RE
+.PP
+\fBPrecondición:\fP
+.RS 4
+Tener conectada la plataforma Pioneer P3-DX. 
+.RE
+.PP
+\fBBug\fP
+.RS 4
+Nada 
+.RE
+.PP
+\fBAtención:\fP
+.RS 4
+uso inapropiado puede hacer que la aplicacion falle 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "def servidor_novo.movimiento (client, packet)"
+.PP
+Sirve cuando se manda el comando 'mover' en el paquete. \fBParámetros:\fP
+.RS 4
+\fIclient\fP El cliente que manda el paquete 
+.br
+\fIpacket\fP el paquete que recibe el servidor para el comando 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 62 del archivo servidor_novo.py.
+.PP
+.nf
+63                              :
+64   robot.lock()
+65   robot.comInt(8,5000) #move(5000) para atras move(-4999)
+  robot.unlock()
+.fi
+.SS "def servidor_novo.posicion (client, packet)"
+.PP
+Sirve cuando se manda el comando 'pose' en el paquete. \fBParámetros:\fP
+.RS 4
+\fIclient\fP El cliente que manda el paquete 
+.br
+\fIpacket\fP el paquete que recibe el servidor para el comando 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+ArNetPacket con la informacion en coordenadas X,Y,T al cliente 
+.RE
+.PP
+
+.PP
+Definición en la línea 84 del archivo servidor_novo.py.
+.PP
+.nf
+85                            :
+86   robot.lock()
+87   poses = sonarDev.getCurrentBufferAsVector()
+88   packet=ArNetPacket()
+89   packet.doubleToBuf(len(poses))
+90   for p in poses:
+91     print p
+92     valor=str(p).strip('(').strip(')').strip('X:')
+93     valor=valor.split(',')
+94     valor_x=valor[0]
+95     valor_y=valor[1].strip().strip('Y:')
+96     packet.byte4ToBuf(int(float(valor_x)))
+97     packet.byte4ToBuf(int(float(valor_y)))
+98   packet.finalizePacket()
+99   print packet.verifyCheckSum()
+100   client.sendPacketTcp(packet)
+101   robot.unlock()
+102 
+103 # This example demonstrates how to use ArNetworking in Python. 
+104 
+105 # Global library initialization, just like the C++ API:
+106 Aria.init()
+107 
+# Create a robot object:
+.fi
+.SS "def servidor_novo.requestCallback (client, packet)"
+.PP
+Sirve cuando se manda el comando 'test' en el paquete. \fBParámetros:\fP
+.RS 4
+\fIclient\fP El cliente que manda el paquete 
+.br
+\fIpacket\fP el paquete que recibe el servidor para el comando 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 50 del archivo servidor_novo.py.
+.PP
+.nf
+51                                    :
+52   replyPacket = ArNetPacket()
+53   replyPacket.strToBuf(str(robot.getPose().x));
+54   print 'requestCallback received a packet with command #%d. Sending a reply...\n' % (packet.getCommand())
+  client.sendPacketTcp(replyPacket)
+.fi
+.SS "def servidor_novo.rotar (client, packet)"
+.PP
+Sirve cuando se manda el comando 'rotar' en el paquete. \fBParámetros:\fP
+.RS 4
+\fIclient\fP El cliente que manda el paquete 
+.br
+\fIpacket\fP el paquete que recibe el servidor para el comando 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Nada 
+.RE
+.PP
+
+.PP
+Definición en la línea 73 del archivo servidor_novo.py.
+.PP
+.nf
+74                         :
+75   robot.lock()
+76   robot.comInt(12,50) 
+  robot.unlock()
+.fi
+.SH "Documentación de las variables"
+.PP 
+.SS "tuple \fBservidor_novo.commands\fP = ArServerHandlerCommands(\fBserver\fP)"
+.PP
+Definición en la línea 162 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.con\fP = ArSimpleConnector(sys.argv)"
+.PP
+Definición en la línea 134 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.configCommands\fP = ArServerSimpleComLogRobotConfig(\fBcommands\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 170 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.drawings\fP = ArServerInfoDrawings(\fBserver\fP)"
+.PP
+Definición en la línea 151 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.gyro\fP = ArAnalogGyro(\fBrobot\fP)"
+.PP
+Definición en la línea 111 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.gyroCommands\fP = ArServerSimpleComGyro(\fBcommands\fP, \fBrobot\fP, \fBgyro\fP)"
+.PP
+Definición en la línea 168 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.loggingCommands\fP = ArServerSimpleComMovementLogging(\fBcommands\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 166 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.modeRatioDrive\fP = ArServerModeRatioDrive(\fBserver\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 156 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.modeStop\fP = ArServerModeStop(\fBserver\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 155 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.modeWander\fP = ArServerModeWander(\fBserver\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 157 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.packet\fP = ArNetPacket()"
+.PP
+Definición en la línea 121 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.robot\fP = ArRobot()"
+.PP
+Definición en la línea 108 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.server\fP = ArServerBase()"
+.PP
+Definición en la línea 119 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.serverInfoRobot\fP = ArServerInfoRobot(\fBserver\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 149 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.serverInfoSensor\fP = ArServerInfoSensor(\fBserver\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 150 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.sonarDev\fP = ArSonarDevice(7)"
+.PP
+Definición en la línea 114 del archivo servidor_novo.py.
+.SS "tuple \fBservidor_novo.uCCommands\fP = ArServerSimpleComUC(\fBcommands\fP, \fBrobot\fP)"
+.PP
+Definición en la línea 164 del archivo servidor_novo.py.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Generacion de Mapas del código fuente.

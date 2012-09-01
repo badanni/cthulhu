@@ -1,0 +1,705 @@
+\hypertarget{classcliente__lib_1_1cliente__lib}{
+\section{Referencia de la Clase cliente\_\-lib.cliente\_\-lib}
+\label{classcliente__lib_1_1cliente__lib}\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}}
+}
+
+
+es la clase encargada del cliente  
+
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_ac5e4490f412835d35481f58d1ae503f9}{\_\-\_\-init\_\-\_\-}
+\begin{DoxyCompactList}\small\item\em Carga valores a las variables necesarias para funcionar el cliente. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_af7b751bcf94c96150b23bacb5e477956}{valores}
+\begin{DoxyCompactList}\small\item\em Sirve cuando se manda el comando \char`\"{}updateNumbers\char`\"{} en el paquete. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_ac0a4410b48b4c759028bec6ae1c641e8}{lista\_\-sonares}
+\begin{DoxyCompactList}\small\item\em Sirve para leer el paquete arNetPacket con la lista del sonar. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_abcf28c2207cb5519090654484137db23}{valores\_\-sonares}
+\begin{DoxyCompactList}\small\item\em Sirve para leer el paquete arNetPacket con los valores del sonar. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_acfc22af72a1668db28d18ab4ff40909e}{envio\_\-ratioDrive}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar la teleoperacion, mandando los parametros. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_a3c43af1448ad0fa10cfa6f398b7029db}{envio\_\-griper}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar la teleoperacion, mandando los parametros. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_ade1f44e9270c8835c284832a72b96b6c}{uC\_\-comandos\_\-movi}
+\begin{DoxyCompactList}\small\item\em Sirve para mandar ordenes de movimiento directamente al controlador de la plataforma movil. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_ac3e89d3066207b05b217a50f549c239a}{envio\_\-consulta\_\-fisica}
+\begin{DoxyCompactList}\small\item\em Sirve para mandar ordenes al servidor utilizando paquetes ArNetPacket con comandos {\bfseries pose} y {\bfseries updateNumbers} \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_a1a7b5475a98772f0e48a4e1fd76e8d47}{cliente\_\-inicio}
+\begin{DoxyCompactList}\small\item\em Sirve para iniciar la conexion con el servidor. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_a14a49495fd71fab84d36060e604415a5}{cliente\_\-apaga}
+\begin{DoxyCompactList}\small\item\em Sirve para realizar la desconexion con el servidor. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_a3ca67c0c9d7f0a622abd740c780f64d1}{devuelve\_\-valorf}
+\begin{DoxyCompactList}\small\item\em Devuelve el variable valor\_\-fisico, con usa espera de 100ms. \end{DoxyCompactList}\item 
+def \hyperlink{classcliente__lib_1_1cliente__lib_a127d026872fbd11f4f5bbe4a73424b77}{devuelve\_\-valors}
+\begin{DoxyCompactList}\small\item\em Devuelve el variable valor\_\-sonares, con usa espera de 100ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_abba3409f89ee8dcec8b180c90aa5d77c}{valor\_\-fisico}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_aadea6e24bd3a01b0500fcc67543a97e9}{valor\_\-sonares}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_a675dd8430aa2eeb33240b8b07ed61543}{ip}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_a7bbce98e978c840ab3ef04e2e3715b56}{x}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_aa6b4463261d78e82876d5f01ab3800bb}{y}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_adf30f5e41e7c96565a7588e808d7543a}{t}
+\item 
+\hyperlink{classcliente__lib_1_1cliente__lib_a5b15a0be5d30abf1f71d776ccead9d9d}{acu}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+es la clase encargada del cliente 
+
+se lo utiliza de esta manera par poder trabajar con la informacion tanto leyendo las variables o utilizando los comandos 
+
+Definición en la línea 50 del archivo cliente\_\-lib.py.
+
+
+
+\subsection{Documentación del constructor y destructor}
+\hypertarget{classcliente__lib_1_1cliente__lib_ac5e4490f412835d35481f58d1ae503f9}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_ac5e4490f412835d35481f58d1ae503f9}
+
+
+Carga valores a las variables necesarias para funcionar el cliente. 
+
+este comando no es necesario utilizarlo es usado al instanciar la clase 
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+58                           :
+59                 print "Cargo modulo para cliente_lib"
+60                 self.valor_fisico=[]
+61                 self.valor_sonares=[] 
+62                 self.ip="localhost"
+63                 self.x={}
+64                 self.y={}
+65                 self.t={}
+66                 self.acu=0
+
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classcliente__lib_1_1cliente__lib_a14a49495fd71fab84d36060e604415a5}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!cliente\_\-apaga@{cliente\_\-apaga}}
+\index{cliente\_\-apaga@{cliente\_\-apaga}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{cliente\_\-apaga}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.cliente\_\-apaga (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{client}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_a14a49495fd71fab84d36060e604415a5}
+
+
+Sirve para realizar la desconexion con el servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em client} & para poder desconectar el cliente \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 252 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+253                                       :
+254                 ArUtil.sleep(1000)
+255                 client.disconnect()
+256                 ArUtil.sleep(50)
+                return 0
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_a1a7b5475a98772f0e48a4e1fd76e8d47}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!cliente\_\-inicio@{cliente\_\-inicio}}
+\index{cliente\_\-inicio@{cliente\_\-inicio}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{cliente\_\-inicio}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.cliente\_\-inicio (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_a1a7b5475a98772f0e48a4e1fd76e8d47}
+
+
+Sirve para iniciar la conexion con el servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 208 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+209                                 :
+210                 client = ArClientBase()
+211                 #Solo funcionar el lectura de datos por TCP
+212                 client.setTcpOnlyFromServer()
+213                 client.setTcpOnlyToServer()
+214                 #
+215                 Aria.init()
+216                 
+217                 startTime = ArTime()
+218                 startTime.setToNow()
+219                 if not client.blockingConnect(self.ip, 7272): #ip y puerto del se
+      rvidor
+220                         print "Could not connect to server at %s port 7272, exiti
+      ng" % self.ip
+221                         
+222                         Aria.exit(1);
+223                 print "cliente: Se tardo %ld msec en connectarse\n" % (startTime.
+      mSecSince())
+224                 
+225                 client.runAsync()
+226                 client.addHandler("updateNumbers",self.valores)
+227                 #
+228                 #client.request("updateNumbers",100)
+229                 #
+230                 client.addHandler("getSensorList",self.lista_sonares)
+231                 client.addHandler("pose",self.valores_sonares)
+232                 #
+233                 #client.lock()
+234                 #client.request("pose",100)
+235                 #client.unlock()
+236                 #
+237                 
+238                 if client.dataExists("ratioDrive"): #supuestamente devuelve la in
+      fo del robot con odometria
+239                         print "ratioDrive si existe"
+240                 else:
+241                         Aria.exit(1);
+242                 #client=envio_ratioDrive(client,TransRatio,RotRatio,LatRatio) #fi
+      jar los valores para mover
+243                 #client=uC_comandos_movi(client,comando,parametro) #Lo hace de un
+      a manera directa anulando las demas operaciones
+244                 #client.requestOnce("updateNumbers")
+245                 #client.requestOnce("stop") #parada de emergencia
+                return client
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_a3ca67c0c9d7f0a622abd740c780f64d1}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!devuelve\_\-valorf@{devuelve\_\-valorf}}
+\index{devuelve\_\-valorf@{devuelve\_\-valorf}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{devuelve\_\-valorf}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.devuelve\_\-valorf (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_a3ca67c0c9d7f0a622abd740c780f64d1}
+
+
+Devuelve el variable valor\_\-fisico, con usa espera de 100ms. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 262 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+263                                  :
+264                 ArUtil.sleep(100)
+                return self.valor_fisico
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_a127d026872fbd11f4f5bbe4a73424b77}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!devuelve\_\-valors@{devuelve\_\-valors}}
+\index{devuelve\_\-valors@{devuelve\_\-valors}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{devuelve\_\-valors}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.devuelve\_\-valors (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_a127d026872fbd11f4f5bbe4a73424b77}
+
+
+Devuelve el variable valor\_\-sonares, con usa espera de 100ms. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+\end{DoxyParams}
+
+
+Definición en la línea 270 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+271                                  :
+272                 ArUtil.sleep(100)
+273                 valor=self.valor_sonares
+274                 if valor==[]:
+275                         print valor
+276                         return {'x0':-9999,'x1':-9999},{'y0':-9999,'y1':-9999},{'
+      t0':0,'t1':0} #valores quitar despues
+277                 else:
+278                         try:
+279                                 x_br=[]
+280                                 y_br=[]
+281                                 t_br=[]
+282                                 for a in range(int(valor[0])): #el primer valor i
+      ndica cuantos elementos se tiene de sensores
+283                                         #print valor[1][a]
+284                                         valor[1][a]=valor[1][a].strip('(')
+285                                         valor[1][a]=valor[1][a].strip(')')
+286                                         valor[1][a]=valor[1][a].split(",") #comie
+      nza a separar por que viene en forma (X:valor,Y:valor,T:valor)
+287                                         valor[1][a][0]=valor[1][a][0].strip() #bo
+      rrar los espacios en blanco de los elementos
+288                                         valor[1][a][1]=valor[1][a][1].strip()
+289                                         valor[1][a][2]=valor[1][a][2].strip()
+290                                         x_br+=[valor[1][a][0].strip("X:")]
+291                                         #print x_br
+292                                         y_br+=[valor[1][a][1].strip("Y:")]
+293                                         t_br+=[valor[1][a][2].strip("T:")]
+294                                         
+295                                 #print len(x_br)
+296                                 for a in range(len(x_br)):
+297                                         self.x.update({'x%d' % self.acu:float(x_b
+      r[a])}) #Ordena los datos en forma de diccionario, float tiene problemas con 0.00
+      0
+298                                         self.y.update({'y%d' % self.acu:float(y_b
+      r[a])})
+299                                         #self.t.update({'t%d' % self.acu:float(t_
+      br[a].strip(")"))})
+300                                         self.t.update({'t%d' % self.acu:0})
+301                                         self.acu+=1
+302                                         if self.acu==5000:
+303                                                 self.acu=0
+304                                                 #pass
+305                                 #print self.x
+306                                 #print self.y
+307                                 #print self.t
+308                                 return self.x,self.y,self.t
+309                         except:
+310                                 pass
+311 
+
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_ac3e89d3066207b05b217a50f549c239a}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!envio\_\-consulta\_\-fisica@{envio\_\-consulta\_\-fisica}}
+\index{envio\_\-consulta\_\-fisica@{envio\_\-consulta\_\-fisica}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{envio\_\-consulta\_\-fisica}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.envio\_\-consulta\_\-fisica (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{client, }
+\item[{}]{mensaje}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_ac3e89d3066207b05b217a50f549c239a}
+
+
+Sirve para mandar ordenes al servidor utilizando paquetes ArNetPacket con comandos {\bfseries pose} y {\bfseries updateNumbers} 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em client} & Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor \\
+\hline
+{\em mensaje} & puede ser cualquier comando del servidor que no devuelva informacion a exepcion de pose y updatenumbers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 197 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+198                                                       :
+199                 ## se puede usar pose y updateNumbers
+200                 client.requestOnce(mensaje)
+201                 return client
+                
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_a3c43af1448ad0fa10cfa6f398b7029db}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!envio\_\-griper@{envio\_\-griper}}
+\index{envio\_\-griper@{envio\_\-griper}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{envio\_\-griper}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.envio\_\-griper (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{client, }
+\item[{}]{TransRatio}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_a3c43af1448ad0fa10cfa6f398b7029db}
+
+
+Sirve para realizar la teleoperacion, mandando los parametros. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em client} & Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor \\
+\hline
+{\em TransRatio} & Velocidad de traslacion \\
+\hline
+{\em RotRatio} & Velocidad de rotacion \\
+\hline
+{\em LatRatio} & velocidad lateral para el modelo Pioneer P3-\/DX no se necesario puede ser 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 165 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+166                                                 :
+167                 myTransRatio=TransRatio
+168                 packet=ArNetPacket()
+169                 packet.doubleToBuf(myTransRatio)
+170                 client.requestOnce("ComandoGripper", packet)
+171                 return client
+          
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_acfc22af72a1668db28d18ab4ff40909e}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!envio\_\-ratioDrive@{envio\_\-ratioDrive}}
+\index{envio\_\-ratioDrive@{envio\_\-ratioDrive}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{envio\_\-ratioDrive}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.envio\_\-ratioDrive (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{client, }
+\item[{}]{TransRatio, }
+\item[{}]{RotRatio, }
+\item[{}]{LatRatio}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_acfc22af72a1668db28d18ab4ff40909e}
+
+
+Sirve para realizar la teleoperacion, mandando los parametros. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em client} & Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor \\
+\hline
+{\em TransRatio} & Velocidad de traslacion \\
+\hline
+{\em RotRatio} & Velocidad de rotacion \\
+\hline
+{\em LatRatio} & velocidad lateral para el modelo Pioneer P3-\/DX no se necesario puede ser 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 143 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+144                                                                       :
+145                 myTransRatio=TransRatio
+146                 myRotRatio=RotRatio
+147                 myLatRatio=LatRatio
+148                 packet=ArNetPacket()
+149                 packet.doubleToBuf(myTransRatio)
+150                 packet.doubleToBuf(myRotRatio)
+151                 packet.doubleToBuf(50) # use half of the robot's maximum.
+152                 packet.doubleToBuf(myLatRatio)
+153                 client.requestOnce("ratioDrive", packet)
+154                 return client
+        
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_ac0a4410b48b4c759028bec6ae1c641e8}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!lista\_\-sonares@{lista\_\-sonares}}
+\index{lista\_\-sonares@{lista\_\-sonares}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{lista\_\-sonares}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.lista\_\-sonares (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_ac0a4410b48b4c759028bec6ae1c641e8}
+
+
+Sirve para leer el paquete arNetPacket con la lista del sonar. 
+
+este comando no es necesario utilizarlo es usado solo por el cliente para procesar el paquete 
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em packet} & este parametro no es necesario escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 98 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+99                                       :
+100                 c="                                   "
+101                 numSensor=packet.bufToByte2()
+102                 numSensor2=packet.bufToStr(c,15)
+103                 print str(numSensor)+" "+str(c.strip())
+
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_ade1f44e9270c8835c284832a72b96b6c}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!uC\_\-comandos\_\-movi@{uC\_\-comandos\_\-movi}}
+\index{uC\_\-comandos\_\-movi@{uC\_\-comandos\_\-movi}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{uC\_\-comandos\_\-movi}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.uC\_\-comandos\_\-movi (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{client, }
+\item[{}]{comando, }
+\item[{}]{parametro}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_ade1f44e9270c8835c284832a72b96b6c}
+
+
+Sirve para mandar ordenes de movimiento directamente al controlador de la plataforma movil. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em client} & Se debe trar el objeto cliente a la definicion para poder utilizar el enlace del cliente para enviar el paquete al servidor \\
+\hline
+{\em comando} & es un numero de 1-\/255 que representa una funcion esta informacion se puede encontrar en el API de ARIA \\
+\hline
+{\em parametro} & el parametro de la funcion en caso de no tener se deja el valor en blanco \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+client 
+\end{DoxyReturn}
+
+
+Definición en la línea 181 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+182                                                            :
+183                 mi_comando=comando #comando 8 es MOVE parametro un valor de 5000 
+      a -4999 es en mm, 11 LEV y su parametro es velocidad +o- mm/s
+184                 mi_parametro=parametro #parametro
+185                 packet=ArNetPacket()
+186                 packet.strToBuf(mi_comando+" "+mi_parametro)
+187                 client.requestOnce("MicroControllerMotionCommand", packet) #Micro
+      ControllerMotionCommand
+188                 return client
+
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_af7b751bcf94c96150b23bacb5e477956}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!valores@{valores}}
+\index{valores@{valores}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{valores}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.valores (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_af7b751bcf94c96150b23bacb5e477956}
+
+
+Sirve cuando se manda el comando \char`\"{}updateNumbers\char`\"{} en el paquete. 
+
+este comando no es necesario utilizarlo es usado solo por el cliente para procesar el paquete 
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em packet} & el paquete que recibe el cliente del servidor, no es necesario escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Nada, pero guarda en self.valores\_\-fisico \mbox{[}voltaje\_\-bateria,myX,myY,myTh,myVel,myRotVel,myLatVel,myTemperature\mbox{]} 
+\end{DoxyReturn}
+
+
+Definición en la línea 75 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+76                                 :
+77                 #devuelve los valores voltaje_bateria,myX,myY,myTh,myVel,myRotVel
+      ,myLatVel,myTemperature
+78                 voltaje_bateria=packet.bufToByte2()/10
+79                 myX = packet.bufToByte4()#
+80                 myY = packet.bufToByte4()
+81                 myTh = packet.bufToByte2()
+82                 myVel = packet.bufToByte2()
+83                 myRotVel = packet.bufToByte2()
+84                 myLatVel = packet.bufToByte2()
+85                 myTemperature = packet.bufToByte()
+86                 #print "X= "+str(myX)+" y="+str(myY)+" th="+str(myTh)
+87                 self.valor_fisico=(voltaje_bateria,myX,myY,myTh,myVel,myRotVel,my
+      LatVel,myTemperature)
+88                 self.valor_fisico=(voltaje_bateria,myX,myY,myTh,myVel,myRotVel,my
+      LatVel,0)
+89                 #print valor
+
+\end{DoxyCode}
+\hypertarget{classcliente__lib_1_1cliente__lib_abcf28c2207cb5519090654484137db23}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!valores\_\-sonares@{valores\_\-sonares}}
+\index{valores\_\-sonares@{valores\_\-sonares}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{valores\_\-sonares}]{\setlength{\rightskip}{0pt plus 5cm}def cliente\_\-lib.cliente\_\-lib.valores\_\-sonares (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{packet}
+\end{DoxyParamCaption}
+)}}
+\label{classcliente__lib_1_1cliente__lib_abcf28c2207cb5519090654484137db23}
+
+
+Sirve para leer el paquete arNetPacket con los valores del sonar. 
+
+este comando no es necesario utilizarlo es usado solo por el cliente para procesar el paquete 
+\begin{DoxyParams}{Parámetros}
+{\em self} & este parametro no es necesario escribir \\
+\hline
+{\em packet} & este parametro no es necesario escribir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+nada 
+\end{DoxyReturn}
+
+
+Definición en la línea 112 del archivo cliente\_\-lib.py.
+
+
+\begin{DoxyCode}
+113                                         :
+114                 try:
+115                         bandera1=0
+116                         cantidad=packet.bufToDouble()
+117                         print int(cantidad)
+118                         for i in range(2*int(cantidad)):
+119                                 if bandera1==0:
+120                                         self.x.update({'x%d' % (self.acu):int(pac
+      ket.bufToByte4())})
+121                                         bandera1=1
+122                                 else:
+123                                         self.y.update({'y%d' % (self.acu):int(pac
+      ket.bufToByte4())})
+124                                         bandera1=0
+125                                         self.acu=self.acu+1
+126                                 if self.acu==200:
+127                                         self.acu=0
+128                                         self.x={}
+129                                         self.y={}
+130                 except:
+131                         print "Fallo lectura sensores"
+132                         pass
+
+\end{DoxyCode}
+
+
+\subsection{Documentación de los datos miembro}
+\hypertarget{classcliente__lib_1_1cliente__lib_a5b15a0be5d30abf1f71d776ccead9d9d}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!acu@{acu}}
+\index{acu@{acu}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{acu}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.acu}}}
+\label{classcliente__lib_1_1cliente__lib_a5b15a0be5d30abf1f71d776ccead9d9d}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+\hypertarget{classcliente__lib_1_1cliente__lib_a675dd8430aa2eeb33240b8b07ed61543}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!ip@{ip}}
+\index{ip@{ip}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{ip}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.ip}}}
+\label{classcliente__lib_1_1cliente__lib_a675dd8430aa2eeb33240b8b07ed61543}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+\hypertarget{classcliente__lib_1_1cliente__lib_adf30f5e41e7c96565a7588e808d7543a}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!t@{t}}
+\index{t@{t}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{t}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.t}}}
+\label{classcliente__lib_1_1cliente__lib_adf30f5e41e7c96565a7588e808d7543a}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+\hypertarget{classcliente__lib_1_1cliente__lib_abba3409f89ee8dcec8b180c90aa5d77c}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!valor\_\-fisico@{valor\_\-fisico}}
+\index{valor\_\-fisico@{valor\_\-fisico}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{valor\_\-fisico}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.valor\_\-fisico}}}
+\label{classcliente__lib_1_1cliente__lib_abba3409f89ee8dcec8b180c90aa5d77c}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+\hypertarget{classcliente__lib_1_1cliente__lib_aadea6e24bd3a01b0500fcc67543a97e9}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!valor\_\-sonares@{valor\_\-sonares}}
+\index{valor\_\-sonares@{valor\_\-sonares}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{valor\_\-sonares}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.valor\_\-sonares}}}
+\label{classcliente__lib_1_1cliente__lib_aadea6e24bd3a01b0500fcc67543a97e9}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+\hypertarget{classcliente__lib_1_1cliente__lib_a7bbce98e978c840ab3ef04e2e3715b56}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!x@{x}}
+\index{x@{x}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.x}}}
+\label{classcliente__lib_1_1cliente__lib_a7bbce98e978c840ab3ef04e2e3715b56}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+\hypertarget{classcliente__lib_1_1cliente__lib_aa6b4463261d78e82876d5f01ab3800bb}{
+\index{cliente\_\-lib::cliente\_\-lib@{cliente\_\-lib::cliente\_\-lib}!y@{y}}
+\index{y@{y}!cliente_lib::cliente_lib@{cliente\_\-lib::cliente\_\-lib}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cliente\_\-lib.cliente\_\-lib.y}}}
+\label{classcliente__lib_1_1cliente__lib_aa6b4463261d78e82876d5f01ab3800bb}
+
+
+Definición en la línea 57 del archivo cliente\_\-lib.py.
+
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{cliente__lib_8py}{cliente\_\-lib.py}\end{DoxyCompactItemize}

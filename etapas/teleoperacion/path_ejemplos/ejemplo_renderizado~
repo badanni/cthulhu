@@ -1,0 +1,10 @@
+a=renderizado((600,400),"imagen.jpg",(13,13))
+a.cargar()
+for aa in range(5):
+	a.anadir_punto((5*aa,5*aa),radio=3*aa)
+	a.graficar(500)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(200,100,0)
+a.crear_imagen()
+a.rotacion_y_posicion_robot(20,300,-40)
+

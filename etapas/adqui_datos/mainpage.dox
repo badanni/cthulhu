@@ -1,0 +1,46 @@
+/** @mainpage Adquisicion de datos para Pioneer P3-DX
+* <center><H1>Mapas de entornos mediante navegacion difusa y sistema de teleoperacion de una plataforma Pioneer P3-DX</H1></center>
+* @image html sello.png
+* @authors Danny Vasconez
+* @authors Daniel granda
+*
+* @section intro Introduccion
+* Esta aplicacion fue disenada para realizar una lecturade datos de la plataforma Pioneer P3-DX pero al utilizar ArNetPacket puede ser utilizada sin ningun problema por otras plataformas moviles que utilizen ARCOS; la aplicacion cuenta con dos programas el servidor y inicio; mas una libreria cliente.
+* 
+* - Programas
+* -# servidor.py
+* -# inicio.py
+* - Libreria
+* -# cliente_lib.py
+* - Dependdencias de Servidor
+* -# AriaPy
+* -# NetWorkingPy
+* -# sys
+* - Dependencias de cliente_lib
+* -# AriaPy
+* -# NetWorkingPy
+* -# sys
+* - Dependencias de inicio
+* -# cliente_lib
+* -# pygtk
+* -# gtk
+* -# os
+* -# sys
+* 
+* Tener en cuenta al trabajar los siguientes archivos
+* - glade
+* -# Es el archivo xml de la interfaz grafica de la aplicacion
+*
+* <hr>
+* @section faqs Problemas frecuentes
+* Al utilizar un clable USB-Serial no encuentra a la plataforma movil, se debe ingresar los siguientes comandos en consola 
+* @verbinclude requiremientos
+* El primero solo en caso de que se tenga que trabajar necesariamente con el serial 0,
+* de esta manera se realiza un enlace simbolico del ttyUSB0 a ttyS0. Este problema no se puede corregir ya que es de ARIA
+* <hr>
+* @todo Presentar borrador
+* <hr> 
+* @section notes Licencia
+* @verbinclude gpl2
+*
+*/

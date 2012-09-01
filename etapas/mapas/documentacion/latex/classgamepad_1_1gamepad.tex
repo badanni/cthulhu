@@ -1,0 +1,164 @@
+\hypertarget{classgamepad_1_1gamepad}{
+\section{Referencia de la Clase gamepad.gamepad}
+\label{classgamepad_1_1gamepad}\index{gamepad::gamepad@{gamepad::gamepad}}
+}
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classgamepad_1_1gamepad_af68047f7eb80547eed320d45f34c2a05}{\_\-\_\-init\_\-\_\-}
+\item 
+def \hyperlink{classgamepad_1_1gamepad_a8e9b61aced2fb5f8fd25127ae19aa3d5}{gamepad\_\-init}
+\item 
+def \hyperlink{classgamepad_1_1gamepad_ab0e62e91d6e1e08101897640b4dc4a27}{gamepad\_\-lectura}
+\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgamepad_1_1gamepad_a06303222a83dcb4e07be733da7ab35cd}{a}
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+
+
+Definición en la línea 29 del archivo gamepad.py.
+
+
+
+\subsection{Documentación del constructor y destructor}
+\hypertarget{classgamepad_1_1gamepad_af68047f7eb80547eed320d45f34c2a05}{
+\index{gamepad::gamepad@{gamepad::gamepad}!\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}}
+\index{\_\-\_\-init\_\-\_\-@{\_\-\_\-init\_\-\_\-}!gamepad::gamepad@{gamepad::gamepad}}
+\subsubsection[{\_\-\_\-init\_\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}def gamepad.gamepad.\_\-\_\-init\_\-\_\- (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgamepad_1_1gamepad_af68047f7eb80547eed320d45f34c2a05}
+
+
+Definición en la línea 30 del archivo gamepad.py.
+
+
+\begin{DoxyCode}
+31                           :
+32                 self.a=0
+
+\end{DoxyCode}
+
+
+\subsection{Documentación de las funciones miembro}
+\hypertarget{classgamepad_1_1gamepad_a8e9b61aced2fb5f8fd25127ae19aa3d5}{
+\index{gamepad::gamepad@{gamepad::gamepad}!gamepad\_\-init@{gamepad\_\-init}}
+\index{gamepad\_\-init@{gamepad\_\-init}!gamepad::gamepad@{gamepad::gamepad}}
+\subsubsection[{gamepad\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}def gamepad.gamepad.gamepad\_\-init (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}}
+\label{classgamepad_1_1gamepad_a8e9b61aced2fb5f8fd25127ae19aa3d5}
+
+
+Definición en la línea 33 del archivo gamepad.py.
+
+
+\begin{DoxyCode}
+34                               :
+35                 #Abre el dispositivo js0 como si fuera un archivo de lectura
+36                 pipe=open('/dev/input/js0','r')
+37                 msg=[]
+                return pipe,msg
+\end{DoxyCode}
+\hypertarget{classgamepad_1_1gamepad_ab0e62e91d6e1e08101897640b4dc4a27}{
+\index{gamepad::gamepad@{gamepad::gamepad}!gamepad\_\-lectura@{gamepad\_\-lectura}}
+\index{gamepad\_\-lectura@{gamepad\_\-lectura}!gamepad::gamepad@{gamepad::gamepad}}
+\subsubsection[{gamepad\_\-lectura}]{\setlength{\rightskip}{0pt plus 5cm}def gamepad.gamepad.gamepad\_\-lectura (
+\begin{DoxyParamCaption}
+\item[{}]{self, }
+\item[{}]{pipe, }
+\item[{}]{msg}
+\end{DoxyParamCaption}
+)}}
+\label{classgamepad_1_1gamepad_ab0e62e91d6e1e08101897640b4dc4a27}
+
+
+Definición en la línea 38 del archivo gamepad.py.
+
+
+\begin{DoxyCode}
+39                                           :
+40                 #time.sleep(5)
+41                 a=0
+42                 #Para cada caracter leidos desde el /dev/input/js0 pipe..
+43                 for char in pipe.read(1):
+44                         #Agrega la representacion entera de la lectura de caracte
+      res Unicode en la lista msg.
+45                         msg+=[ord(char)]
+46                         #print len(msg)
+47                         #Si el tamanio de la lista msg es 8
+48                         if len(msg) == 8:
+49                                 #Boton evento si el byte 6 es 1
+50                                 if msg[6] == 1: #1
+51                                         if msg[4] == 0:
+52                                                 if msg[7] == 0:
+53                                                         #print "Boton 1"
+54                                                         a='b1'
+55                                                 elif msg[7] == 1:
+56                                                         #print "Boton 2"
+57                                                         a='b2'
+58                                                 elif msg[7] == 2:
+59                                                         #print "Boton 3"
+60                                                         a='b3'
+61                                                 elif msg[7] == 3:
+62                                                         #print "Boton 4"
+63                                                         a='b4'
+64                                                 elif msg[7] == 4:
+65                                                         #print "Boton L1"
+66                                                         a='l1'
+67                                                 elif msg[7] == 5:
+68                                                         #print "Boton R1"
+69                                                         a='r1'
+70                                                 elif msg[7] == 6:
+71                                                         #print "Boton L2"
+72                                                         a='l2'
+73                                                 elif msg[7] == 7:
+74                                                         #print "Boton R2"
+75                                                         a='r2'
+76                                 #ejes evento if el byte 6 es 2
+77                                 elif msg[6] == 2:
+78                                         if msg[5] == 128:
+79                                                 if msg[7] == 1:
+80                                                         #print "Boton Arriba"
+81                                                         a='ar'
+82                                                 elif msg[7] == 0:
+83                                                         #print "Boton Izquierda"
+84                                                         a='iz'
+85                                         elif msg[5] == 127:
+86                                                 if msg[7] == 0:
+87                                                         #print "Boton Derecha"
+88                                                         a='de'
+89                                                 elif msg[7] == 1:
+90                                                         #print "Boton Abajo"
+91                                                         a='ab'
+92                                 #resetear msg como una lista vacia
+93                                 msg[0:] = []
+94                 self.a=a
+                return a
+\end{DoxyCode}
+
+
+\subsection{Documentación de los datos miembro}
+\hypertarget{classgamepad_1_1gamepad_a06303222a83dcb4e07be733da7ab35cd}{
+\index{gamepad::gamepad@{gamepad::gamepad}!a@{a}}
+\index{a@{a}!gamepad::gamepad@{gamepad::gamepad}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}{\bf gamepad.gamepad.a}}}
+\label{classgamepad_1_1gamepad_a06303222a83dcb4e07be733da7ab35cd}
+
+
+Definición en la línea 30 del archivo gamepad.py.
+
+
+
+La documentación para esta clase fue generada a partir del siguiente fichero:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gamepad_8py}{gamepad.py}\end{DoxyCompactItemize}
