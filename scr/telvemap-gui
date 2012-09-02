@@ -361,22 +361,8 @@ class telvemap_guiAPP:
 	def menuitem_response(self, widget, buf):
 		print buf
 
-	def autostart(self):
-		#Comienza a leer demonio.xml en tag autostart para saber que programa ejecutar 
-		archivo="demonio.xml"
-		doc=abrir_archivo(archivo)
-		doc,valores,a=leer_valor_configuracion(doc,"autostart")
-		cerrar_archivo(doc,archivo)
-		for i in range(len(valores)):
-			self.default_demonio=valores[i]
-			#
-			self.autostart_valor[self.default_demonio]=1
-			#
-			self.start_daemon(None)
-		return 0
-
 	def salir(self, widget):
-		question = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO, message_format="Realmente desea salir de Icarus?")
+		question = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO, message_format="Realmente desea salir de "+app_nombre+"?")
 		response = question.run()
 		if response == gtk.RESPONSE_YES:
 			#self.stop_daemon(None)
