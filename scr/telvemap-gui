@@ -338,8 +338,8 @@ POSSIBILITY OF SUCH DAMAGES.
 class telvemap_guiAPP:
 	def __init__(self):
 		home = os.environ['HOME']
-		icon_file = home + "/tesis_programas/cthulhu/scr/data/"+"on128.png"
-		icon_file_logo = home + "/tesis_programas/cthulhu/scr/data/"+"logo.png"
+		icon_file = home + "/telvemap/"+"on128.png"
+		icon_file_logo = home + "/telvemap/"+"logo.png"
 		self.icon_ventana=icon_file
 		self.icon=gtk.gdk.pixbuf_new_from_file(icon_file)
 		self.icon_logo=gtk.gdk.pixbuf_new_from_file(icon_file_logo)

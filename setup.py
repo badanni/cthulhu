@@ -184,6 +184,8 @@ if args == ["install"]:
   install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
   install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
   install("scr/demonio.xml", "telvemap/demonio.xml",1)
+  install("scr/data/logo.png", "telvemap/logo.png",1)
+  install("scr/data/on128.png", "telvemap/on128.png",1)
   
   print
   print ("""
