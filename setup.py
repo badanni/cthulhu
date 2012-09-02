@@ -133,10 +133,15 @@ def check_dependencies():
     print "    !!! AriaPy ................... Not found"
     required_found = False
   try:
-    import ArNetworkingPy
-    print "    ArNetworkingPy .................. OK"
+    import fuzzy
+    print "    PyFuzzy ...................... OK"
   except ImportError:
-    print "    !!! ArNetworkingPy .................. Not found"
+    print "    !!! PyFuzzy .................. Not found"
+  try:
+    import ArNetworkingPy
+    print "    ArNetworkingPy ............... OK"
+  except ImportError:
+    print "    !!! ArNetworkingPy ............... Not found"
     required_found = False
   try:
     import gnome

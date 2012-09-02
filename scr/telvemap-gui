@@ -387,7 +387,8 @@ class telvemap_guiAPP:
 		self.combobox.append_text('Cual?')
 		self.window.set_default_size(360, 30)
 #
-		archivo="demonio.xml"
+		home = os.environ['HOME']
+		archivo=home+"/telvemap/demonio.xml"
 		doc=abrir_archivo(archivo)
 		doc,valores,a=leer_valor_configuracion(doc,"demonio")
 		cerrar_archivo(doc,archivo)
