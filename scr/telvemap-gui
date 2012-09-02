@@ -350,7 +350,7 @@ class telvemap_guiAPP:
 		archivo="demonio.xml"
 		doc=abrir_archivo(archivo)
 		doc,valores,a=leer_valor_configuracion(doc,"autostart")
-		doc,valores_dem_,a=leer_valor_configuracion(doc,"demonio")
+		doc,valores_dem,a=leer_valor_configuracion(doc,"demonio")
 		cerrar_archivo(doc,archivo)
 		for i in range(len(valores_dem)):
 			self.default_demonio=valores_dem[i]
