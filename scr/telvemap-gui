@@ -460,7 +460,3 @@ class telvemap_guiAPP:
 if __name__ == '__main__':
     icarus_app = telvemap_guiAPP()
     icarus_app.inicio()
-=======
-  gtk.main()
-
->>>>>>> ae6e72c657c87d0182a4555c1afc2024278fa2e2
