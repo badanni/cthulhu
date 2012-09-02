@@ -66,7 +66,8 @@ def install(src, dst,xml=0):
     if xml==0:
       dst = os.path.join(install_dir, dst)
     else:
-      dst = os.path.join("~/", dst)
+      home = os.environ['HOME']
+      dst = os.path.join(home+"/", dst)
     assert os.path.isfile(src)
     assert not os.path.isdir(dst)
     if not os.path.isdir(os.path.dirname(dst)):
@@ -177,23 +178,23 @@ for opt, value in opts:
 if args == ["install"]:
   check_dependencies()
   print ("Installing TelVeMap in"), install_dir, "...\n"
-  install("src/telvemap-gui", "bin/telvemap-gui")
-  install("share/telvemap/libreria/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
-  install("share/telvemap/libreria/telvemap/cliente_lib.py", "share/telvemap/lib/telvemap/cliente_lib.py")
-  install("share/telvemap/libreria/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
-  install("share/telvemap/libreria/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
-  install("src/demonio.xml", "telvemap/demonio.xml",1)
+  install("scr/telvemap-gui", "bin/telvemap-gui")
+  install("share/telvemap/lib/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
+  install("share/telvemap/lib/telvemap/cliente_lib.py", "share/telvemap/lib/telvemap/cliente_lib.py")
+  install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
+  install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
+  install("scr/demonio.xml", "telvemap/demonio.xml",1)
   
   print
   print ("""
-Copy the folder home then change the name to .icarus in ~/ or
-execute icarus_data.sh .
+Don't forgot to change values of directory.
+chmod 777 ~/telvemap/
 """)
   #copiar la carpeta home a .icarus
 
 
 elif args == ["uninstall"]:
-  print ("Uninstalling icarus from"), install_dir, "...\n"
+  print ("Uninstalling TelVeMap from"), install_dir, "...\n"
   uninstall("bin/telvemap-gui")
   uninstall("share/telvemap/lib/telvemap/__init__.py")
   uninstall("share/telvemap/lib/telvemap/cliente_lib.py")
@@ -202,7 +203,7 @@ elif args == ["uninstall"]:
   
   print
   print ("""
-There might still be files in ~/.icarus/ left on your system.
+There might still be files in ~/telvemap/ left on your system.
 Please remove that directory manually if you do not plan to
 install icarus again later.
 """)

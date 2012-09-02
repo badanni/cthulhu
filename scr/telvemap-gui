@@ -32,7 +32,10 @@ import appindicator
 import os
 import sys
 
-from libreria.tag_xml import leer_valor_configuracion, abrir_archivo, cerrar_archivo
+pathname = os.path.dirname(sys.argv[0])
+os.chdir(os.path.abspath(pathname))
+sys.path.append("../share/telvemap/lib")
+from telvemap.tag_xml import leer_valor_configuracion, abrir_archivo, cerrar_archivo
 
 app_nombre="TelVeMap"
 version1='0.1'
@@ -347,7 +350,8 @@ class telvemap_guiAPP:
 
 	def autostart(self):
 		#Comienza a leer demonio.xml en tag autostart para saber que programa ejecutar 
-		archivo="demonio.xml"
+		home = os.environ['HOME']
+		archivo=home+"/telvemap/demonio.xml"
 		doc=abrir_archivo(archivo)
 		doc,valores,a=leer_valor_configuracion(doc,"autostart")
 		doc,valores_dem,a=leer_valor_configuracion(doc,"demonio")
@@ -474,7 +478,6 @@ class telvemap_guiAPP:
 		acerca.connect("activate",self.show_about_dialog)
 		quit.connect("activate",self.salir)
 	# show the items
-		control.show()
 		tarea.show()
 		acerca.show()
 		quit.show()
