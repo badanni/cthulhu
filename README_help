@@ -1,0 +1,62 @@
+- Icarus README -
+#=============================================================================
+#
+#    Readme 
+#    Copyright (C) 2011 BaDanNi <devch401@ymail.com>
+#
+#=============================================================================
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+#=============================================================================
+
+About
+--------------------------------------------------------------------------
+icarus application enables you to configure Gnome/Xfce4/Openbox-Gnome/Openbox-esetroot desktop wallpapers
+in unique way.
+
+
+Dependencies
+-----------------------------------------------------------------------------
+If you run modern distro (released in 2005 year and above) with default Gnome 
+desktop installed, your dependencies should already be fulfilled.
+
+Installation
+-----------------------------------------------------------------------------
+Run "python setup.py install" as root to install Icarus in /usr/local.
+To uninstall, simply run "python setup.py uninstall".
+
+If you wish to install icarus in another base directory, use the --installdir
+option. Example: "python setup.py install --installdir /usr".
+If you have installed with --installdir, do not forget to use the same option
+when uninstalling.
+
+Example installation:
+
+    $ tar -xzf icarus-0.1.tar.gz
+    $ cd icarus-0.1
+
+Depending on distro, the next steps could be this:
+    # su
+    # python setup.py install
+or this:
+    $ sudo python setup.py install
+
+Contact
+-----------------------------------------------------------------------------
+Danny Vasconez <devch401@ymail.com>
+http://softwarelibrespe.org
+
+Don't hesitate to contact me with any questions, suggestions, and bugs reports.
