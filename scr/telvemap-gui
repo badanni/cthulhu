@@ -361,9 +361,6 @@ class telvemap_guiAPP:
 			self.start_daemon(None)
 		return 0
 
-	def menuitem_response(self, widget, buf):
-		print buf
-
 	def salir(self, widget):
 		question = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO, message_format="Realmente desea salir de "+app_nombre+"?")
 		response = question.run()
@@ -466,16 +463,13 @@ class telvemap_guiAPP:
 		# create a menu
 		menu = gtk.Menu()
 		# create some 
-		control = gtk.MenuItem("Controlador difuso")
 		tarea = gtk.MenuItem("Seleccionar tarea")
 		acerca = gtk.MenuItem("Acerca de")
 		quit = gtk.MenuItem("Salir")
-		menu.append(control)
 		menu.append(tarea)
 		menu.append(acerca)
 		menu.append(quit)
 		# this is where you would connect your menu item up with a function:
-		control.connect("activate", self.menuitem_response, "control")
 		tarea.connect("activate", self.select_daemon)
 		acerca.connect("activate",self.show_about_dialog)
 		quit.connect("activate",self.salir)
