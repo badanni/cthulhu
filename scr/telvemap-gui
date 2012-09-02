@@ -96,6 +96,7 @@ want its recipients to know that what they have is not the original, so
 that any problems introduced by others will not reflect on the original
 authors' reputations.
 
+<<<<<<< HEAD
   Finally, any free program is threatened constantly by software
 patents.  We wish to avoid the danger that redistributors of a free
 program will individually obtain patent licenses, in effect making the
@@ -459,3 +460,7 @@ class telvemap_guiAPP:
 if __name__ == '__main__':
     icarus_app = telvemap_guiAPP()
     icarus_app.inicio()
+=======
+  gtk.main()
+
+>>>>>>> ae6e72c657c87d0182a4555c1afc2024278fa2e2
