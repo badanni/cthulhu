@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><icarus>
-	<demonio>icarus_demonio_wallv3</demonio>
-	<demonio>icarus_demonio_alarma_bateria 20</demonio>
-	<demonio>icarus_demonio_poweroff</demonio>
+	<demonio>echo 1</demonio>
+	<demonio>echo 2</demonio>
 	<autostart>echo 1</autostart>
-	<autostart>echo 2</autostart>
 </icarus>
