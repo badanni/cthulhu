@@ -350,12 +350,14 @@ class telvemap_guiAPP:
 		archivo="demonio.xml"
 		doc=abrir_archivo(archivo)
 		doc,valores,a=leer_valor_configuracion(doc,"autostart")
+		doc,valores_dem_,a=leer_valor_configuracion(doc,"demonio")
 		cerrar_archivo(doc,archivo)
+		for i in range(len(valores_dem)):
+			self.default_demonio=valores_dem[i]
+			self.autostart_valor[self.default_demonio]=0
 		for i in range(len(valores)):
 			self.default_demonio=valores[i]
-			#
 			self.autostart_valor[self.default_demonio]=1
-			#
 			self.start_daemon(None)
 		return 0
 
@@ -378,7 +380,7 @@ class telvemap_guiAPP:
 		#self.window.connect('destroy', lambda w: gtk.main_quit())
 		self.window.set_title(app_nombre+version1+"-Que demonio utilizas?")
 		self.window.set_icon(self.icon_logo)
-		self.window.connect('delete_event', self.exit_window)
+		#self.window.connect('delete_event', self.exit_window)
 		self.combobox = gtk.combo_box_new_text()
 		self.window.add(self.combobox)
 		self.combobox.append_text('Cual?')
@@ -396,6 +398,34 @@ class telvemap_guiAPP:
 		self.window.set_position(gtk.WIN_POS_CENTER)
 		self.window.show_all()
 		return a
+		
+
+	def changed_cb(self, widget):
+		model = self.combobox.get_model()
+		index = self.combobox.get_active()
+		if index:
+			self.default_demonio=model[index][0]
+			print self.default_demonio
+			self.window.hide() #hide
+			#Si el demonio esta activo en el diccionario self.autostart_valor pregunta si se desea desactivar sino lo contrario
+			if self.autostart_valor[self.default_demonio]==1:
+				question = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO, message_format="Realmente desea detener el demonio "+self.default_demonio+"?")
+				response = question.run()
+				if response == gtk.RESPONSE_YES:
+						self.stop_daemon(None)
+						self.autostart_valor[self.default_demonio]=0
+						question.hide()
+				elif response == gtk.RESPONSE_NO:
+						question.hide()
+			else:
+				question = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO, message_format="Realmente desea ejecutar el demonio "+self.default_demonio+"?")
+				response = question.run()
+				if response == gtk.RESPONSE_YES:
+						self.start_daemon(None)
+						self.autostart_valor[self.default_demonio]=1
+						question.hide()
+				elif response == gtk.RESPONSE_NO:
+						question.hide()
 
 	def show_about_dialog(self, widget):
 		about_dialog = gtk.AboutDialog()
