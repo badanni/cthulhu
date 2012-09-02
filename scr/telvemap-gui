@@ -62,3 +62,4 @@ if __name__ == "__main__":
   ind.set_menu(menu)
 
   gtk.main()
+
