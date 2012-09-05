@@ -17,8 +17,8 @@ Requierimientos:
 
 -pyfuzzy
 
-cthulu ver. 0.4
-===============
+cthulu ver. 0.4 / TelVeMap ver. 0.1
+===================================
 
 Instalador y la integracion de todos los modulos
 
