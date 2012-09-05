@@ -184,10 +184,13 @@ if args == ["install"]:
   check_dependencies()
   print ("Installing TelVeMap in"), install_dir, "...\n"
   install("scr/telvemap-gui", "bin/telvemap-gui")
+  install("scr/telvemap-control", "bin/telvemap-control")
   install("share/telvemap/lib/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
   install("share/telvemap/lib/telvemap/cliente_lib.py", "share/telvemap/lib/telvemap/cliente_lib.py")
   install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
   install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
+  install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/FuzzyController.py")
+  install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/renderizado.py")
   install("scr/demonio.xml", "telvemap/demonio.xml",1)
   install("scr/data/logo.png", "telvemap/logo.png",1)
   install("scr/data/on128.png", "telvemap/on128.png",1)
@@ -203,10 +206,13 @@ chmod 777 ~/telvemap/
 elif args == ["uninstall"]:
   print ("Uninstalling TelVeMap from"), install_dir, "...\n"
   uninstall("bin/telvemap-gui")
+  uninstall("bin/telvemap-control")
   uninstall("share/telvemap/lib/telvemap/__init__.py")
   uninstall("share/telvemap/lib/telvemap/cliente_lib.py")
   uninstall("share/telvemap/lib/telvemap/gamepad.py")
   uninstall("share/telvemap/lib/telvemap/tag_xml.py")
+  uninstall("share/telvemap/lib/telvemap/FuzzyController.py")
+  uninstall("share/telvemap/lib/telvemap/renderizado.py")
   
   print
   print ("""
