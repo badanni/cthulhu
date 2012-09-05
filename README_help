@@ -1,8 +1,8 @@
-- Icarus README -
+- TelVeMap README -
 #=============================================================================
 #
 #    Readme 
-#    Copyright (C) 2011 BaDanNi <devch401@ymail.com>
+#    Copyright (C) 2012 Danny Vasconez <dannyvasconeze@gmail.com>
 #
 #=============================================================================
 #
@@ -24,14 +24,11 @@
 
 About
 --------------------------------------------------------------------------
-icarus application enables you to configure Gnome/Xfce4/Openbox-Gnome/Openbox-esetroot desktop wallpapers
-in unique way.
 
 
 Dependencies
 -----------------------------------------------------------------------------
-If you run modern distro (released in 2005 year and above) with default Gnome 
-desktop installed, your dependencies should already be fulfilled.
+
 
 Installation
 -----------------------------------------------------------------------------
@@ -45,8 +42,8 @@ when uninstalling.
 
 Example installation:
 
-    $ tar -xzf icarus-0.1.tar.gz
-    $ cd icarus-0.1
+    $ tar -xzf telvemap-0.1.tar.gz
+    $ cd telvemap-0.1
 
 Depending on distro, the next steps could be this:
     # su
@@ -56,7 +53,7 @@ or this:
 
 Contact
 -----------------------------------------------------------------------------
-Danny Vasconez <devch401@ymail.com>
-http://softwarelibrespe.org
+Danny Vasconez <dannyvasconeze@gmail.com>
+http://www.robotica-ecuador.com
 
 Don't hesitate to contact me with any questions, suggestions, and bugs reports.
