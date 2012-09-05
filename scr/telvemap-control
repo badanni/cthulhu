@@ -119,7 +119,7 @@ def main(setpoint,ip=None):
 		aa.ip=ip
 	a=gamepad()
 	gamePad=a.iniciar()
-	a.hombre_muerto="r2"
+	a.hombre_muerto="r2" #Si no se preciona no lee informacion del gamepad
 	a.palanca(gamePad)
 	while a.boton!="l2":
 		a.palanca(gamePad)
