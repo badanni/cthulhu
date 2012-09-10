@@ -210,7 +210,9 @@ elif args == ["server"]:
   install("scr/servidor_novo.py", "bin/telvemap-server")
   print
   print ("""
-Finish
+Now connect to PIONEER P3-DX or MobileSim.
+To start the server:
+   $ telvemap-server
 """)
 
 elif args == ["uninstall"]:
