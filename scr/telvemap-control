@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#       untitled.py
+#       telvemap-control.py
 #       
-#       Copyright 2012 Danny E Vasconezz <badanni@badanni-Inspiron-N5110>
+#       Copyright 2012 Danny E Vasconezz <dannyvasconeze@gmail.com>
 #       
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by
@@ -65,31 +65,41 @@ def fuzzy_velocidad(setpoint,a,cliente):
 	print sol
 	return sol
 
-def robot_ordenes(Palanca,fuzzy_vel,a,b,cliente):
+def robot_ordenes(fuzzy_vel,a,a2,b,cliente):
 	aa=b
-	vel=fuzzy_velocidad(fuzzy_vel[0],fuzzy_vel[1],fuzzy_vel[2],fuzzy_vel[3])
-	if a=="ar":
+	vel=fuzzy_velocidad(fuzzy_vel,aa,cliente)
+	if a2[0]=="ar":
 		print "Arriba",vel
 		TransRatio,RotRatio,LatRatio = [vel,0,0]
 		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
 		ArUtil.sleep(100)
-	elif a=="iz":
+	elif a2[1]=="iz":
 		print "Izquierda",vel
 		TransRatio,RotRatio,LatRatio = [0,vel,0]
 		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
 		ArUtil.sleep(100)
-	elif a=="de":
+	elif a2[1]=="de":
 		print "Derecha",vel
 		TransRatio,RotRatio,LatRatio = [0,-vel,0]
 		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
 		ArUtil.sleep(100)
-	elif a=="ab":
+	elif a2[0]=="ab":
 		print "Abajo",vel
 		TransRatio,RotRatio,LatRatio = [-50,0,0]
 		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
 		ArUtil.sleep(100)
 	elif a=="b1":
 		print "B1"
+		try:
+			import pynotify
+			pygtk.require('2.0')
+			n = pynotify.Notification("Moo title", "test")
+			#n = pynotify.Notification("Moo title", "test", "file:///path/to/icon.png")
+			n.set_urgency(pynotify.URGENCY_CRITICAL)
+			n.set_timeout(10000) # 10 seconds
+			n.set_category("device")
+		except:
+			print "Error: need python-notify, python-gtk2 and gtk"
 	elif a=="b2":
 		print "B2"
 	elif a=="b3":
@@ -100,7 +110,8 @@ def robot_ordenes(Palanca,fuzzy_vel,a,b,cliente):
 		print "L1"
 	elif a=="l2":
 		print "L2"
-		aa.requestOnce("stop") #parada de emergencia
+		print "prueba"
+		cliente.requestOnce("stop") #parada de emergencia
 		ArUtil.sleep(100)
 	elif a=="r1":
 		print "R1"
@@ -117,13 +128,17 @@ def main(setpoint,ip=None):
 	aa.op=12 #Valores de diccionario de sonares
 	if ip!=None:
 		aa.ip=ip
+	cliente=aa.cliente_inicio()
 	a=gamepad()
 	gamePad=a.iniciar()
 	a.hombre_muerto="r2" #Si no se preciona no lee informacion del gamepad
 	a.palanca(gamePad)
-	while a.boton!="l2":
+	while a.boton!="r1":
 		a.palanca(gamePad)
-		print a.direccion, a.boton
+		#print a.direccion, a.boton
+		robot_ordenes(setpoint,a.boton,a.direccion,aa,cliente)
+		
+	aa.cliente_apaga(cliente)
 	return 0
 
 if __name__ == '__main__':
