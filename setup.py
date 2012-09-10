@@ -49,6 +49,8 @@ Usage:
 
  ./setup.py uninstall            ---      Uninstall from /usr/local
 
+ ./setup.py server               ---      Install server to /usr/local
+
 --------------------------------------------------------------------------------
 
 Options:
@@ -202,6 +204,14 @@ chmod 777 ~/telvemap/
 """)
   #copiar la carpeta home a .icarus
 
+elif args == ["server"]:
+  check_dependencies()
+  print ("Installing TelVeMap server in"), install_dir, "...\n"
+  install("scr/servidor_novo.py", "bin/telvemap-server")
+  print
+  print ("""
+Finish
+""")
 
 elif args == ["uninstall"]:
   print ("Uninstalling TelVeMap from"), install_dir, "...\n"
