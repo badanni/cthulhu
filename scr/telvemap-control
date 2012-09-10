@@ -90,16 +90,6 @@ def robot_ordenes(fuzzy_vel,a,a2,b,cliente):
 		ArUtil.sleep(100)
 	elif a=="b1":
 		print "B1"
-		try:
-			import pynotify
-			pygtk.require('2.0')
-			n = pynotify.Notification("Moo title", "test")
-			#n = pynotify.Notification("Moo title", "test", "file:///path/to/icon.png")
-			n.set_urgency(pynotify.URGENCY_CRITICAL)
-			n.set_timeout(10000) # 10 seconds
-			n.set_category("device")
-		except:
-			print "Error: need python-notify, python-gtk2 and gtk"
 	elif a=="b2":
 		print "B2"
 	elif a=="b3":
