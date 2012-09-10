@@ -212,7 +212,7 @@ elif args == ["server"]:
   print ("""
 Now connect to PIONEER P3-DX or MobileSim.
 To start the server:
-   $ telvemap-server
+   $ sudo telvemap-server
 """)
 
 elif args == ["uninstall"]:
