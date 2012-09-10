@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><icarus>
-	<demonio>echo 1</demonio>
-	<demonio>echo 2</demonio>
+	<demonio>telvemap-control</demonio>
+	<demonio>telvemap-mapas</demonio>
 	<autostart>echo 1</autostart>
 </icarus>
