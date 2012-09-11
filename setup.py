@@ -38,7 +38,7 @@ os.chdir(os.path.abspath(pathname))
 # i18n
 APP = "TelVeMap"
 usage_info = ("""
-This script installs or uninstalls Icarus on your system.
+This script installs or uninstalls TelVeMap on your system.
 If you encounter any bugs, please report them to dannyvasconeze@gmail.com .
 
 --------------------------------------------------------------------------------
@@ -196,6 +196,7 @@ if args == ["install"]:
   install("scr/demonio.xml", "telvemap/demonio.xml",1)
   install("scr/data/logo.png", "telvemap/logo.png",1)
   install("scr/data/on128.png", "telvemap/on128.png",1)
+  install("scr/data/icon.png", "telvemap/icon.png",1)
   
   print
   print ("""
