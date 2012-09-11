@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TelVeMap
+GenericName=TelVeMap GUI
+GenericName[es]=TelVeMap GUI
+Comment=TelVeMap
+Comment[es]=TelVeMap
+Exec=telvemap-gui
+Icon=/home/badanni/telvemap/logo.png
+Terminal=false
+Type=Application
+Categories=Utility;
