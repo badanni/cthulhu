@@ -7,7 +7,7 @@
 #
 # Copyright 2012 TelVeMap-ESPE
 #
-# Authors: Danny E Vasconez <dannyvasconeze@gmail.com>
+# Author: Danny E Vasconez <dannyvasconeze@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify it 
 # under the terms of either or both of the following licenses:
@@ -42,10 +42,9 @@ from telvemap.tag_xml import leer_valor_configuracion, abrir_archivo, cerrar_arc
 app_nombre="TelVeMap"
 version1='0.1'
 autores=['Danny E. Vasconez <dannyvasconeze@gmail.com>',' ']
-documentado=['Danny E. Vasconez <dannyvasconeze@gmail.com>',' ']
+documentado=['Danny E. Vasconez <dannyvasconeze@gmail.com>','Daniel Engiberto Granda Guitierrez <degranda87@gmail.com>']
 arte=['No tiene',' ']
-traducido="""
-No tiene
+traducido="""No tiene
 """
 comentarios="TelVeMap aplicacion para utilizar la plataforma Pionner P3-DX"
 website="http://www.robotica-ecuador.com"
@@ -461,12 +460,13 @@ class telvemap_guiAPP:
 		os.system(self.default_demonio+"&")
 
 	def inicio(self):
+		home = os.environ['HOME']
+		dst = os.path.join(home+"/telvemap/", "icon.png")
 		ind = appindicator.Indicator (app_nombre,
-									"indicator-messages",
+									dst,
 									appindicator.CATEGORY_APPLICATION_STATUS)
 		ind.set_status (appindicator.STATUS_ACTIVE)
-		ind.set_attention_icon ("indicator-messages-new")
-		#ind.set_attention_icon (self.icon)
+		#ind.set_icon(dst) #permite cambiar el icono
 		# create a menu
 		menu = gtk.Menu()
 		# create some 
