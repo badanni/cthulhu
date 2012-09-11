@@ -335,6 +335,32 @@ POSSIBILITY OF SUCH DAMAGES.
 
 
 """
+class Splash:
+	def start(self,x,y):
+		print "Creando SPLASH..."
+		self.v=gtk.Window(gtk.WINDOW_POPUP)#gtk.WINDOW_TOPLEVEL)
+		self.v.set_position(gtk.WIN_POS_CENTER)
+		self.v.set_modal(True)
+		self.v.set_size_request(x,y)
+		self.v.set_title('splash')
+		self.v.AppPaintable=True
+
+		image = gtk.Image()
+		home = os.environ['HOME']
+		archivo=home+"/telvemap/splash.png"
+		image.set_from_file(archivo)
+
+		box=gtk.VBox()
+		box.pack_start(image,False,False, 0)
+		self.v.add(box)
+		image.show()
+		box.show()
+		self.v.show()
+		self.timeout=gobject.timeout_add(5000, self.AutoClose)
+
+	def AutoClose(self):
+		self.v.destroy()
+		return False
 
 class telvemap_guiAPP:
 	def __init__(self):
@@ -344,6 +370,8 @@ class telvemap_guiAPP:
 		self.icon_ventana=icon_file
 		self.icon=gtk.gdk.pixbuf_new_from_file(icon_file)
 		self.icon_logo=gtk.gdk.pixbuf_new_from_file(icon_file_logo)
+		#inicia splash
+		s=Splash().start(162,159)
 		#Inicia autostart
 		self.autostart_valor={}
 		self.autostart()
@@ -466,6 +494,7 @@ class telvemap_guiAPP:
 									dst,
 									appindicator.CATEGORY_APPLICATION_STATUS)
 		ind.set_status (appindicator.STATUS_ACTIVE)
+		#ind.set_attention_icon ("indicator-messages-new")
 		#ind.set_icon(dst) #permite cambiar el icono
 		# create a menu
 		menu = gtk.Menu()
