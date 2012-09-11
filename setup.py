@@ -65,7 +65,9 @@ def info():
 
 def install(src, dst,xml=0):
   try:
-    if xml==0:
+    if xml==2:
+     dst = os.path.join("/usr/share/applications/",dst)
+    elif xml==0:
       dst = os.path.join(install_dir, dst)
     else:
       home = os.environ['HOME']
@@ -193,10 +195,12 @@ if args == ["install"]:
   install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
   install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/FuzzyController.py")
   install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/renderizado.py")
+  install("share/telvemap.desktop", "telvemap.desktop",2)
   install("scr/demonio.xml", "telvemap/demonio.xml",1)
   install("scr/data/logo.png", "telvemap/logo.png",1)
   install("scr/data/on128.png", "telvemap/on128.png",1)
   install("scr/data/icon.png", "telvemap/icon.png",1)
+  install("scr/data/splash.png", "telvemap/splash.png",1)
   
   print
   print ("""
@@ -229,9 +233,11 @@ elif args == ["uninstall"]:
   
   print
   print ("""
-There might still be files in ~/telvemap/ left on your system.
+There might still be files in ~/telvemap/  left on your system.
 Please remove that directory manually if you do not plan to
-install icarus again later.
+install TelVeMap again later.
+
+Please do " rm /usr/share/applications/telvemap.desktop "
 """)
 
 else:
