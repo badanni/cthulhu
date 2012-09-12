@@ -28,7 +28,11 @@ About
 
 Dependencies
 -----------------------------------------------------------------------------
-
+-Aria y ArNetworking http://robots.mobilerobots.com/wiki/ARIA
+-Python 2.5 - 2.7 
+-pyGTK repository
+-openCV
+-pyfuzzy
 
 Installation
 -----------------------------------------------------------------------------
