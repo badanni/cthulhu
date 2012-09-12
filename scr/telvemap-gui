@@ -371,7 +371,7 @@ class telvemap_guiAPP:
 		self.icon=gtk.gdk.pixbuf_new_from_file(icon_file)
 		self.icon_logo=gtk.gdk.pixbuf_new_from_file(icon_file_logo)
 		#inicia splash
-		s=Splash().start(162,159)
+		s=Splash().start(400,200)
 		#Inicia autostart
 		self.autostart_valor={}
 		self.autostart()
