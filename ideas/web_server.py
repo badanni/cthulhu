@@ -28,13 +28,17 @@ Doesn't handle POST requests.
 import SocketServer
 import SimpleHTTPServer
 
-PORT = 8080
+PORT = 8081
 
 def move():
     """ sample function to be called via a URL"""
     return 'hi'
 def adelante():
     return 'vamos!!!'
+def prueba():
+    valor="""hola</br>como estas? esto es una prueba?</br>si valio la conexion
+    """
+    return valor
 
 class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -56,12 +60,23 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(adelante()) #call sample function here
             return
+        elif self.path=='/prueba':
+            #This URL will trigger our sample function and send what it returns back to the browser
+            self.send_response(200)
+            self.send_header('Content-type','text/html')
+            self.end_headers()
+            self.wfile.write(prueba()) #call sample function here
+            return
         else:
             #serve files, and directory listings by following self.path from
             #current working directory
             SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
     def do_POST(self):
-        pass
+        self.send_response(200)
+        self.send_header('Content-type','text/html')
+        self.end_headers()
+        self.wfile.write(adelante()) #call sample function here
+        return
 
 httpd = SocketServer.ThreadingTCPServer(("", PORT),CustomHandler)
 
