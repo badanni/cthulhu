@@ -78,7 +78,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         self.wfile.write(adelante()) #call sample function here
         return
 
-httpd = SocketServer.ThreadingTCPServer(("", PORT),CustomHandler)
+httpd = SocketServer.ThreadingTCPServer(("192.168.2.104", PORT),CustomHandler)
 
 print "serving at port", PORT
 httpd.serve_forever()
