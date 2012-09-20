@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#       untitled.py
+#       telvemap-mapa.py
 #       
 #       Copyright 2012 Danny E Vasconez <dannyvasconeze@gmail.com>
 #       
@@ -28,13 +28,16 @@ import gtk
 from time import sleep
 import os
 import sys
-from pysvg.structure import *
-from pysvg.core import *
-from pysvg.text import *
-from pysvg.shape import *
-from cliente_lib import *
+
+## Anadir un hilo para que repita las lecturas
+
+
+pathname = os.path.dirname(sys.argv[0])
+os.chdir(os.path.abspath(pathname))
+sys.path.append("../share/telvemap/lib")
+from telvemap.cliente_lib import *
 #from sender import *
-from renderizado import renderizado as mapa
+from telvemap.renderizado import renderizado as mapa
 #from AriaPy import *
 """\package inicio
    \brief programa que utiliza la libreria cliente_lib
@@ -59,19 +62,19 @@ class prueba_adqui(object):
 		\param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase
 		\return self
 		"""
+		direccion="/usr/local/share/telvemap/" ##Correguir para la instalcion en otro dirrecion
 		self.aument=0
 		builder = gtk.Builder() #El archivo de glade debe estar en gtkbuilder
-		builder.add_from_file("glade/GUI.glade") #Carga el archivo glade
+		builder.add_from_file(direccion+"glade/GUI.glade") #Carga el archivo glade
 		builder.connect_signals(self) #Toma todas las senales de glade
 		self.teleoper = builder.get_object("map") #Ventana principal
 		self.boton = builder.get_object("button1")
 		self.area=builder.get_object("mapa")
 		self.teleoper.show()
+		
+	def proceso(self):
 		#Inicializa cliente d-bus
 		#self.client_dbus = DBusClient()
-		#
-		#Inicializar visor
-		#self.client_dbus.visor()
 		#
 		#imnicio opencv
 		self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
@@ -101,146 +104,6 @@ class prueba_adqui(object):
 		except:
 			print "Fallo inicio"
 			pass
-	def izq_clicked(self, widget, data=None):
-		try:
-			print "presiono izquierda"
-			TransRatio,RotRatio,LatRatio = [0,90,90]
-			self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
-			ArUtil.sleep(100)
-			#sleep(0.1)
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print self.valores_f
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo init"
-			pass
-	def der_clicked(self, widget, data=None):
-		try:
-			print "presiono derecha"
-			TransRatio,RotRatio,LatRatio = [0,-90,-90]
-			self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
-			ArUtil.sleep(100)
-			#sleep(0.1)
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print self.valores_f
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo"
-			pass
-	def arriba_clicked(self, widget, data=None):
-		try:
-			print "Presiono arriba"
-			TransRatio,RotRatio,LatRatio = [50,0,0]
-			self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
-			ArUtil.sleep(100)
-			#sleep(0.1)
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print self.valores_f
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo"
-			pass
-	def abajo_clicked(self, widget, data=None):
-		try:
-			print "Presiono abajo"
-			TransRatio,RotRatio,LatRatio = [-50,0,0]
-			self.cliente=self.a.envio_ratioDrive(self.cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
-			ArUtil.sleep(100)
-			#sleep(0.1)
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print self.valores_f
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo"
-			pass
-	def parar_clicked(self, widget, data=None):
-		try:
-			print "Presiono alto"
-			self.cliente.requestOnce("stop") #parada de emergencia
-			ArUtil.sleep(100)
-			#sleep(0.1)
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print self.valores_f
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo"
-			pass
-	def button1_clicked(self, widget, data=None):
-		try:
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			ArUtil.sleep(100)
-			#sleep(0.1)
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print self.valores_f
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo paro"
-			pass
 
 	def generador_mapa(self,valor_x,valor_y,mi_x,mi_y,mi_th):
 		try:
@@ -267,6 +130,8 @@ def main():
 	if os.name=="posix": #verifica que sea un entorno Linux
 		dimensiones=(600,400)
 		nombre_archivo="filenamea.jpg"
+		home = os.environ['HOME']
+		icon_file = home + "/telvemap/"+nombre_archivo
 		dimensiones_robot=(13,13)
 		app = prueba_adqui(dimensiones,nombre_archivo,dimensiones_robot) #instancia el objeto GUI con las senales enlazadas
 		gtk.main() #levanta el motor GTK para poder visualizar
