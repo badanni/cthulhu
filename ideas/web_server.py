@@ -104,7 +104,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 Aria.init()
 
-httpd = SocketServer.ThreadingTCPServer(("192.168.2.104", PORT),CustomHandler)
+httpd = SocketServer.ThreadingTCPServer(("192.168.10.106", PORT),CustomHandler)
 
 print "serving at port", PORT
 httpd.serve_forever()
