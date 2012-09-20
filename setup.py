@@ -47,6 +47,8 @@ Usage:
 
  ./setup.py install              ---      Install to /usr/local
 
+ ./setup.py reinstall              ---      Reinstall to /usr/local
+
  ./setup.py uninstall            ---      Uninstall from /usr/local
 
  ./setup.py server               ---      Install server to /usr/local
@@ -81,9 +83,12 @@ def install(src, dst,xml=0):
   except:
     print ("Error while installing"), dst
 
-def uninstall(path):
+def uninstall(path1,opcion=1):
   try:
-    path = os.path.join(install_dir, path)
+    if opcion==1:
+      path = os.path.join(install_dir, path1)
+    else:
+      path=path1
     if os.path.isfile(path):
       os.remove(path)
     elif os.path.isdir(path):
@@ -190,6 +195,9 @@ if args == ["install"]:
   install("scr/telvemap-gui", "bin/telvemap-gui")
   install("scr/telvemap-control", "bin/telvemap-control")
   install("scr/telvemap-mapa", "bin/telvemap-mapa")
+  install("share/telvemap/glade/GUI.glade", "share/telvemap/glade/GUI.glade")
+  install("share/telvemap/glade/hemra.png", "share/telvemap/glade/hemra.png")
+  install("share/telvemap/glade/imagen.png", "share/telvemap/glade/imagen.png")
   install("share/telvemap/lib/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
   install("share/telvemap/lib/telvemap/cliente_lib.py", "share/telvemap/lib/telvemap/cliente_lib.py")
   install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
@@ -210,6 +218,29 @@ chmod 777 ~/telvemap/
 """)
   #copiar la carpeta home a .icarus
 
+elif args == ["reinstall"]:
+  check_dependencies()
+  print ("Reinstalling TelVeMap in"), install_dir, "...\n"
+  install("scr/telvemap-gui", "bin/telvemap-gui")
+  install("scr/telvemap-control", "bin/telvemap-control")
+  install("scr/telvemap-mapa", "bin/telvemap-mapa")
+  install("share/telvemap/glade/GUI.glade", "share/telvemap/glade/GUI.glade")
+  install("share/telvemap/glade/hemra.png", "share/telvemap/glade/hemra.png")
+  install("share/telvemap/glade/imagen.png", "share/telvemap/glade/imagen.png")
+  install("share/telvemap/lib/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
+  install("share/telvemap/lib/telvemap/cliente_lib.py", "share/telvemap/lib/telvemap/cliente_lib.py")
+  install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
+  install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
+  install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/FuzzyController.py")
+  install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/renderizado.py")
+  install("share/telvemap.desktop", "telvemap.desktop",2)
+  
+  print
+  print ("""
+Don't forgot to change values of directory.
+chmod 777 ~/telvemap/
+""")
+  
 elif args == ["server"]:
   check_dependencies()
   print ("Installing TelVeMap server in"), install_dir, "...\n"
@@ -232,6 +263,11 @@ elif args == ["uninstall"]:
   uninstall("share/telvemap/lib/telvemap/tag_xml.py")
   uninstall("share/telvemap/lib/telvemap/FuzzyController.py")
   uninstall("share/telvemap/lib/telvemap/renderizado.py")
+  uninstall("share/telvemap/glade/GUI.glade")
+  uninstall("share/telvemap/glade/hemra.png")
+  uninstall("share/telvemap/glade/imagen.png")
+  uninstall("/usr/share/applications/telvemap.desktop",2)
+  uninstall("share/telvemap/")
   
   print
   print ("""
@@ -239,7 +275,6 @@ There might still be files in ~/telvemap/  left on your system.
 Please remove that directory manually if you do not plan to
 install TelVeMap again later.
 
-Please do " rm /usr/share/applications/telvemap.desktop "
 """)
 
 else:
