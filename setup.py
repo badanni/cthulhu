@@ -203,13 +203,14 @@ if args == ["install"]:
   install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
   install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
   install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/FuzzyController.py")
-  install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/renderizado.py")
+  install("share/telvemap/lib/telvemap/renderizado.py", "share/telvemap/lib/telvemap/renderizado.py")#
   install("share/telvemap.desktop", "telvemap.desktop",2)
   install("scr/demonio.xml", "telvemap/demonio.xml",1)
   install("scr/data/logo.png", "telvemap/logo.png",1)
   install("scr/data/on128.png", "telvemap/on128.png",1)
   install("scr/data/icon.png", "telvemap/icon.png",1)
   install("scr/data/splash.png", "telvemap/splash.png",1)
+  install("scr/data/robot.jpg", "telvemap/robot.jpg",1)#
   
   print
   print ("""
@@ -232,7 +233,7 @@ elif args == ["reinstall"]:
   install("share/telvemap/lib/telvemap/gamepad.py", "share/telvemap/lib/telvemap/gamepad.py")
   install("share/telvemap/lib/telvemap/tag_xml.py", "share/telvemap/lib/telvemap/tag_xml.py")
   install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/FuzzyController.py")
-  install("share/telvemap/lib/telvemap/FuzzyController.py", "share/telvemap/lib/telvemap/renderizado.py")
+  install("share/telvemap/lib/telvemap/renderizado.py", "share/telvemap/lib/telvemap/renderizado.py")#
   install("share/telvemap.desktop", "telvemap.desktop",2)
   
   print
