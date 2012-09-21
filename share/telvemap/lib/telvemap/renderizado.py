@@ -70,7 +70,12 @@ class renderizado():
 		\return Nada
 		"""
 		self.image=cv.LoadImage(self.nombre_archivo1, cv.CV_LOAD_IMAGE_COLOR) #Load the image
-		self.robot=cv.LoadImage("robot.jpg", cv.CV_LOAD_IMAGE_COLOR) #Load the image
+		#
+		nombre_archivo="robot.jpg"
+		home = os.environ['HOME']
+		robot_file = home + "/telvemap/"+nombre_archivo
+		#
+		self.robot=cv.LoadImage(robot_file, cv.CV_LOAD_IMAGE_COLOR) #Load the image
 	def anadir_punto(self,punto,color=0,radio=1):
 		"""
 		\brief crear un punto en el lienzo del mapa
