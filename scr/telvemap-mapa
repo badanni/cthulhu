@@ -29,7 +29,9 @@ from time import sleep
 import os
 import sys
 
-## Anadir un hilo para que repita las lecturas
+from multiprocessing import Process, Queue
+
+## trabajando con multiprocesos
 
 
 pathname = os.path.dirname(sys.argv[0])
@@ -56,7 +58,7 @@ class prueba_adqui(object):
 	\class inicio.prueba_adqui
 	\brief es la clase encargada del entorno grafico y enlace con cliente_lib 
 	"""
-	def __init__(self,dimensiones,nombre_archivo,dimensiones_robot):
+	def __init__(self):
 		"""
 		\brief para cargar el XML de gtk+ y sus senales
 		\param self no se necesita incluirlo al utilizar la funcion ya que se lo pone solo por ser la definicion de una clase
@@ -72,47 +74,48 @@ class prueba_adqui(object):
 		self.area=builder.get_object("mapa")
 		self.teleoper.show()
 		
-	def proceso(self):
-		#Inicializa cliente d-bus
-		#self.client_dbus = DBusClient()
-		#
-		#imnicio opencv
-		self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
-		self.nombre_archivo=nombre_archivo
-		self.imagen.cargar()
-		#
-		self.a=cliente_lib();
-		#self.a.ip="192.168.1.102"
-		self.cliente=self.a.cliente_inicio()
-		#self.a.cliente_apaga(self.cliente)
-		try:
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
-			#valor_x,valor_y,valor_t=self.a.devuelve_valors()
-			valor_x=self.a.x
-			valor_y=self.a.y
-			ArUtil.sleep(100) #cambiar estos comandos por temporisadores de python
-			#sleep(0.1)
-			self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
-			self.valores_f=self.a.devuelve_valorf()
-			mi_x=self.valores_f[1]
-			mi_y=self.valores_f[2]
-			mi_th=self.valores_f[3]
-			#print valor_x
-			#print valor_y
-			print len(valor_x)
-			self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
-		except:
-			print "Fallo inicio"
-			pass
+	def proceso(self,dimensiones,nombre_archivo,dimensiones_robot):
+		
+			#Inicializa cliente d-bus
+			#self.client_dbus = DBusClient()
+			#
+			#imnicio opencv
+			self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
+			self.nombre_archivo=nombre_archivo
+			self.imagen.cargar()
+			#
+			self.a=cliente_lib();
+			#self.a.ip="192.168.1.102"
+			self.cliente=self.a.cliente_inicio()
+			#self.a.cliente_apaga(self.cliente)
+			try:
+				self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
+				#valor_x,valor_y,valor_t=self.a.devuelve_valors()
+				valor_x=self.a.x
+				valor_y=self.a.y
+				ArUtil.sleep(100) #cambiar estos comandos por temporisadores de python
+				#sleep(0.1)
+				self.cliente=self.a.envio_consulta_fisica(self.cliente,"updateNumbers")
+				self.valores_f=self.a.devuelve_valorf()
+				mi_x=self.valores_f[1]
+				mi_y=self.valores_f[2]
+				mi_th=self.valores_f[3]
+				#print valor_x
+				#print valor_y
+				print len(valor_x)
+				self.generador_mapa(valor_x,valor_y,mi_x,mi_y,mi_th)
+			except:
+				print "Fallo inicio"
+				pass
 
 	def generador_mapa(self,valor_x,valor_y,mi_x,mi_y,mi_th):
 		try:
 			print valor_x
 			if (len(valor_x)>0):
 				for a in range(len(valor_x)): #SIP en c. 
-					self.imagen.anadir_punto((valor_x['x%d' % a]/100+300,valor_y['y%d' % a]/100+200),radio=2)
+					self.imagen.anadir_punto((valor_x['x%d' % a]/100+500,valor_y['y%d' % a]/100+350),radio=2)
 			self.imagen.crear_imagen()
-			self.imagen.rotacion_y_posicion_robot(mi_x/100+300,mi_y/100+200,mi_th)
+			self.imagen.rotacion_y_posicion_robot(mi_x/100+500,mi_y/100+350,mi_th)
 			self.area.set_from_file(self.nombre_archivo)
 		except:
 			print "Fallo mapa"
@@ -128,12 +131,16 @@ def main():
 	\brief El encargado al momento de ejcutar la aplicacion de instanciar el objeto prueba_teleoperacion
 	"""
 	if os.name=="posix": #verifica que sea un entorno Linux
-		dimensiones=(600,400)
+		dimensiones=(1000,700)#(600,400)
 		nombre_archivo="filenamea.jpg"
 		home = os.environ['HOME']
-		icon_file = home + "/telvemap/"+nombre_archivo
+		tela_archivo = home + "/telvemap/"+nombre_archivo
 		dimensiones_robot=(13,13)
-		app = prueba_adqui(dimensiones,nombre_archivo,dimensiones_robot) #instancia el objeto GUI con las senales enlazadas
+		app = prueba_adqui() #instancia el objeto GUI con las senales enlazadas
+		p = Process(target=app.proceso,args=(dimensiones,tela_archivo,dimensiones_robot,))
+		p.start()
+		p.run()
+		#p.join(100)
 		gtk.main() #levanta el motor GTK para poder visualizar
   
 
