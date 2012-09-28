@@ -30,7 +30,7 @@ import os
 import sys
 
 from multiprocessing import Process, Queue
-
+import time
 ## trabajando con multiprocesos
 
 
@@ -74,20 +74,22 @@ class prueba_adqui(object):
 		self.area=builder.get_object("mapa")
 		self.teleoper.show()
 		
-	def proceso(self,dimensiones,nombre_archivo,dimensiones_robot):
 		
-			#Inicializa cliente d-bus
-			#self.client_dbus = DBusClient()
-			#
-			#imnicio opencv
-			self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
-			self.nombre_archivo=nombre_archivo
-			self.imagen.cargar()
-			#
-			self.a=cliente_lib();
-			#self.a.ip="192.168.1.102"
-			self.cliente=self.a.cliente_inicio()
-			#self.a.cliente_apaga(self.cliente)
+	def proceso(self,dimensiones,nombre_archivo,dimensiones_robot):
+		a=True
+		#Inicializa cliente d-bus
+		#self.client_dbus = DBusClient()
+		#
+		#imnicio opencv
+		self.imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
+		self.nombre_archivo=nombre_archivo
+		self.imagen.cargar()
+		#
+		self.a=cliente_lib();
+		self.a.ip="192.168.1.100"
+		self.cliente=self.a.cliente_inicio()
+		#self.a.cliente_apaga(self.cliente)
+		while a==True:
 			try:
 				self.cliente=self.a.envio_consulta_fisica(self.cliente,"pose")
 				#valor_x,valor_y,valor_t=self.a.devuelve_valors()
@@ -107,15 +109,16 @@ class prueba_adqui(object):
 			except:
 				print "Fallo inicio"
 				pass
+			#sleep(100)
 
 	def generador_mapa(self,valor_x,valor_y,mi_x,mi_y,mi_th):
 		try:
 			print valor_x
 			if (len(valor_x)>0):
 				for a in range(len(valor_x)): #SIP en c. 
-					self.imagen.anadir_punto((valor_x['x%d' % a]/100+500,valor_y['y%d' % a]/100+350),radio=2)
+					self.imagen.anadir_punto((valor_x['x%d' % a]/50+500,valor_y['y%d' % a]/50+350),radio=2)
 			self.imagen.crear_imagen()
-			self.imagen.rotacion_y_posicion_robot(mi_x/100+500,mi_y/100+350,mi_th)
+			self.imagen.rotacion_y_posicion_robot(mi_x/50+500,mi_y/50+350,mi_th)
 			self.area.set_from_file(self.nombre_archivo)
 		except:
 			print "Fallo mapa"
@@ -131,12 +134,14 @@ def main():
 	\brief El encargado al momento de ejcutar la aplicacion de instanciar el objeto prueba_teleoperacion
 	"""
 	if os.name=="posix": #verifica que sea un entorno Linux
+		app = prueba_adqui() #instancia el objeto GUI con las senales enlazadas
+		
+		
 		dimensiones=(1000,700)#(600,400)
 		nombre_archivo="filenamea.jpg"
 		home = os.environ['HOME']
 		tela_archivo = home + "/telvemap/"+nombre_archivo
 		dimensiones_robot=(13,13)
-		app = prueba_adqui() #instancia el objeto GUI con las senales enlazadas
 		p = Process(target=app.proceso,args=(dimensiones,tela_archivo,dimensiones_robot,))
 		p.start()
 		p.run()
