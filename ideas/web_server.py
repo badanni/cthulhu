@@ -37,7 +37,7 @@ def move(a,b):
     """ sample function to be called via a URL"""
     #Inicio de ARIA y conexion con servidor del robot
     aa = cliente_lib()
-    #aa.ip="192.168.2.45"
+    aa.ip="192.168.1.100"
     cliente = aa.cliente_inicio()
     
     TransRatio,RotRatio,LatRatio = [50*a,50*b,0]
@@ -104,7 +104,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 Aria.init()
 
-httpd = SocketServer.ThreadingTCPServer(("192.168.10.106", PORT),CustomHandler)
+httpd = SocketServer.ThreadingTCPServer(("192.168.1.101", PORT),CustomHandler)
 
 print "serving at port", PORT
 httpd.serve_forever()
