@@ -143,8 +143,15 @@ class renderizado():
 		cv.SetImageROI(image_mapa,(robo_x,robo_y, dimensiones_robot[0], dimensiones_robot[1]));
 		cv.Copy(image1,image_mapa,mask=image_mascara)
 		cv.ResetImageROI(image_mapa);
+		
+		font = cv.InitFont(cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 3, 8) #Creates a font
+		x = 30
+		y = 40
+		cv.PutText(image_mapa,"Posicion robot (x= %d,y= %d,th= %d)" % (robo_x,robo_y,robo_th), (x,y),font, 255) #Draw the text
+		
 		cv.SaveImage(self.nombre_archivo, image_mapa) #Saves the image#
 		#self.graficar(2000,image_mapa)
+		return image_mapa
 		
 
 if __name__ == '__main__':
@@ -156,5 +163,6 @@ if __name__ == '__main__':
 	a.crear_imagen()
 	a.rotacion_y_posicion_robot(200,100,0)
 	a.crear_imagen()
-	a.rotacion_y_posicion_robot(20,300,-40)
+	image_mapa=a.rotacion_y_posicion_robot(20,300,-40)
+	a.graficar(100,image_mapa)
 
