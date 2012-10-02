@@ -22,6 +22,10 @@ cthulu ver. 0.4 / TelVeMap ver. 0.1
 
 Instalador y la integracion de todos los modulos
 
+Nota: Por el momento se tiene un fallo del ArNetworking en su libreria _ArNetworking.so que no permite funcionar al ArMutex y hace que colapse todo si se pierden los tiempos en ArNetworking, falla posiblemente por una mala compilacion de la biblioteca pero son supociciones mias. Trabajando con sockets de Python y ARIA para remplazar a ArNetworking <Revizar carpetas ideas>.  
+
+
+
 cthulu ver. 0.3
 ===============
 
