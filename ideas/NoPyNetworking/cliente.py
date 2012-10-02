@@ -28,11 +28,14 @@ import socket
 
 def main():
 	s = socket.socket()
-	s.connect(("localhost", 9999))
+	s.connect(("192.168.2.113", 9999))
 	while True:
 		mensaje = raw_input("> ")
 		s.send(mensaje)
-		if mensaje == "quit":
+		mensaje=s.recv(1024)
+		print mensaje
+		if mensaje == "adios":
+			s.send("quit")
 			break
 			print "adios"
 	s.close()
