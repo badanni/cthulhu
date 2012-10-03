@@ -28,7 +28,7 @@ import socket
 
 def main():
 	s = socket.socket()
-	s.connect(("192.168.2.113", 9999))
+	s.connect(("192.168.2.113", 9019))
 	while True:
 		mensaje = raw_input("> ")
 		s.send(mensaje)

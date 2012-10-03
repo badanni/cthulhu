@@ -31,9 +31,9 @@ import sys
 import socket
 
 class NoPyArNetworking:
-	def server(self):
+	def server(self,ip,puerto):
 		s = socket.socket()
-		s.bind(("192.168.2.113", 9999))#"192.168.2.113"
+		s.bind((ip, puerto))#"192.168.2.113",9999
 		s.listen(2) #maximo de clientes
 		sc, addr = s.accept()
 		while True:
@@ -41,9 +41,15 @@ class NoPyArNetworking:
 			recibido=recibido.split(',')
 			if recibido[0] == "quit":
 				break
-			if recibido[0] == "adelante":
-				self.mover(1,0)
-			if recibido[0] == "sonares":
+			elif recibido[0] == "adelante":
+				self.mover(1,0,recibido[1])
+			elif recibido[0] == "atras":
+				self.mover(-1,0,recibido[1])
+			elif recibido[0] == "izq":
+				self.mover(0,-1,recibido[1])
+			elif recibido[0] == "der":
+				self.mover(0,1,recibido[1])
+			elif recibido[0] == "sonares":
 				self.sonares()
 			print "Recibido:", recibido
 			sc.send(recibido[0])
@@ -52,17 +58,23 @@ class NoPyArNetworking:
 		s.close()
 		return 0
 
-	def mover(self,direcion1,direcion2):
+	def mover(self,direcion1,direcion2,velocidad=1000):
 		# Drive the robot a bit, then exit.
-		self.robot.lock()
-		print "Robot position using ArRobot accessor methods: (", self.robot.getX(), ",", self.robot.getY(), ",", self.robot.getTh(), ")"
-		pose = self.robot.getPose()
-		print "Robot position by printing ArPose object: ", pose
-		print "Robot position using special python-only ArPose members: (", pose.x, ",", pose.y, ",", pose.th, ")"
-		print "Sending command to move forward 1 meter..."
-		self.robot.enableMotors()
-		self.robot.move(1000)
-		self.robot.unlock()
+		if ((direcion1!=0) & (direcion2==0)):
+			self.robot.lock()
+			print "Robot position using ArRobot accessor methods: (", self.robot.getX(), ",", self.robot.getY(), ",", self.robot.getTh(), ")"
+			pose = self.robot.getPose()
+			print "Robot position by printing ArPose object: ", pose
+			print "Robot position using special python-only ArPose members: (", pose.x, ",", pose.y, ",", pose.th, ")"
+			print "Sending command to move forward 1 meter..."
+			self.robot.enableMotors()
+			self.robot.move(100*direcion1)
+			self.robot.unlock()
+		elif ((direcion1==0) & (direcion2!=0)):
+			self.robot.lock()
+			print "Sending command to rotate 90 degrees..."
+			self.robot.setHeading(90*direcion2)
+			self.robot.unlock()
 
 	def sonares(self,numero_de_sonares=7):
 		self.robot.lock()
@@ -105,9 +117,21 @@ class NoPyArNetworking:
 		self.robot.runAsync(1)
 		#self.robot.enableMotors()
 		#robot.waitForRunExit()
-
+def mensaje():
+	a="""No ingreso los parametros de ip y puerto por lo tanto se va a
+usar localhost:9999 . Para ingresar los parametros corretamente 
+correctamente se debe tipear en consola:
+$ python servidor.py 192.168.1.115 9999
+"""
+	print a
 if __name__ == '__main__':
 	a=NoPyArNetworking()
-	a.robot()
-	a.server()
+	
+	if len(sys.argv)==3:
+		a.robot()
+		a.server(sys.argv[1],int(sys.argv[2]))
+	else:
+		mensaje()
+		a.robot()
+		a.server("localhost",9999)
 
