@@ -138,7 +138,7 @@ class NoPyArNetworking:
 			self.robot.unlock()
 		elif ((direcion1==0) & (direcion2!=0)):
 			self.robot.lock()
-			self.robot.setRotVel(int(velocidad))
+			self.robot.setRotVel(float(velocidad))
 			angulo=self.robot.getTh()+10*direcion2
 			print "Sending command to rotate %d degrees..." % (angulo)
 			print self.robot.getRotVel()
@@ -226,5 +226,5 @@ if __name__ == '__main__':
 	else:
 		mensaje()
 		a.robot()
-		a.server("localhost",9991)
+		a.server("192.168.2.113",9991)#"localhost",9991)
 

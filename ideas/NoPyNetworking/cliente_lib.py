@@ -27,6 +27,8 @@ class cliente_lib:
 	def __init__(self):
 		self.sonar=[None,None,None,None,None,None,None]
 		self.odometria=[None,None,None,None]
+		self.x={}
+		self.y={}
 		self.ip="localhost"
 		self.puerto=9991
 	
@@ -35,10 +37,12 @@ class cliente_lib:
 		self.s.connect((self.ip, self.puerto))
 
 	def envio_movimiento(self,comando,para1=None,para2=None):
-		self.s.send(comando)
+		if para1!=None:
+			self.s.send(comando+","+para1)
+		elif
+			self.s.send(comando)
 		respuesta=self.s.recv(1024)
 		self.respuesta=respuesta
-		verificacion=self.s.recv(1024)
 
 	def odometria_comando(self):
 		self.s.send("odometria")
@@ -55,7 +59,22 @@ class cliente_lib:
 			sonar[a]=self.s.recv(1024)
 			self.s.send("listo")
 		self.sonar=sonar
-		verificacion=self.s.recv(1024)
+		verificacion=self.s.recv(1024) #suelta al servidor de su ciclo 
+		bandera1=0
+		acu=0
+		print sonar
+		for i in range(2*int(cantidad)):
+			valores=sonar[acu].split(",")
+			print valores
+			if bandera1==0:
+				self.x.update({'x%d' % (acu):valores[0]})
+				bandera1=1
+			else:
+				self.y.update({'y%d' % (acu):valores[1]})
+				bandera1=0
+				acu=acu+1
+			if acu==cantidad:
+				acu=0
 
 	def cerrar_conexion(self):
 		self.s.send("apagar")
@@ -63,11 +82,13 @@ class cliente_lib:
 
 def main():
 	a=cliente_lib()
-	#a.ip="192.168.2.105"
-	#a.puerto=9999
+	a.ip="192.168.2.105"
+	a.puerto=9999
 	a.conexion()
 	a.sonares_comando()
 	print a.sonar
+	print a.x
+	print a.y
 	a.odometria_comando()
 	print a.odometria
 	a.cerrar_conexion()
