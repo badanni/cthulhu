@@ -46,6 +46,7 @@ def main():
 		elif mensaje == "sonares":
 			sonar=[None,None,None,None,None,None,None]
 			cantidad=s.recv(1024)
+			s.send(cantidad)
 			for a in range(int(cantidad)):
 				sonar[a]=s.recv(1024)
 				s.send("listo")
