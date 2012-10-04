@@ -1,0 +1,138 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#       telvemap-control.py
+#       
+#       Copyright 2012 Danny E Vasconezz <dannyvasconeze@gmail.com>
+#       
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#       
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#       
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+#       
+#       
+
+import AriaPy
+import os
+import sys
+import math
+
+pathname = os.path.dirname(sys.argv[0])
+os.chdir(os.path.abspath(pathname))
+sys.path.append("../share/telvemap/lib")
+from telvemap.gamepad import gamepad
+from telvemap.FuzzyController import controlador
+from telvemap.cliente_lib import *
+
+def fuzzy_velocidad(setpoint,a,cliente):
+	sol=-1
+	try:
+		cliente=a.envio_consulta_fisica(cliente,"pose")
+		#valor_x,valor_y,valor_t=self.a.devuelve_valors()
+		valor_x=a.x
+		valor_y=a.y
+		#print valor_x, valor_y
+		#ArUtil.sleep(100)
+		cliente=a.envio_consulta_fisica(cliente,"updateNumbers")
+		valores_f=a.devuelve_valorf()
+		print 1
+		mi_x=valores_f[1]
+		mi_y=valores_f[2]
+		#print mi_x, mi_y
+		#mi_th=self.valores_f[3]
+		dato=[]
+		if (len(valor_x)>0):
+			for a in range(len(valor_x)): #SIP en c. 
+				#print math.sqrt(pow(valor_x['x%d' % a]-mi_x,2)+pow(valor_y['y%d' % a]-mi_y,2)), "calculo"
+				dato.append(math.sqrt(pow(valor_x['x%d' % a]-mi_x,2)+pow(valor_y['y%d' % a]-mi_y,2)))
+			valor_distancia=min(dato) #la distancia mas cercana tomada de la plataforma
+			sol=controlador(setpoint,valor_distancia) #Controlador difuso
+			if sol<0:
+				sol=0
+	except:
+		#print "Fallo inicio"
+		sol='e0'
+	print sol
+	return sol
+
+def robot_ordenes(fuzzy_vel,a,a2,b,cliente):
+	aa=b
+	vel=fuzzy_velocidad(fuzzy_vel,aa,cliente)
+	if a2[0]=="ar":
+		print "Arriba",vel
+		TransRatio,RotRatio,LatRatio = [vel,0,0]
+		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+		ArUtil.sleep(100)
+	elif a2[1]=="iz":
+		print "Izquierda",vel
+		TransRatio,RotRatio,LatRatio = [0,vel,0]
+		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+		ArUtil.sleep(100)
+	elif a2[1]=="de":
+		print "Derecha",vel
+		TransRatio,RotRatio,LatRatio = [0,-vel,0]
+		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+		ArUtil.sleep(100)
+	elif a2[0]=="ab":
+		print "Abajo",vel
+		TransRatio,RotRatio,LatRatio = [-50,0,0]
+		cliente=aa.envio_ratioDrive(cliente,TransRatio,RotRatio,LatRatio) #fijar los valores para mover
+		ArUtil.sleep(100)
+	elif a=="b1":
+		print "B1"
+	elif a=="b2":
+		print "B2"
+	elif a=="b3":
+		print "B3"
+	elif a=="b4":
+		print "B4"
+	elif a=="l1":
+		print "L1"
+	elif a=="l2":
+		print "L2"
+		print "prueba"
+		cliente.requestOnce("stop") #parada de emergencia
+		ArUtil.sleep(100)
+	elif a=="r1":
+		print "R1"
+	elif a=="r2":
+		print "R2"
+	else:
+		pass
+	#sleep(0.2)
+	return a
+
+def main(setpoint,ip=None):
+	Aria.init()
+	aa=cliente_lib()
+	if ip!=None:
+		aa.ip=ip
+	aa.conexion()
+	a=gamepad()
+	gamePad=a.iniciar()
+	a.hombre_muerto="r2" #Si no se preciona no lee informacion del gamepad
+	a.palanca(gamePad)
+	while a.boton!="r1":
+		a.palanca(gamePad)
+		#print a.direccion, a.boton
+		robot_ordenes(setpoint,a.boton,a.direccion,aa)
+		
+	aa.cerrar_conexion()
+	return 0
+
+if __name__ == '__main__':
+	setpoint=150
+	ip="192.168.2.113"
+	puerto=9991
+	main(setpoint,ip,puerto)
+
