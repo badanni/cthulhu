@@ -94,6 +94,9 @@ class NoPyArNetworking:
 			elif recibido[0] == "sonares":
 				self.sonares()
 				sc.send(str(len(self.valor_sonares)))
+				bandera1=None
+				while bandera1!=str(len(self.valor_sonares)):
+					bandera1=sc.recv(1024)
 				for va in self.valor_sonares:
 					sc.send(self.valor_sonares[va])
 					bandera1=None
