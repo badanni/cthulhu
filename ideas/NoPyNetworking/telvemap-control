@@ -32,7 +32,7 @@ import math
 #sys.path.append("../share/telvemap/lib")
 from telvemap.gamepad import gamepad
 from telvemap.FuzzyController import controlador
-from telvemap.cliente_lib import *
+from telvemap.cliente_lib2 import *
 
 def fuzzy_velocidad(setpoint,a):
 	sol=-1
