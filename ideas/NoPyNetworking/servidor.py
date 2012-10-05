@@ -36,7 +36,7 @@ import socket
    \details Se lo puede utilizar con un maximo de dos conexiones de clientes trabaja en el puerto especificado al ejecutarlo
    \authors    Danny Vasconez
    \authors   Daniel Granda
-   \version   0.0.1
+   \version   0.0.3
    \date      2012
    \pre       Tener conectada la plataforma Pioneer P3-DX.
    \bug       Si se cierra la conexion se tiene que volver a abrir el servidor.
@@ -226,5 +226,5 @@ if __name__ == '__main__':
 	else:
 		mensaje()
 		a.robot()
-		a.server("192.168.2.113",9991)#"localhost",9991)
+		a.server("localhost",9991)#"localhost",9991)
 

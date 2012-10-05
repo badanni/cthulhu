@@ -26,6 +26,7 @@ import AriaPy
 import os
 import sys
 import math
+import gobject
 
 #pathname = os.path.dirname(sys.argv[0])
 #os.chdir(os.path.abspath(pathname))
