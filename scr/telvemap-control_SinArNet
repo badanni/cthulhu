@@ -187,7 +187,7 @@ class telvemap_control:
 		#Inicio de gtk
 		direccion="/usr/local/share/telvemap/glade/" ##Correguir para la instalcion en otro dirrecion
 		builder = gtk.Builder() #El archivo de glade debe estar en gtkbuilder
-		builder.add_from_file(direcion+"GUI2.glade")#direccion+"glade/GUI.glade") #Carga el archivo glade
+		builder.add_from_file(direccion+"GUI2.glade")#direccion+"glade/GUI.glade") #Carga el archivo glade
 		self.teleoper = builder.get_object("map") #Ventana principal
 		builder.connect_signals(self) #Toma todas las senales de glade
 		area = builder.get_object("image1")
