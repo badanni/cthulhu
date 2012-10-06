@@ -145,9 +145,9 @@ class renderizado():
 		cv.ResetImageROI(image_mapa);
 		
 		font = cv.InitFont(cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 3, 8) #Creates a font
-		x = 30
-		y = 40
-		cv.PutText(image_mapa,"Posicion robot (x= %d,y= %d,th= %d)" % (robo_x,robo_y,robo_th), (x,y),font, 255) #Draw the text
+		#x = 30
+		#y = 40
+		#cv.PutText(image_mapa,"Posicion robot (x= %d,y= %d,th= %d)" % (robo_x,robo_y,robo_th), (x,y),font, 255) #Draw the text
 		
 		cv.SaveImage(self.nombre_archivo, image_mapa) #Saves the image#
 		#self.graficar(2000,image_mapa)

@@ -194,8 +194,10 @@ if args == ["install"]:
   print ("Installing TelVeMap in"), install_dir, "...\n"
   install("scr/telvemap-gui", "bin/telvemap-gui")
   install("scr/telvemap-control", "bin/telvemap-control")
+  install("scr/telvemap-control_SinArNet", "bin/telvemap-control2")
   install("scr/telvemap-mapa", "bin/telvemap-mapa")
   install("share/telvemap/glade/GUI.glade", "share/telvemap/glade/GUI.glade")
+  install("share/telvemap/glade/GUI2.glade", "share/telvemap/glade/GUI2.glade")
   install("share/telvemap/glade/hemra.png", "share/telvemap/glade/hemra.png")
   install("share/telvemap/glade/imagen.png", "share/telvemap/glade/imagen.png")
   install("share/telvemap/lib/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
@@ -225,8 +227,10 @@ elif args == ["reinstall"]:
   print ("Reinstalling TelVeMap in"), install_dir, "...\n"
   install("scr/telvemap-gui", "bin/telvemap-gui")
   install("scr/telvemap-control", "bin/telvemap-control")
+  install("scr/telvemap-control_SinArNet", "bin/telvemap-control2")
   install("scr/telvemap-mapa", "bin/telvemap-mapa")
   install("share/telvemap/glade/GUI.glade", "share/telvemap/glade/GUI.glade")
+  install("share/telvemap/glade/GUI2.glade", "share/telvemap/glade/GUI2.glade")
   install("share/telvemap/glade/hemra.png", "share/telvemap/glade/hemra.png")
   install("share/telvemap/glade/imagen.png", "share/telvemap/glade/imagen.png")
   install("share/telvemap/lib/telvemap/__init__.py", "share/telvemap/lib/telvemap/__init__.py")
@@ -248,6 +252,7 @@ elif args == ["server"]:
   check_dependencies()
   print ("Installing TelVeMap server in"), install_dir, "...\n"
   install("scr/servidor_novo.py", "bin/telvemap-server")
+  install("scr/servidor_SinArNet.py", "bin/telvemap-server2")
   print
   print ("""
 Now connect to PIONEER P3-DX or MobileSim.
