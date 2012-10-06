@@ -37,8 +37,9 @@ import gtk
 from telvemap.gamepad import gamepad
 from telvemap.FuzzyController import controlador
 from telvemap.cliente_lib2 import *
+from telvemap.renderizado import renderizado as mapa
 
-def fuzzy_velocidad(setpoint,a):
+def fuzzy_velocidad(setpoint,a,imagen):
 	sol=-1
 	try:
 		a.sonares_comando()
@@ -47,7 +48,9 @@ def fuzzy_velocidad(setpoint,a):
 		a.odometria_comando()
 		mi_x=a.odometria[0]
 		mi_y=a.odometria[1]
+		mi_th=a.odometria[2]
 		dato=[]
+		generador_mapa(imagen,valor_x,valor_y,mi_x,mi_y,mi_th)
 		if (len(valor_x)>0):
 			for a in range(len(valor_x)): #SIP en c. 
 				#print math.sqrt(pow(valor_x['x%d' % a]-mi_x,2)+pow(valor_y['y%d' % a]-mi_y,2)), "calculo"
@@ -56,29 +59,46 @@ def fuzzy_velocidad(setpoint,a):
 			sol=controlador(setpoint,valor_distancia) #Controlador difuso
 			if sol<0:
 				sol=0
+		else:
+			sol=400
 	except:
 		print "Fallo calculo distancia"
 		sol='e0'
 	return sol
+	
+def generador_mapa(imagen,valor_x,valor_y,mi_x,mi_y,mi_th):
+	try:
+		if (len(valor_x)>0):
+			for a in range(len(valor_x)):
+				imagen.anadir_punto((int(float(valor_x['x%d' % a]))/50+500,int(float(valor_y['y%d' % a]))/50+350),radio=2)
+		imagen.crear_imagen()
+		imagen=imagen.rotacion_y_posicion_robot(int(float(mi_x))/50+500,int(float(mi_y))/50+350,int(float(mi_th)))
+	except:
+		print "Fallo mapa"
 
-def robot_ordenes(fuzzy_vel,a,a2,b):
+def robot_ordenes(fuzzy_vel,a,a2,b,area,imagen,nombre_archivo):
 	aa=b
-	vel=fuzzy_velocidad(fuzzy_vel,aa)
+	vel=fuzzy_velocidad(fuzzy_vel,aa,imagen)
 	if vel=="e0":
 		print "Fallo VElocidad"
 	else:
 		if a2[0]=="ar":
 			print "Arriba",vel
 			aa.envio_movimiento("adelante",str(vel))
+			area.set_from_file(nombre_archivo)
+			#area
 		elif a2[1]=="iz":
 			print "Izquierda",vel
 			aa.envio_movimiento("izq",str(vel))
+			area.set_from_file(nombre_archivo)
 		elif a2[1]=="de":
 			print "Derecha",vel
 			aa.envio_movimiento("der",str(vel))
+			area.set_from_file(nombre_archivo)
 		elif a2[0]=="ab":
 			print "Abajo",vel
 			aa.envio_movimiento("atras",str(vel))
+			area.set_from_file(nombre_archivo)
 		elif a=="b1":
 			print "B1"
 		elif a=="b2":
@@ -93,6 +113,7 @@ def robot_ordenes(fuzzy_vel,a,a2,b):
 			print "L2"
 			print "prueba"
 			aa.envio_movimiento("alto") #parada de emergencia
+			area.set_from_file(nombre_archivo)
 		elif a=="r1":
 			print "R1"
 		elif a=="r2":
@@ -102,10 +123,10 @@ def robot_ordenes(fuzzy_vel,a,a2,b):
 		#sleep(0.2)
 	return a
 
-def etapa1(setpoint,a,aa,gamePad):
+def etapa1(setpoint,a,aa,gamePad,area,imagen,nombre_archivo):
 	a.palanca(gamePad)
 	#print a.direccion, a.boton
-	robot_ordenes(setpoint,a.boton,a.direccion,aa)
+	robot_ordenes(setpoint,a.boton,a.direccion,aa,area,imagen,nombre_archivo)
 	valor=True
 	if a.boton == "r1":
 		valor=False
@@ -124,13 +145,11 @@ def main(setpoint,ip=None,puerto=None):
 	a.hombre_muerto="r2" #Si no se preciona no lee informacion del gamepad
 	a.palanca(gamePad)
 	# Inicio de la parte grafica mapas
-	
-	# Timer que se repite cada 100ms con sus parametros
-	#gobject.threads_init()
-	source_id=gobject.timeout_add(100,etapa1,setpoint,a,aa,gamePad)
-	#loop = gobject.MainLoop()
-	#loop.run()
-	# Fin del Timer
+	dimensiones=(1000,700)
+	nombre_archivo="filenamea.jpg"
+	dimensiones_robot=(13,13)
+	imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
+	imagen.cargar()
 	
 	
 	#Inicio de gtk
@@ -139,15 +158,23 @@ def main(setpoint,ip=None,puerto=None):
 	builder.add_from_file("GUI2.glade")#direccion+"glade/GUI.glade") #Carga el archivo glade
 	builder.connect_signals(builder) #Toma todas las senales de glade
 	teleoper = builder.get_object("map") #Ventana principal
-	#boton = builder.get_object("button1")
-	#area=builder.get_object("mapa")
+	area = builder.get_object("image1")
+	#boton1=builder.get_object("button1")
+	#boton2=builder.get_object("button2")
 	teleoper.show()
+	
+	# Timer que se repite cada 100ms con sus parametros
+	#gobject.threads_init()
+	source_id=gobject.timeout_add(100,etapa1,setpoint,a,aa,gamePad,area,imagen,nombre_archivo)
+	#loop = gobject.MainLoop()
+	#loop.run()
+	# Fin del Timer
 	
 	gtk.main()
 
 if __name__ == '__main__':
 	setpoint=150
-	#ip="192.168.2.113"
-	#puerto=9991
-	main(setpoint)#,ip,puerto)
+	ip="localhost"#"192.168.1.5"
+	puerto=7273
+	main(setpoint,ip,puerto)
 
