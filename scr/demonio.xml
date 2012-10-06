@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><icarus>
+	<demonio>telvemap-control2</demonio>
 	<demonio>telvemap-control</demonio>
 	<demonio>telvemap-mapa</demonio>
-	<autostart>telvemap-control</autostart>
-	<autostart>telvemap-mapa</autostart>
+	<autostart>telvemap-control2</autostart>
 </icarus>
