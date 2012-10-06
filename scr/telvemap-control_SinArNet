@@ -154,57 +154,64 @@ class telvemap_control:
 		return valor
 
 	def __init__(self,setpoint,ip=None,puerto=None):
-		# variables
-		self.delta_valor=0
-		self.auxiliar=0
-		self.mi_x=[]
-		self.mi_y=[]
-		self.mi_th=[]
-		self.valor_x=[]
-		self.valor_y=[]
-		self.bateria=[]
-		
-		#Aria.init()
-		aa=cliente_lib()
-		if ip!=None:
-			aa.ip=ip
-			aa.puerto=puerto
-		aa.conexion()
-		a=gamepad()
-		gamePad=a.iniciar()
-		a.hombre_muerto="r2" #Si no se preciona no lee informacion del gamepad
-		a.palanca(gamePad)
-		# Inicio de la parte grafica mapas
-		dimensiones=(1000,700)
-		nombre_archivo="filenamea.jpg"
-		home = os.environ['HOME']
-		nombre_archivo = home + "/telvemap/"+nombre_archivo
-		dimensiones_robot=(13,13)
-		imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
-		imagen.cargar()
-		
-		
-		#Inicio de gtk
-		direccion="/usr/local/share/telvemap/glade/" ##Correguir para la instalcion en otro dirrecion
-		builder = gtk.Builder() #El archivo de glade debe estar en gtkbuilder
-		builder.add_from_file(direccion+"GUI2.glade")#direccion+"glade/GUI.glade") #Carga el archivo glade
-		self.teleoper = builder.get_object("map") #Ventana principal
-		builder.connect_signals(self) #Toma todas las senales de glade
-		area = builder.get_object("image1")
-		self.boton1=builder.get_object("button1")
-		self.delta=builder.get_object("delta")
-		self.label8=builder.get_object("label8")
-		#boton2=builder.get_object("button2")
-		self.teleoper.show()
-		
-		# Timer que se repite cada 100ms con sus parametros
-		#gobject.threads_init()
-		source_id=gobject.timeout_add(100,self.etapa1,setpoint,a,aa,gamePad,area,imagen,nombre_archivo)
-		#loop = gobject.MainLoop()
-		#loop.run()
-		# Fin del Timer
-		
-		gtk.main()
+		try:
+			# variables
+			self.delta_valor=0
+			self.auxiliar=0
+			self.mi_x=[]
+			self.mi_y=[]
+			self.mi_th=[]
+			self.valor_x=[]
+			self.valor_y=[]
+			self.bateria=[]
+			
+			#Aria.init()
+			aa=cliente_lib()
+			if ip!=None:
+				aa.ip=ip
+				aa.puerto=puerto
+			aa.conexion()
+			a=gamepad()
+			gamePad=a.iniciar()
+			a.hombre_muerto="r2" #Si no se preciona no lee informacion del gamepad
+			a.palanca(gamePad)
+			# Inicio de la parte grafica mapas
+			dimensiones=(1000,700)
+			nombre_archivo="filenamea.jpg"
+			home = os.environ['HOME']
+			nombre_archivo = home + "/telvemap/"+nombre_archivo
+			dimensiones_robot=(13,13)
+			imagen=mapa(dimensiones,nombre_archivo,dimensiones_robot)
+			imagen.cargar()
+			
+			
+			#Inicio de gtk
+			direccion="/usr/local/share/telvemap/glade/" ##Correguir para la instalcion en otro dirrecion
+			builder = gtk.Builder() #El archivo de glade debe estar en gtkbuilder
+			builder.add_from_file(direccion+"GUI2.glade")#direccion+"glade/GUI.glade") #Carga el archivo glade
+			self.teleoper = builder.get_object("map") #Ventana principal
+			builder.connect_signals(self) #Toma todas las senales de glade
+			area = builder.get_object("image1")
+			self.boton1=builder.get_object("button1")
+			self.delta=builder.get_object("delta")
+			self.label8=builder.get_object("label8")
+			#boton2=builder.get_object("button2")
+			self.teleoper.show()
+			
+			# Timer que se repite cada 100ms con sus parametros
+			#gobject.threads_init()
+			source_id=gobject.timeout_add(100,self.etapa1,setpoint,a,aa,gamePad,area,imagen,nombre_archivo)
+			#loop = gobject.MainLoop()
+			#loop.run()
+			# Fin del Timer
+			
+			gtk.main()
+		except:
+			mensaje="Fallo la conexion o no se encontro una palanca"
+			print "ERROR  ", mensaje
+			md = gtk.MessageDialog(None, gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO, gtk.BUTTONS_OK, mensaje)
+			md.run()
+			md.destroy()
 
 	def button1_onClic(self,widget, data=None):
 		valor=self.delta.get_text()
