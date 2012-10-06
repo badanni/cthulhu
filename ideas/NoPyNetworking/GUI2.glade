@@ -4,6 +4,7 @@
   <object class="GtkWindow" id="map">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Generacion de mapas</property>
+    <property name="icon">hemra.png</property>
     <property name="has_resize_grip">False</property>
     <signal name="destroy" handler="destroy_window" swapped="no"/>
     <child>
