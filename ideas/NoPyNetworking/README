@@ -1,0 +1,5 @@
+IDEA002
+=======
+
+Remplazar al ArNetworking, listo esta integrado en el principal como los camandos telvemap-server2 y telvemap-control2.
+Los nombre originales son telvemap-control_SinArNet.py y servidor_SinArNet.py
