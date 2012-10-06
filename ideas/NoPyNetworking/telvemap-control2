@@ -156,10 +156,11 @@ def main(setpoint,ip=None,puerto=None):
 	direccion="/usr/local/share/telvemap/" ##Correguir para la instalcion en otro dirrecion
 	builder = gtk.Builder() #El archivo de glade debe estar en gtkbuilder
 	builder.add_from_file("GUI2.glade")#direccion+"glade/GUI.glade") #Carga el archivo glade
-	builder.connect_signals(builder) #Toma todas las senales de glade
 	teleoper = builder.get_object("map") #Ventana principal
+	builder.connect_signals(None) #Toma todas las senales de glade
 	area = builder.get_object("image1")
-	#boton1=builder.get_object("button1")
+	boton1=builder.get_object("button1")
+	delta=builder.get_object("delta")
 	#boton2=builder.get_object("button2")
 	teleoper.show()
 	
@@ -171,6 +172,9 @@ def main(setpoint,ip=None,puerto=None):
 	# Fin del Timer
 	
 	gtk.main()
+
+def button1_onClic(widget, data=None):
+	print "Presiono arriba"
 
 if __name__ == '__main__':
 	setpoint=150

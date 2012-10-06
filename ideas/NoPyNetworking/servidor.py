@@ -88,6 +88,10 @@ class NoPyArNetworking:
 				self.mover(0,-1,recibido[1])
 			elif recibido[0] == "der":
 				self.mover(0,1,recibido[1])
+			elif recibido[0] == "alto":
+				self.motores(0)
+			elif recibido[0] == "continuar":
+				self.motores(1)
 			elif recibido[0] == "odometria":
 				self.odometria()
 				sc.send(self.valor_odometria)
@@ -119,6 +123,14 @@ class NoPyArNetworking:
 		print "Robot position by printing ArPose object: ", pose
 		print "Robot position using special python-only ArPose members: (", pose.x, ",", pose.y, ",", pose.th, ")"
 		self.valor_odometria= str(pose.x)+","+str(pose.y)+","+str(pose.th)+","+str(self.robot.getRealBatteryVoltage())
+
+	def motores(self,opcion):
+		self.robot.lock()
+		if opcion==1:
+			self.robot.enableMotors()
+		else:
+			self.robot.disableMotors()
+		self.robot.unlock()
 
 	def mover(self,direcion1,direcion2,velocidad=1000):
 		"""
@@ -224,5 +236,5 @@ if __name__ == '__main__':
 	else:
 		mensaje()
 		a.robot()
-		a.server("localhost",7273)#"localhost",9991)
+		a.server("localhost",7274)#"localhost",9991)
 
