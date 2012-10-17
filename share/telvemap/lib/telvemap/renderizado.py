@@ -103,6 +103,9 @@ class renderizado():
 		if imagen==0:
 			cv.ShowImage('Mapa Robot',self.image) #Show the image
 			cv.WaitKey(tiempo_ms)
+		elif imagen==1:
+			cv.ShowImage('Mapa Robot',self.image) #Show the image
+			cv.WaitKey(0)
 		else:
 			cv.ShowImage('Mapa Robot',imagen) #Show the image
 			cv.WaitKey(tiempo_ms)
@@ -164,5 +167,5 @@ if __name__ == '__main__':
 	a.rotacion_y_posicion_robot(200,100,0)
 	a.crear_imagen()
 	image_mapa=a.rotacion_y_posicion_robot(20,300,-40)
-	a.graficar(100,image_mapa)
+	a.graficar(100)
 

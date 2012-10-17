@@ -70,7 +70,7 @@ class telvemap_control:
 				if sol<0:
 					sol=0
 			else:
-				sol=400
+				sol=0
 		except:
 			print "Fallo calculo distancia"
 			sol='e0'
@@ -83,13 +83,13 @@ class telvemap_control:
 					imagen.anadir_punto((int(float(valor_x['x%d' % a]))/50+500,int(float(valor_y['y%d' % a]))/50+350),radio=2)
 			imagen.crear_imagen()
 			imagen=imagen.rotacion_y_posicion_robot(int(float(mi_x))/50+500,int(float(mi_y))/50+350,self.delta_valor+int(float(mi_th)))
+			#imagen.graficar(120)
 		except:
 			print "Fallo mapa"
 
 	def robot_ordenes(self,fuzzy_vel,a,a2,b,area,imagen,nombre_archivo):
 		aa=b
 		vel=self.fuzzy_velocidad(fuzzy_vel,aa,imagen)
-		area.set_from_file(nombre_archivo)
 		self.label8.set_text("Odometria: (X:%s,Y:%s,Th:%s)" % (self.mi_x,self.mi_y,self.mi_th))
 		if vel=="e0":
 			print "Fallo VElocidad"
@@ -97,16 +97,20 @@ class telvemap_control:
 			if a2[0]=="ar":
 				print "Arriba",vel
 				aa.envio_movimiento("adelante",str(vel))
+				area.set_from_file(nombre_archivo)
 				#area
 			elif a2[1]=="iz":
 				print "Izquierda",vel
 				aa.envio_movimiento("izq",str(vel))
+				area.set_from_file(nombre_archivo)
 			elif a2[1]=="de":
 				print "Derecha",vel
 				aa.envio_movimiento("der",str(vel))
+				area.set_from_file(nombre_archivo)
 			elif a2[0]=="ab":
 				print "Abajo",vel
 				aa.envio_movimiento("atras",str(vel))
+				area.set_from_file(nombre_archivo)
 			elif a=="b1":
 				mensaje="Voltaje de la bateria es: %s [Volt]" % self.bateria
 				print "B1", mensaje
@@ -115,6 +119,7 @@ class telvemap_control:
 				md.destroy()
 			elif a=="b2":
 				print "B2"
+				area.set_from_file(nombre_archivo)
 			elif a=="b3":
 				print "B3"
 			elif a=="b4":
@@ -138,7 +143,7 @@ class telvemap_control:
 			elif a=="r2":
 				print "R2"
 			else:
-				pass
+				aa.envio_movimiento("adelante",str(0))
 			#sleep(0.2)
 		return a
 
@@ -195,17 +200,19 @@ class telvemap_control:
 			self.boton1=builder.get_object("button1")
 			self.delta=builder.get_object("delta")
 			self.label8=builder.get_object("label8")
-			#boton2=builder.get_object("button2")
 			self.teleoper.show()
-			
-			# Timer que se repite cada 100ms con sus parametros
+			#area=1
+			# Timer que se repite cada 300ms con sus parametros
 			#gobject.threads_init()
-			source_id=gobject.timeout_add(100,self.etapa1,setpoint,a,aa,gamePad,area,imagen,nombre_archivo)
+			source_id=gobject.timeout_add(300,self.etapa1,setpoint,a,aa,gamePad,area,imagen,nombre_archivo)
 			#loop = gobject.MainLoop()
 			#loop.run()
 			# Fin del Timer
 			
 			gtk.main()
+			#a='2'
+			#while a!='1':
+			#	a=raw_input()
 		except:
 			mensaje="Fallo la conexion o no se encontro una palanca"
 			print "ERROR  ", mensaje
@@ -236,7 +243,7 @@ class telvemap_control:
 
 if __name__ == '__main__':
 	setpoint=150
-	ip="localhost"#"192.168.1.5"
-	puerto=7274
+	ip="192.168.2.113"
+	puerto=7474
 	a=telvemap_control(setpoint,ip,puerto)
 

@@ -138,8 +138,8 @@ class cliente_lib:
 
 def main():
 	a=cliente_lib()
-	a.ip="192.168.2.105"
-	a.puerto=9999
+	a.ip="127.0.0.1"#"192.168.2.105"
+	a.puerto=4747
 	a.conexion()
 	a.sonares_comando()
 	print a.sonar
