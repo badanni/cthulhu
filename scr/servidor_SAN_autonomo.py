@@ -24,7 +24,12 @@ robots@mobilerobots.com or
 Adept MobileRobots, 10 Columbia Drive, Amherst, NH 03031; 800-639-9481
 """
 from AriaPy import *
-import sys
+import sys, os
+
+pathname = os.path.dirname(sys.argv[0])
+os.chdir(os.path.abspath(pathname))
+sys.path.append("../share/telvemap/lib")
+from telvemap.FuzzyController import controlador
 
 
 """
@@ -69,12 +74,13 @@ delaying the robot synchronization cycle.
 class ActionGo(ArAction):
 
   # constructor, sets myMaxSpeed and myStopDistance
-  def __init__(self, maxSpeed, stopDistance):
+  def __init__(self, maxSpeed, stopDistance,f):
     ArAction.__init__(self, "Go")
     self.myMaxSpeed = maxSpeed
     self.myStopDistance = stopDistance
     self.myDesired = ArActionDesired()
     self.mySonar = None
+    self.f = f
     # Swig doesn't wrap protected methods yet # self.setNextArgument(ArArg("maximum speed", self.myMaxSpeed, "Maximum speed to go."))
     # Swig doesn't wrap protected methods yet # self.setNextArgument(ArArg("stop distance", self.myStopDistance, "Distance at which to stop."))
 
@@ -105,8 +111,16 @@ class ActionGo(ArAction):
     if (range > self.myStopDistance):
       # just an arbitrary speed based on the range
       #control difuso
+      speed = controlador(350,range) #Controlador difuso
+      #
+      #os.system("echo "+speed+" >> dato.txt"+"&")
       
-      speed = range * .3
+      #f.write(speed+"\n")
+      f=open('dato.txt', 'a')
+      print >> f, speed
+      f.close()
+      print speed
+      #speed = range * .3
       # if that speed is greater than our max, cap it
       if (speed > self.myMaxSpeed):
         speed = self.myMaxSpeed
@@ -219,7 +233,8 @@ sonar = ArSonarDevice()
 
 # Create instances of the actions defined above, plus ArActionStallRecover, 
 # a predefined action from Aria.
-go = ActionGo(1500, 350)
+fil =1# open('dato.txt', 'a')#w')
+go = ActionGo(1500, 350,fil)
 turn = ActionTurn(400, 10)
 recover = ArActionStallRecover()
 
@@ -255,3 +270,5 @@ robot.enableMotors()
 robot.run(1)
 
 Aria.shutdown()
+
+#fil.close()
